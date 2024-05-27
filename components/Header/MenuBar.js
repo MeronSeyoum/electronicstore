@@ -9,7 +9,7 @@ import NavMobile from './NavMobile';
 
   const handleOpenMenu = () => setIsVisable(true);
   const handleCloseMenu = () => setIsVisable(false);
-
+  const renderContent = () => {
   return (
     <Transition appear show={isVisable} as={Fragment}>
         <Dialog
@@ -27,7 +27,7 @@ import NavMobile from './NavMobile';
               leaveFrom="opacity-100 translate-x-0"
               leaveTo="opacity-0 -translate-x-14"
             >
-              <div className="relative z-20">
+              <div className="relative z-50">
                 <NavMobile onClickClose={handleCloseMenu} />
               </div>
             </Transition.Child>
@@ -47,6 +47,30 @@ import NavMobile from './NavMobile';
         </Dialog>
       </Transition>
   )
-}
+};
+return (
+  <>
+    <button
+      type="button"
+      onClick={handleOpenMenu}
+      className="flex items-center justify-center rounded-lg p-2.5 focus:outline-none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-7 w-7"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fillRule="evenodd"
+          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </button>
 
+    {renderContent()}
+  </>
+)
+ };
 export default MenuBar;

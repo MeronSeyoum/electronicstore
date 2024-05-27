@@ -59,9 +59,9 @@ const HeaderSlider = ({ slides, autoPlayInterval = 6000 }) => {
               transition={{ duration: 0.5 }}
               className=" px-20 font-semibold"
             >
-              <div className="flex flex-col justify-start gap-8  header-banner-content">
-                <h2 className=" text-xl" >Flat {slides[currentSlide].discount} Discount</h2>
-                <h1 className=" text-5xl header-banner-title">{slides[currentSlide].text}</h1>
+              <div className="flex flex-col justify-start gap-8  px-auto  header-banner-content">
+                <h2 className=" lg:text-xl text-lg" >Flat {slides[currentSlide].discount} Discount</h2>
+                <h1 className=" lg:text-5xl text-2xl lg:header-banner-title">{slides[currentSlide].text}</h1>
                 <h3 className=" text-xl text-primary"><span className='text-black'>From </span> {slides[currentSlide].price}</h3>
                 <ButtonPrimary onClick={nextSlide} className=" w-36">Shop Now</ButtonPrimary>
               </div>

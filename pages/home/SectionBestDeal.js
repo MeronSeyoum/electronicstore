@@ -11,9 +11,9 @@ const SectionBestDeals = () => {
          <div className="flex flex-col gap-2 ">
           <h3 className="text-xl font-bold ">Featured Product</h3>
          <hr className='bg-black w-screen h-[1px] justify-start'  />
-         <hr className='bg-primary  w-20 h-[4px] justify-start -mt-2'  />
+         <hr className='bg-primary  w-40 h-[4px] justify-start -mt-2'  />
          </div>
-         <div className="absolute transform right-8  mb-1 ">
+         <div className="absolute transform right-8 mb-1 hidden lg:block">
           <CountDownTimer />
           </div>
         </div>

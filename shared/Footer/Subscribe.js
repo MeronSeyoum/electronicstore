@@ -5,7 +5,7 @@ import Input from "../Input/Input";
 
 const Subscribe = () => {
   return (
-    <div className="flex flex-col items-stretch justify-between space-y-10 rounded-2xl p-5 md:flex-row md:space-y-0 md:space-x-5 bg-gray-500">
+    <div className="flex flex-row items-stretch justify-between space-y-10 rounded-2xl p-5 md:flex-row md:space-y-0 md:space-x-5 bg-gray-500">
       <div className="flex-1 space-y-5">
         <h3 className="text-2xl font-medium text-white">{newsletter.heading}</h3>
         <Input

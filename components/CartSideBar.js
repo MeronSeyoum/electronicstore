@@ -205,13 +205,13 @@ const CartSideBar = () => {
       <button
         type="button"
         onClick={handleOpenMenu}
-        className="ml-3 flex items-center gap-1 pl-3
+        className="ml-3 flex items-center gap-1 lg:pl-3 pl-2
          focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
-        <BsCart2 className="text-2xl mb-1" />
-        <div className="flex flex-col text-xs text-start px-2">
-          <span className="hidden text-xs lg:block pb-0 hover:text-primary">Cart</span>
-          <span className="hidden text-sm font-semibold md:block flex-row">${totalPrice.toFixed(2)}</span>
+        <BsCart2 className="text-lg mb-1" />
+        <div className="flex flex-row text-sm text-center px-2 gap-2">
+          <span className="hidden  lg:block text-primary">Cart</span>
+          <span className="hidden font-semibold md:block flex-row">${totalPrice.toFixed(2)}</span>
         </div>
       </button>
 

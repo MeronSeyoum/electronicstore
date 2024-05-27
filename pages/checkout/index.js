@@ -15,37 +15,36 @@ import ContactInfo from './ContactInfo';
 import PaymentMethod from './PaymentMethod';
 import ShippingAddress from './ShippingAddress';
 import useRetrieveProductInCartItem from 'hooks/useRetrieveProductInCartItem';
+import { useCart } from 'context/cartContext';
 
 const CheckoutPage = () => {
   const [tabActive, setTabActive] = useState('ShippingAddress');
-  const { products, loading, error } = useRetrieveProductInCartItem();
-  const [subtotal, setSubtotal] = useState(0);
-  const [total, setTotal] = useState(0);
+  const {
+    cart,
+    totalQuantity,
+    totalPrice,
+    updateCartQuantity,
+    removeFromCart,
+    fetchCart,
+  } = useCart();
+
 const [quantity, setQuantity] =useState(1);
 const [productPrice, setProductPrice]=useState(0)
  
-const estimatedTaxes = subtotal * 0.05; // Example tax amount 5%
+const [total, setTotal] = useState(0);
+
+  const estimatedTaxes = totalPrice * 0.05; // Example tax amount 5%
   const estimatedDeliveryHandling = 0; // Example delivery & handling charge
   useEffect(() => {
-    if (!loading && !error) {
-      // Calculate subtotal when products are fetched successfully
-      const subtotalAmount = products.reduce((acc, product) => {
-        // Calculate price for each product based on its quantity
-        const totalQuantity = quantity[product.cart_item_id] || 1; // Corrected
-        return acc + parseFloat(product.price * totalQuantity);
-      }, 0);
-      setSubtotal(subtotalAmount);
+    // fetchCart(sessionStorage.getItem('shoppingSession')); // Fetch cart when opening
 
-      const totalAmount = subtotalAmount + estimatedTaxes + estimatedDeliveryHandling;
-      setTotal(totalAmount);
-    }
-  }, [products, loading, error, quantity]);
+    const totalAmount = totalPrice + estimatedTaxes + estimatedDeliveryHandling;
+    setTotal(totalAmount);
+  }, [totalPrice]);
+
 
   const handleQuantityChange = (cart_item_id, newValue) => {
-    setQuantity((prevQuantity) => ({
-      ...prevQuantity,
-      [cart_item_id]: newValue,
-    }));
+    updateCartQuantity(cart_item_id, newValue);
   };
 
   const handleScrollToEl = (id) => {
@@ -98,7 +97,10 @@ const productPrice = price * totalQuantity;
         <div className="flex w-full items-end justify-between text-sm">
           <div className="flex items-center gap-3">
             <LikeButton />
-            <AiOutlineDelete className="text-xl" />
+            <AiOutlineDelete
+             className="text-xl deleteColor"
+                onClick={() => removeFromCart(cart_item_id)}
+              />
           </div>
           <div>
             <InputNumber
@@ -177,7 +179,7 @@ const productPrice = price * totalQuantity;
           <div className="w-full lg:w-[36%] ">
             <h3 className="text-lg font-semibold">Order summary</h3>
             <div className="mt-8 divide-y divide-neutral-300">
-            {products.map((item) => renderProduct(item))}
+            {cart.map((item) => renderProduct(item))}
             </div>
 
             <div className="mt-10 border-t border-neutral-300 pt-6 text-sm">
@@ -200,7 +202,7 @@ const productPrice = price * totalQuantity;
 
               <div className="mt-4 flex justify-between pb-4">
                 <span>Subtotal</span>
-                <span className="font-semibold">${subtotal.toFixed(2)}</span>
+                <span className="font-semibold">${totalPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-between py-4">
                 <span>Estimated Delivery & Handling</span>

@@ -30,30 +30,30 @@ async function authenticate({ username, password }) {
    const  userId= userJson.id || 3;
     delete userJson.hash;
  
-    const session_id = sessionStorage.getItem('shoppingSession') || null;
+//     const session_id = sessionStorage.getItem('shoppingSession') || null;
  
- if(userId !==3){
-    try {
-        const response = await fetch("/api/shoppingSession/createShoppingSession", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ userId, session_id }),
-        });
+//  if(userId !==3){
+//     try {
+//         const response = await fetch("/api/shoppingSession/createShoppingSession", {
+//           method: "PUT",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({ userId, session_id }),
+//         });
   
-        if (response.ok) {
-          const data = await response.json();
-          return data;
-        } else {
-          console.error("Failed to create shopping session:", response.statusText);
-          return null;
-        }
-      } catch (error) {
-        console.error("Error creating shopping session:", error);
-        return null;
-      }
-    }
+//         if (response.ok) {
+//           const data = await response.json();
+//           return data;
+//         } else {
+//           console.error("Failed to create shopping session:", response.statusText);
+//           return null;
+//         }
+//       } catch (error) {
+//         console.error("Error creating shopping session:", error);
+//         return null;
+//       }
+//     }
     // return user and jwt
     return {
         ...userJson,

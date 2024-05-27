@@ -26,25 +26,26 @@ const MainNav = () => {
 
   return (
     <div className="container ms-menu-container flex items-center justify-between py-2.5">
-      <div className="flex-1 lg:hidden">
+      <div className="flex-1 lg:hidden block">
         <MenuBar />
       </div>
-      <div className="flex items-center gap-5 lg:basis-[61%]">
+      <div className="flex items-center pr-5 basis-[61%] ">
         <Logo />
-        <div className="hidden w-full max-w-xl items-center gap-5 py-1
+        <div className="hidden w-full max-w-xl items-center gap-5 py-0
          rounded-full border border-neutral-300  lg:flex">
           <Input
             type="text"
-            className=" border-transparent rounded-full border-0 bg-white placeholder:text-neutral-500 focus:border-transparent mx-2"
+            className=" border-white rounded-full border-0 bg-white
+             placeholder:text-neutral-500 focus:border-transparent mx-0"
             placeholder="try 'Iphone 14 Max'"
           />
-          <RiSearch2Line className="text-2xl text-neutral-500 me-3 " />
+          <RiSearch2Line className="text- text-neutral-500 me-3 " />
         </div>
       </div>
       <div className="flex flex-1 items-center justify-end gap-5">
         <div className="relative hidden lg:block">
           <span className="absolute -top-1/4 left-3/4 aspect-square w-3 rounded-full bg-red-600" />
-          <FaRegBell className="text-2xl" />
+          <FaRegBell className="text-lg" />
         </div>
 
         <div className="flex items-center divide-x divide-neutral-300">
@@ -55,7 +56,10 @@ const MainNav = () => {
                 {/* Trigger */}
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:red-400 focus:ring-offset-2 focus:ring-offset-gray-100"
+                  className="inline-flex items-center justify-center w-full p-2 lg:px-4 lg:py-1
+                   text-sm font-medium text-gray-700 bg-white 
+                   rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:red-400
+                    focus:ring-offset-2 focus:ring-offset-gray-100"
                   onClick={() => {
                     const dropdown = document.getElementById("dropdown-menu");
                     dropdown.classList.toggle("hidden");
@@ -65,9 +69,9 @@ const MainNav = () => {
                   <FaRegUser className="text-sm" />
                   {/* User name */}
                   <span className="pl-2">
-                    {userService.userValue?.first_name +
-                      " " +
-                      userService.userValue?.last_name}
+                    {userService.userValue?.first_name 
+                    //+" " + userService.userValue?.last_name
+                    }
                   </span>
                   {/* Dropdown arrow icon */}
                   <svg
@@ -118,18 +122,18 @@ const MainNav = () => {
             </>
           ) : (
             // Render login/signup link if not logged in
-            <div className="flex  items-center ">
-            <Link href="/account/login"><FaRegUser className="text-2xl" /></Link>
+            <div className="flex  items-center  text-sm">
+            <Link href="/account/login"><FaRegUser className="text-lg" /></Link>
               <Link href="/account/login" className="account-icon hover:bg-primary">
-                <span className="hidden text-xs lg:block pb-0 ">
-                  Sign In / Sign Up
+                <span className="hidden  lg:block pb-0 ">
+                  Sign In 
                 </span>
-                <div className="flex flex-row gap-2">
+                {/* <div className="flex flex-row gap-2">
                 <span className="hidden text-sm font-semibold md:block flex-row ">
                   My account 
                 </span>
                <FaLock  className=" hidden text-xs lg:block mt-1" />
-               </div>
+               </div> */}
               </Link>
             </div>
           )}

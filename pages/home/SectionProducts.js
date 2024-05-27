@@ -21,7 +21,7 @@ const SectionProducts = () => {
     return <div>Error: {error}</div>;
   }
   return (
-    <div className="container">
+    <div className="container ">
       <Heading isCenter isMain desc={productsSection.description}>
         {productsSection.heading}
       </Heading>

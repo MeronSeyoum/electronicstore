@@ -1,18 +1,16 @@
 import React from "react";
-import Image from "next/image";
 
 import PromoTag from "components/PromoTag";
 import { headerSection } from "data/content";
-import whiteEarPhone from "images/whiteEarPhone.png";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 
 const SectionHeader = () => {
   return (
-    <div className="container items-stretch gap-y-5 py-0 lg:flex lg:gap-5 lg:gap-y-0 h-72 ">
+    <div className="container items-stretch gap-y-5 py-0 lg:flex lg:gap-5  lg:gap-y-10 md:h-72  ">
       {/* header banner */}
       <div
         className="basis-[50%] items-center space-y-10 rounded-xl  p-4 
-       md:flex md:space-y-0 bg-[#506674] bg-no-repeat"
+       md:flex md:space-y-10 mb:mb-4  bg-[#506674] bg-no-repeat"
         style={{
           backgroundImage: 'url("/subBanner1.jpg")',
           backgroundSize: "80% 90% ",
@@ -24,7 +22,7 @@ const SectionHeader = () => {
             {headerSection.title}
           </h4>
           <h1
-            className=" text-3xl font-semibold text-white  "
+            className=" lg:text-3xl md:text-2xl font-semibold text-white  "
             style={{ lineHeight: "1.4em" }}
           >
             {headerSection.heading}
@@ -33,7 +31,7 @@ const SectionHeader = () => {
             {headerSection.description}
           </p> */}
           <ButtonSecondary
-            sizeClass="px-5 py-3 bg-black text-white w-[200px]"
+            sizeClass="px-5 py-3 bg-black text-white w-[150px]"
             onClick={""}
           >
             View Product
@@ -42,7 +40,7 @@ const SectionHeader = () => {
       
       </div>
 
-      <div className=" basis-[50%] lg:mt-0 rounded-xl">
+      <div className=" basis-[50%] lg:mt-0 md:mt-2  rounded-xl">
         <PromoTag />
       </div>
     </div>

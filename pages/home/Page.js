@@ -51,7 +51,7 @@ const HomePage = () => {
       <div className="my-16 ">
         <SectionBestDeals />
       </div>
-      <div className=" mb-10">
+      <div className=" lg:mb-10 ">
         <SectionHeader />
       </div>
       <div className="mb-10">

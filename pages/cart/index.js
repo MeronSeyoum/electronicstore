@@ -92,7 +92,7 @@ const CartPage = () => {
               <LikeButton />
               <AiOutlineDelete
                 className="text-xl deleteColor"
-                onClick={() => handleRemoveCart(cart_item_id)}
+                onClick={() => removeFromCart(cart_item_id)}
               />
             </div>
             <div>

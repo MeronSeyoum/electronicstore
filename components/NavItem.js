@@ -20,7 +20,7 @@ const NavItem = ({ menuItem, children, changeWidth }) => {
 
   const renderMainItem = (item) => {
     return (
-      <div className="mx-3 flex shrink-0 items-center font-normal hover:text-primary">
+      <div className="mx-3 text-white flex shrink-0 items-center font-normal ">
         <Link href={{ pathname: item.href || undefined }}>{item.name}</Link>
       </div>
     );
