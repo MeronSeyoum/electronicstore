@@ -30,10 +30,10 @@ const nextConfig = {
     reactStrictMode: true,
     serverRuntimeConfig: {
         dbConfig: {
-            host: 'localhost',
-            port: 3306,
-            user: 'root',
-            password: 'password', 
+            host: 'electronicshop-electronic-shop.h.aivencloud.com',
+            port: 24765,
+            user: 'avnadmin',
+            password: 'AVNS_PiBpNBzw9Rx9TkX5lhk', 
             database: 'electronic_shop'
         },
         secret: 'THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING'
@@ -41,8 +41,9 @@ const nextConfig = {
     publicRuntimeConfig: {
         apiUrl: process.env.NODE_ENV === 'development'
             ? 'http://localhost:3000/api' // development api
-            : 'http://localhost:3000/api' // production api
+            : 'https://electronicstore-dun.vercel.app/api' // production api
     }
 }
 
 module.exports = nextConfig
+
