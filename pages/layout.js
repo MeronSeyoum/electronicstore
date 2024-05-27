@@ -7,7 +7,7 @@ import Footer from 'shared/Footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
+ const metadata = {
   title: 'Electronic Shop E-commerce',
   icons: [
     {
