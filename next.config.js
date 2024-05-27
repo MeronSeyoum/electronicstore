@@ -24,18 +24,19 @@ module.exports = {
 
     return config;
   },
+
 };
 
 const nextConfig = {
     reactStrictMode: true,
     serverRuntimeConfig: {
-        dbConfig: {
-            host: 'electronicshop-electronic-shop.h.aivencloud.com',
-            port: 24765,
-            user: 'avnadmin',
-            password: 'AVNS_PiBpNBzw9Rx9TkX5lhk', 
-            database: 'electronic_shop'
-        },
+      dbConfig: {
+        host: 'electronicshop-electronic-shop.h.aivencloud.com',
+        port: 24765,
+        user: 'avnadmin',
+        password: process.env.DB_PASS,
+        database: 'electronic_shop'
+    },
         secret: 'THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING'
     },
     publicRuntimeConfig: {
