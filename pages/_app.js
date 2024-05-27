@@ -1,7 +1,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/router";
 import "tailwindcss/tailwind.css";
-import "styles/globals.css";
+import "./globals.css";
 
 import { userService } from "services";
 import { Alert } from "components";
