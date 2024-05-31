@@ -27,13 +27,12 @@ const SectionProducts = () => {
       </Heading>
       <Filter />
 
-
       <div className="flex flex-col gap-2 mb-4 ">
-          <h3 className="text-xl font-bold ">Best Selling Products</h3>
-         <hr className='bg-black  h-[1px] justify-start'  />
-         <hr className='bg-primary  w-20 h-[4px] justify-start -mt-2'  />
-         </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <h3 className="text-xl font-bold ">Best Selling Products</h3>
+        <hr className="bg-black  h-[1px] justify-start" />
+        <hr className="bg-primary  w-52 h-[4px] justify-start -mt-3" />
+      </div>
+      <div className="grid gap-x-4 gap-y-6  grid-cols-2 lg:grid-cols-5">
         {fetchedData.map((product) => (
           <ProductCard
             key={product.product_name}

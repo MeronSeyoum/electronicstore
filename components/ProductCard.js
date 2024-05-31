@@ -13,11 +13,11 @@ const ProductCard = ({ product, className = '', showPrevPrice = false }) => {
 
   return (
     <div
-      className={`relative rounded-2xl p-2 ${className}`}
+      className={` ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="h-[250px] w-full overflow-hidden rounded-base lg:h-[200px] 2xl:h-[300px] relative">
+      <div className="h-[240px] w-full overflow-hidden rounded-base lg:h-[200px] 2xl:h-[300px] relative ">
         {product.justIn == 1 && (
           <div className="absolute left-4 top-4 rounded-b-lg bg-black px-3 py-2 text-xs font-bold text-white shadow-md">
             Just In!
@@ -27,9 +27,9 @@ const ProductCard = ({ product, className = '', showPrevPrice = false }) => {
         <Image
           src={mainImage}
           alt={`${product.product_name} cover photo`}
-          className="h-full w-full object-contain object-bottom border rounded-lg hover:bg-neutral-100 p-3 bg-neutral-100"
-          width={200}
-          height={200}
+          className="h-full w-full border rounded-lg hover:bg-neutral-100 p-0.5 bg-transparent"
+          width={500}
+          height={500}
         />
         {/* </Link> */}
         {isHovered && (
@@ -44,7 +44,7 @@ const ProductCard = ({ product, className = '', showPrevPrice = false }) => {
 
       <div className="mt-2 ">
         <div className="flex flex-col items-start justify-between ">
-          <h2 className="font-semibold text-[13px] w-60">{product.product_name}</h2>
+          <h2 className="font-semibold text-[13px] lg:w-60 break-words">{product.product_name}</h2>
           <p className="text-xs text-neutral-500">{product.category_name}</p>
 
           {/* <p className={`text-neutral-500 ${showPrevPrice ? 'block' : 'hidden'} text-sm line-through`}>

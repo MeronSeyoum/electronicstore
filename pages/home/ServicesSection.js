@@ -29,12 +29,12 @@ const ServicesSection = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-3 lg:gap-6 ">
           {services.map((service, index) => (
-            <div key={index} className="flex lg:flex-col md:flex-row lg:items-center items-end  justify-center ">
-              <span className=" text-2xl text-gray-600 mb-2">
+            <div key={index} className="flex lg:flex-row flex-col lg:items-end items-center border py-2 px-0   lg:justify-center ">
+              <span className=" lg:text-4xl text-3xl lg:mb-0 mb-2 text-primary ">
                 {<service.icon />}
               </span>
               <div className="lg:text-center ml-3">
-                <h5 className="lg:text-sm font-semibold">{service.title}</h5>
+                <h5 className="lg:text-base  font-semibold ">{service.title}</h5>
                 <p className="text-gray-600 lg:text-xs text-[12px]">{service.description}</p>
               </div>
             </div>

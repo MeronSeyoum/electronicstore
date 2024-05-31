@@ -15,7 +15,7 @@ const SectionBrands = () => {
       <div className="flex flex-col gap-2 mb-4 ">
           <h3 className="text-xl font-bold ">Shop by Brand</h3>
          <hr className='bg-black  h-[1px] justify-start'  />
-         <hr className='bg-primary  w-20 h-[4px] justify-start -mt-2'  />
+         <hr className='bg-primary  w-36 h-[4px] justify-start -mt-2'  />
          </div>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 ">
         {brandsSection.brands.map((brand) => (

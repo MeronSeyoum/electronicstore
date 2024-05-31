@@ -15,7 +15,7 @@ const BrandCard = ({
   products,
 }) => {
   return (
-    <div className="rounded-2xl border border-neutral-300 p-3">
+    <div className="rounded-2xl  border-neutral-300 p-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="h-20 w-20 overflow-hidden rounded-lg">
@@ -56,12 +56,12 @@ const BrandCard = ({
         {products.map((product, index) => (
           <div
             key={index}
-            className="h-[150px] overflow-hidden rounded-lg border p-4"
+            className="h-[150px] overflow-hidden rounded-lg border p-2"
           >
             <Image
               src={product}
               alt="product Image"
-              className="h-full w-full object-contain object-bottom"
+              className="h-full w-full object-fit object-bottom"
             />
           </div>
         ))}

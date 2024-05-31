@@ -46,7 +46,8 @@ const HeaderSlider = ({ slides, autoPlayInterval = 6000 }) => {
             src={slides[currentSlide].image}
             alt={slides[currentSlide].alt}
             layout="fill"
-            objectFit="cover"
+            // objectFit="fit"
+            className="relative bg-cover bg-center lg:w-full w-1/2 h-screen"
           />
         </motion.div>
         <div className="absolute top-0 left-0 h-full w-full flex items-center">
@@ -57,13 +58,18 @@ const HeaderSlider = ({ slides, autoPlayInterval = 6000 }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: '100%' }}
               transition={{ duration: 0.5 }}
-              className=" px-20 font-semibold"
+              className=" lg:px-20 px-10 "
             >
-              <div className="flex flex-col justify-start gap-8  px-auto  header-banner-content">
-                <h2 className=" lg:text-xl text-lg" >Flat {slides[currentSlide].discount} Discount</h2>
-                <h1 className=" lg:text-5xl text-2xl lg:header-banner-title">{slides[currentSlide].text}</h1>
-                <h3 className=" text-xl text-primary"><span className='text-black'>From </span> {slides[currentSlide].price}</h3>
-                <ButtonPrimary onClick={nextSlide} className=" w-36">Shop Now</ButtonPrimary>
+              <div className="flex flex-col justify-start lg:gap-14  gap-8 px-auto  header-banner-content">
+                <h2 className=" lg:text-lg text-base font-[500]" >Flat {slides[currentSlide].discount} Discount</h2>
+                <h1 className="capitalize text-black whitespace-normal text-left lg:text-4xl lg:leading-[52px] 
+                tracking-normal font-medium filter-none transform-none origin-center opacity-100 
+                translate-x-0 translate-y-0 visible
+                text-[30px] leading-[46px] ">
+                {slides[currentSlide].text}
+                </h1>
+                <h3 className=" text-lg text-primary font-[500]"><span className='text-black'>From </span> {slides[currentSlide].price}</h3>
+                <ButtonPrimary onClick={nextSlide} className=" w-36 ">Shop Now</ButtonPrimary>
               </div>
             </motion.div>
           </AnimatePresence>

@@ -115,7 +115,7 @@ const CartSideBar = () => {
           className="fixed inset-0 z-50 overflow-y-auto"
           onClose={handleCloseMenu}
         >
-          <div className="z-max fixed inset-y-0 right-0 w-full max-w-md outline-none focus:outline-none md:max-w-md">
+          <div className="z-max fixed inset-y-0 right-0 w-full max-h-full max-w-md outline-none focus:outline-none md:max-w-md">
             <Transition.Child
               as={Fragment}
               enter="transition duration-100 transform"
@@ -142,11 +142,11 @@ const CartSideBar = () => {
                           cart.map((item) => renderProduct(item))
                         )}</div>
                     </div>
-                    <div className="absolute bottom-0 left-0 w-full bg-neutral-50 p-4">
+                    <div className="absolute bottom-0 left-0 w-full bg-neutral-100 p-4">
                       <p className="flex justify-between">
                         <span>
                           <span className="font-medium">Subtotal</span>
-                          <span className="block text-sm text-neutral-500">
+                          <span className="block lg:text-sm text-xs text-neutral-500">
                             Shipping and taxes calculated at checkout.
                           </span>
                         </span>
@@ -205,10 +205,10 @@ const CartSideBar = () => {
       <button
         type="button"
         onClick={handleOpenMenu}
-        className="ml-3 flex items-center gap-1 lg:pl-3 pl-2
+        className=" flex items-center  
          focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
-        <BsCart2 className="text-lg mb-1" />
+        <BsCart2 className="text-xl" />
         <div className="flex flex-row text-sm text-center px-2 gap-2">
           <span className="hidden  lg:block text-primary">Cart</span>
           <span className="hidden font-semibold md:block flex-row">${totalPrice.toFixed(2)}</span>
