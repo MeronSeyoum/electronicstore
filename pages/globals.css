@@ -58,7 +58,7 @@
 }
 
 .ms-menu-container {
-    box-shadow: 5px 1px rgba(226, 224, 224, 0.633);
+    box-shadow: 1px 0 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 .shopCategory {
@@ -89,11 +89,25 @@
     grid-row: span 2;
 }
 
-.account-icon {
+.counter {
+    /* font-smoothing: subpixel-antialiased; */
+    background-color: #ef4444;
+    border-radius: 50%;
+    color: black;
     display: block;
-    text-align: left;
-    position: relative;
-    padding: 0px 10px;
+    font-size: 10px;
+    font-weight: 500;
+    height: 16px;
+    margin-left: 18px;
+    line-height: 16px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    text-overflow: ellipsis;
+    top: 10px;
+    white-space: nowrap;
+    width: 16px;
+    z-index: 100;
 }
 
 
@@ -125,14 +139,72 @@
     border: 1px solid #ea0a0a;
 }
 
+.page-title .entry-title-main {
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 20px;
+    float: left;
+    width: 100%;
+}
+
+.breadcrumb span,
+.breadcrumbs a,
+.breadcrumbs span {
+    font-size: 13px;
+    line-height: 1.25;
+    text-align: right;
+    margin: 6px 0;
+    color: #000;
+    font-weight: normal;
+    padding: 0 5px;
+    line-height: 24px;
+}
+
+.product-info {
+    position: relative;
+    /* Ensure position is relative for the ::before pseudo-element positioning */
+    background: #ef444422;
+    color: #5e7f96;
+    border: 1px solid #ef444439;
+    border-top: 2px solid #ef4444;
+    clear: both;
+    font-size: 13px;
+    padding: 1em;
+    padding-left: 40px;
+    /* Add some padding for better readability */
+}
+
+.product-info::before {
+    background-color: #ef4444;
+    content: "i";
+    font-family: Times, Georgia, serif;
+    font-style: italic;
+    height: 2.2em;
+    width: 1.5em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 1em;
+    font-size: 1em;
+    line-height: 1.5;
+    text-align: center;
+    color: #fff;
+    padding-top: .9em;
+    /* Adjust padding to center the content vertically */
+}
+
 @media (min-width: 640px) {
     .container {
         max-width: 640px;
     }
-    @media (min-width: 768px) {
-        .container {
-            max-width: 768px;
-        }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
     }
 }
 

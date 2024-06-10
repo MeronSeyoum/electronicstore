@@ -48,6 +48,7 @@ function App({ Component, pageProps }) {
      '/productsCollection',
      '/cart',
     '/products/*',
+    '/Search*',
     ];
     
     

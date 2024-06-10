@@ -35,7 +35,7 @@ const SectionProducts = () => {
       <div className="grid gap-x-4 gap-y-6  grid-cols-2 lg:grid-cols-5">
         {fetchedData.map((product) => (
           <ProductCard
-            key={product.product_name}
+            key={product.id}
             product={product}
             className=""
             // border-neutral-300 border

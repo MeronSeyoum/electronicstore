@@ -1,13 +1,13 @@
-'use client'
+"use client";
 // ProductCard.js
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import LikeButton from './LikeButton';
-import AddToCart from './AddToCart';
-import ViewProduct from './ViewProduct';
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import LikeButton from "./LikeButton";
+import AddToCart from "./AddToCart";
+import ViewProduct from "./ViewProduct";
 
-const ProductCard = ({ product, className = '', showPrevPrice = false }) => {
+const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [mainImage, setMainImage] = useState(product.main_image); // State to manage the main image
 
@@ -27,14 +27,16 @@ const ProductCard = ({ product, className = '', showPrevPrice = false }) => {
         <Image
           src={mainImage}
           alt={`${product.product_name} cover photo`}
-          className="h-full w-full border rounded-lg hover:bg-neutral-100 p-0.5 bg-transparent"
-          width={500}
-          height={500}
+          className="h-full w-full border rounded-lg
+           hover:bg-neutral-100 p-10 bg-transparent"
+          loading="lazy"
+          sizes="(max-width: 300px) 100vw, 300px"
+          width={300}
+          height={300}
         />
         {/* </Link> */}
         {isHovered && (
-
-          <div className='absolute inset-0 flex justify-center items-center'>
+          <div className="absolute inset-0 flex justify-center items-center">
             <LikeButton className="absolute right-4 top-4" />
 
             <ViewProduct isVisible={true} slug={product.slug} />
@@ -44,7 +46,9 @@ const ProductCard = ({ product, className = '', showPrevPrice = false }) => {
 
       <div className="mt-2 ">
         <div className="flex flex-col items-start justify-between ">
-          <h2 className="font-semibold text-[13px] lg:w-60 break-words">{product.product_name}</h2>
+          <h2 className="font-semibold text-[13px] lg:w-60 break-words">
+            {product.product_name}
+          </h2>
           <p className="text-xs text-neutral-500">{product.category_name}</p>
 
           {/* <p className={`text-neutral-500 ${showPrevPrice ? 'block' : 'hidden'} text-sm line-through`}>
@@ -52,40 +56,14 @@ const ProductCard = ({ product, className = '', showPrevPrice = false }) => {
           </p> */}
         </div>
         <div className="flex items-center justify-between mt-2 ">
-        <p className="text-base font-bold ">${parseFloat(product.price).toFixed(2)}</p>
+          <p className="text-base font-bold ">
+            ${parseFloat(product.price).toFixed(2)}
+          </p>
           <AddToCart productId={product.id} />
         </div>
-
       </div>
-
     </div>
   );
 };
 
 export default ProductCard;
-
-
-
-
-{/* Four small images */ }
-{/* <div className="grid grid-cols-8 gap-1 mt-3 ">
-        {products.shots.map((smallImage, index) => (
-          <div key={index}>
-            <Image
-              src={smallImage}
-              alt={`Small image ${index}`}
-              width={40}
-              height={40}
-              className="cursor-pointer border border-gray-300 rounded"
-              onMouseEnter={() => setMainImage(smallImage)} // Update the main image on mouse hover
-            />
-          </div>
-        ))}
-      </div> */}
-
-{/* <div className="mt-5 flex items-center">
-        <InputNumber />
-        <ButtonSecondary className="w-full rounded-full bg-primary text-white text-xs" onClick={''}>
-          <BsBag className='me-2'/> Add to cart
-        </ButtonSecondary>
-      </div> */}

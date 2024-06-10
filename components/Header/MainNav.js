@@ -1,16 +1,13 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { FaRegBell, FaRegUser } from "react-icons/fa";
 import { RiSearch2Line } from "react-icons/ri";
-import ButtonCircle3 from "shared/Button/ButtonCircle3";
-import Input from "shared/Input/Input";
 import Logo from "shared/Logo/Logo";
 import CartSideBar from "../CartSideBar";
 import MenuBar from "./MenuBar";
+import ProductSearch from "components/ProductSearch";
+import Link from "next/link";
 import { userService } from "services";
-
 const MainNav = () => {
   const [user, setUser] = useState(null);
 
@@ -20,32 +17,27 @@ const MainNav = () => {
   }, []);
 
   return (
-    <div className="container flex items-center justify-between lg:py-2.5 py-1">
+    <div className="container flex items-center justify-between lg:py-2.5">
       <div className="flex-1 lg:hidden">
         <MenuBar />
       </div>
       <div className="flex items-center pr-5 basis-[61%]">
         <Logo />
-        <div className="hidden w-full max-w-xl items-center gap-5 py-0 rounded-full border border-neutral-300 lg:flex">
-          <Input
-            type="text"
-            className="border-white rounded-full bg-white placeholder:text-neutral-500 focus:border-transparent mx-0"
-            placeholder="try 'Iphone 14 Max'"
-          />
-          <RiSearch2Line className="text-lg text-neutral-500 me-3" />
-        </div>
+       
       </div>
-      <div className="flex flex-1 items-center justify-end lg:gap-5 gap-2">
-        <div className="relative hidden lg:block">
+      <div className="flex items-center justify-center flex-grow basis-[61%] me-10">
+          <ProductSearch />
+        </div>
+      <div className="flex flex-1 items-center justify-end lg:gap-5 gap-2 me-3">   <div className="relative hidden lg:block">
           <span className="absolute -top-1/4 left-3/4 aspect-square w-3 rounded-full bg-red-600" />
           <FaRegBell className="text-lg" />
         </div>
-        <div className="flex items-center divide- divide-neutral-300">
+        <div className="flex items-center lg:divide-x divide-neutral-300 ">
           <div className="relative lg:hidden">
-            <RiSearch2Line className="text-xl mx-4" />
+            <RiSearch2Line className="text-xl mx-2" />
           </div>
           {user ? (
-            <div className="">
+            <>
               <button
                 type="button"
                 className="inline-flex items-center justify-center w-full
@@ -57,12 +49,12 @@ const MainNav = () => {
                   dropdown.classList.toggle("hidden");
                 }}
               >
-                <FaRegUser className="text-lg mx-2 " />
-                <span className="pl-2 ">
-                  {userService.userValue?.first_name}
+                <FaRegUser className="text-lg  " />
+                <span className="pl-1 ">
+                  {userService.userValue?.first_name + " "}
                 </span>
                 <span className="lg:pe-2 hidden lg:block">
-                {userService.userValue?.last_name}
+                  {userService.userValue?.last_name}
                 </span>
                 <svg
                   className="w-4 h-4 ml-1 -mr-1 text-gray-400"
@@ -79,7 +71,7 @@ const MainNav = () => {
               </button>
               <div
                 id="dropdown-menu"
-                className="hidden absolute right-0 w-48 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                className="hidden absolute right-0 w-48 mt-10 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
               >
                 <div className="py-1">
                   <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
@@ -95,16 +87,14 @@ const MainNav = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </>
           ) : (
-            <div className="flex items-center text-sm">
-              <Link href="/account/login">
-                <FaRegUser className="text-lg" />
+            <>
+              <Link href="/account/login" className=" flex flex-row">
+                <FaRegUser className="  border mx-2 text-lg rounded-full border-black " />
+                <span className="hidden font-normal lg:block  lg:text-sm pe-2 account-icon">Account</span>
               </Link>
-              <Link href="/account/login" className="account-icon hover:bg-primary">
-                <span className="hidden lg:block pb-0">Sign In</span>
-              </Link>
-            </div>
+            </>
           )}
           <CartSideBar />
         </div>

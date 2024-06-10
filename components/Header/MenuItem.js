@@ -18,7 +18,7 @@ const MenuItem = () => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   return (
-    <div className="container ms-menu-container hidden md:block ">
+    <div className="container ms-menu-container  translate-x-0 hidden lg:block ">
       <div className="flex h-11">
         <button
           type="button"
@@ -73,7 +73,7 @@ const MenuItem = () => {
               <li key={index} className="">
                 <Link
                   href={"#"}
-                  className="text-gray-700 font-normal text-[14px] no-underline block py-1 px-3 leading-6 cursor-pointer hover:text-primary"
+                  className="text-gray-700 font-normal text-[14px] no-underline block py-1 px-3 leading-6 cursor-pointer "
                 >
                   {item.category_name}
                 </Link>

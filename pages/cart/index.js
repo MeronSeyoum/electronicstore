@@ -113,8 +113,8 @@ const CartPage = () => {
 
   return (
     <div className="nc-CartPage">
-      <main className="container py-16 lg:pb-28 lg:pt-10">
-        <div className="mb-8">
+      <main className="container py-14 lg:pb-10 lg:pt-10">
+        <div className="mb-4">
           <h2 className="block text-2xl font-medium sm:text-xl lg:text-2xl">
             Your Cart
           </h2>
@@ -125,10 +125,11 @@ const CartPage = () => {
         <div className="flex flex-col lg:flex-row">
           <div className="w-full divide-y divide-neutral-300 lg:w-[60%] xl:w-[55%]">
             {cart.length === 0 ? (
-              <p className="text-center text-lg">
+              <p className="text-center text-sm">
                 {" "}
                 <SectionNavigation />
-                Your cart is empty. Start adding items to shop!
+                <span className="text-lg font-semibold">Looks like it&rsquo;s empty! &nbsp;</span>
+                 Why not add something?
               </p>
             ) : (
               cart.map((item) => renderProduct(item))
@@ -185,6 +186,8 @@ const CartPage = () => {
             </div>
           </div>
         </div>
+        <hr className="my-10 border-neutral-300 xl:my-4" />
+
       </main>
     </div>
   );

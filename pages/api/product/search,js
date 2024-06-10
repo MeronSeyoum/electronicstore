@@ -10,13 +10,16 @@ export default async function handler(req, res) {
 
     const { q } = req.query;
 
+    if (!q) {
+        return res.status(400).send({ message: 'Search query parameter `q` is required' });
+    }
+
     try {
         const connectionParams = serverRuntimeConfig.dbConfig;
-
         const connection = await mysql.createConnection(connectionParams);
 
-        // Base query to fetch data
-        let query = `
+        // Query to fetch products based on search term
+        const query = `
             SELECT 
                 p.id,
                 p.slug,
@@ -42,19 +45,12 @@ export default async function handler(req, res) {
                 electronic_shop.product_images AS pi ON p.id = pi.product_id AND pi.isMain = true
             LEFT JOIN
                 electronic_shop.ratings AS r ON p.id = r.product_id
+            WHERE
+                p.product_name LIKE ?
         `;
 
-        // Array to hold query parameters
-        let values = [];
-
-        // Modify query if search term is provided
-        if (q) {
-            query += ` WHERE p.product_name LIKE ?`;
-            values.push(`%${q}%`);
-        }
-
-        // Execute the query and retrieve the results
-        const [results] = await connection.execute(query, values);
+        // Execute the query with search term
+        const [results] = await connection.execute(query, [`%${q}%`]);
 
         // Close the connection when done
         connection.end();

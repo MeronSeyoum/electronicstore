@@ -9,20 +9,26 @@ import ButtonCircle3 from "shared/Button/ButtonCircle3";
 import InputNumber from "shared/InputNumber/InputNumber";
 import LikeButton from "./LikeButton";
 import { BsCart2 } from "react-icons/bs";
-import { useCart } from 'context/cartContext';
+import { useCart } from "context/cartContext";
 import { useRouter } from "next/router";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 
 const CartSideBar = () => {
-
   const router = useRouter();
-  const { cart, totalQuantity, totalPrice, updateCartQuantity, removeFromCart, fetchCart } = useCart();
+  const {
+    cart,
+    totalQuantity,
+    totalPrice,
+    updateCartQuantity,
+    removeFromCart,
+    fetchCart,
+  } = useCart();
 
   const [isVisible, setIsVisible] = useState(false);
 
   const handleOpenMenu = () => {
     setIsVisible(true);
-    fetchCart(sessionStorage.getItem('shoppingSession')); // Fetch cart when opening
+    fetchCart(sessionStorage.getItem("shoppingSession")); // Fetch cart when opening
   };
 
   const handleCloseMenu = () => setIsVisible(false);
@@ -47,12 +53,11 @@ const CartSideBar = () => {
 
     const handleRemoveCart = () => {
       removeFromCart(cart_item_id);
-      fetchCart(sessionStorage.getItem('shoppingSession')); // Fetch cart after remove
-
-    }
+      fetchCart(sessionStorage.getItem("shoppingSession")); // Fetch cart after remove
+    };
     return (
       <div key={cart_item_id} className="flex py-3 last:pb-0">
-        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl">
+        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl ">
           <Image
             fill
             src={main_image}
@@ -115,7 +120,7 @@ const CartSideBar = () => {
           className="fixed inset-0 z-50 overflow-y-auto"
           onClose={handleCloseMenu}
         >
-          <div className="z-max fixed inset-y-0 right-0 w-full max-h-full max-w-md outline-none focus:outline-none md:max-w-md">
+          <div className="z-max fixed inset-y-0 right-0 w-full h-full max-w-md outline-none focus:outline-none lg:max-w-md">
             <Transition.Child
               as={Fragment}
               enter="transition duration-100 transform"
@@ -137,10 +142,18 @@ const CartSideBar = () => {
                       </div>
                       <div className="divide-y divide-neutral-300 ">
                         {cart.length === 0 ? (
-                          <p className=' py-10 '> Your cart is empty. Start adding items to shop!</p>
+                          <p className=" py-10 ">
+                            {" "}
+                            <span className="font-semibold text-lg">Looks like it&rsquo;s empty! </span>
+                           <p className="text-sm">
+                            Why not add something?
+                            </p>
+                            
+                          </p>
                         ) : (
                           cart.map((item) => renderProduct(item))
-                        )}</div>
+                        )}
+                      </div>
                     </div>
                     <div className="absolute bottom-0 left-0 w-full bg-neutral-100 p-4">
                       <p className="flex justify-between">
@@ -150,18 +163,17 @@ const CartSideBar = () => {
                             Shipping and taxes calculated at checkout.
                           </span>
                         </span>
-                        <span className="text-xl font-medium">${totalPrice.toFixed(2)}</span>
+                        <span className="text-xl font-medium">
+                          ${totalPrice.toFixed(2)}
+                        </span>
                       </p>
-
 
                       <div className="mt-4 flex items-center  gap-5">
                         <ButtonPrimary
                           onClick={() => {
                             handleCloseMenu(); // Close the menu
-                            router.push('/checkout'); // Navigate to the cart component
+                            router.push("/checkout"); // Navigate to the cart component
                           }}
-
-
                           className="w-full px-2.5"
                         >
                           Checkout
@@ -170,9 +182,9 @@ const CartSideBar = () => {
                         <ButtonPrimary
                           onClick={() => {
                             handleCloseMenu(); // Close the menu
-                            router.push('/cart'); // Navigate to the checkout component
+                            router.push("/cart"); // Navigate to the checkout component
                           }}
-                          className="w-full px-2.5"
+                          className="w-full px-2.5 "
                         >
                           Cart
                         </ButtonPrimary>
@@ -202,17 +214,10 @@ const CartSideBar = () => {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={handleOpenMenu}
-        className=" flex items-center  
-         focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-      >
-        <BsCart2 className="text-xl" />
-        <div className="flex flex-row text-sm text-center px-2 gap-2">
-          <span className="hidden  lg:block text-primary">Cart</span>
-          <span className="hidden font-semibold md:block flex-row">${totalPrice.toFixed(2)}</span>
-        </div>
+      <button type="button" onClick={handleOpenMenu} className="flex gap-x-3 ">
+        <BsCart2 className="text-lg ml-2 text-black " />
+        <div className="counter">{totalQuantity}</div>
+        <span className="hidden  lg:block text-sm  text-black">Cart</span>
       </button>
 
       {renderContent()}

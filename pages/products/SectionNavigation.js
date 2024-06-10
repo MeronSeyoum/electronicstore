@@ -6,7 +6,8 @@ import { MdArrowBack } from 'react-icons/md';
 
 import ButtonCircle3 from 'shared/Button/ButtonCircle3';
 
-const tabs = ['Home', 'Banner', 'New Arrival'];
+const tabs = [];
+// ['Home', 'Banner', 'New Arrival'];
 
 const SectionNavigation = () => {
   const [activeTab, setActiveTab] = useState('New Arrival');

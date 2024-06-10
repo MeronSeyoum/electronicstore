@@ -26,8 +26,8 @@ const Page = () => {
       <div className="pr-2 py-10 lg:w-1/5">
         <SidebarFilters applyFilters={applyFilters} />
       </div>
-      <div className="relative flex-1 top-6 z-10 mb-3">
-        <div className="grid flex-1 gap-x-0 gap-y-0 sm:grid-cols-2 xl:grid-cols-4 ">
+      <div className="relative flex-1 top-6 z-10 my-4 ml-4">
+        <div className="grid flex-1 gap-x-3 gap-y-5 sm:grid-cols-2 xl:grid-cols-4 ">
           {currentItems.map((item) => (
             <ProductCard showPrevPrice product={item} key={item.id} />
           ))}

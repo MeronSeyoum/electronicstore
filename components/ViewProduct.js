@@ -11,7 +11,7 @@ const ViewProduct = ({ slug, isVisible }) => {
      -translate-x-1/2 border border-1  p-2.5
      ml-5 rounded-full bg-white opacity-${
        isVisible ? "100" : "0"
-     } transition-opacity duration-3 shadow-lg shadow-black
+     } transition-opacity duration-3 shadow-lg shadow-gray-300
      `}
     >
       <Link

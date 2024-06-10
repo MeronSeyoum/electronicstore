@@ -11,6 +11,7 @@ const PRICE_RANGE = [0, 1000]; // Example price range
 
 
 import useDataFetch from 'hooks/useDataFetch';
+import ButtonPrimary from 'shared/Button/ButtonPrimary';
 
 
   
@@ -55,14 +56,14 @@ console.log(selectedBrands)
   }
   return (
     <div className="border  rounded-lg">
-     <div className='bg-gray-100 '>
-      <h2 className="text-lg font-semibold py-2 px-4">Filter </h2>
+     <div className='bg-primary rounded-t-md '>
+      <h2 className="text-base font-semibold py-2 px-4 text-white" >Filter </h2>
       </div>
       <div className="p-4">
       <div className="mb-4">
         <h3 className="text-sm font-semibold mb-2">Availability</h3>
         {availabilityOptions.map((option) => (
-          <div key={option} className="flex items-center mb-2 text-sm">
+          <div key={option} className="flex items-center mb-2 text-xs">
             <input
               type="checkbox"
               id={option}
@@ -84,7 +85,7 @@ console.log(selectedBrands)
       <div className="mb-4">
         <h3 className="text-sm font-semibold mb-2">Brand</h3>
         {brands.map((brand) => (
-          <div key={brand} className="flex items-center mb-2 text-sm">
+          <div key={brand} className="flex items-center mb-2 text-xs">
             <input
               type="checkbox"
               id={brand}
@@ -106,7 +107,7 @@ console.log(selectedBrands)
       <div className="mb-4">
         <h3 className="text-sm font-semibold mb-2">Category</h3>
         {categories.map((category) => (
-          <div key={category} className="flex items-center mb-2 text-sm">
+          <div key={category} className="flex items-center mb-2 text-xs">
             <input
               type="radio"
               id={category}
@@ -123,7 +124,7 @@ console.log(selectedBrands)
       <div className="mb-4">
         <h3 className="text-sm font-semibold mb-2">Size</h3>
         {sizes.map((size) => (
-          <div key={size} className="flex items-center mb-2 text-sm">
+          <div key={size} className="flex items-center mb-2 text-xs">
             <input
               type="checkbox"
               id={size}
@@ -145,7 +146,7 @@ console.log(selectedBrands)
       <div className="mb-4">
         <h3 className="text-sm font-semibold mb-2">Storage</h3>
         {storages.map((storage) => (
-          <div key={storage} className="flex items-center mb-2 text-sm">
+          <div key={storage} className="flex items-center mb-2 text-xs">
             <input
               type="checkbox"
               id={storage}
@@ -166,7 +167,7 @@ console.log(selectedBrands)
       </div>
      
       <div className="mb-4">
-        <h3 className="text-sm font-semibold mb-2">Price Range</h3>
+        <h3 className="text-xs font-semibold mb-2 ">Price Range</h3>
         <Slider
           min={PRICE_RANGE[0]}
           max={PRICE_RANGE[1]}
@@ -174,17 +175,17 @@ console.log(selectedBrands)
           onChange={(value) => setPriceRange(value)}
           range
         />
-        <div className="flex justify-between">
+        <div className="flex justify-between text-xs ">
           <span>${priceRange[0]}</span>
           <span>${priceRange[1]}</span>
         </div>
       </div>
-      <button
+      <ButtonPrimary
         // onClick={handleApplyFilters}
-        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg text-sm"
+        className="  "
       >
         Apply Filters
-      </button>
+      </ButtonPrimary>
       </div>
     </div>
   );

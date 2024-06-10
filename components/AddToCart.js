@@ -31,7 +31,8 @@
   - The component is styled with absolute positioning to appear at the bottom center of its container.
 */
 import React, { useState } from "react";
-import { BiCartAdd  , BsCheck } from "react-icons/bi";
+import { BiCartAdd  } from "react-icons/bi";
+import { BsCheck } from "react-icons/bs";
 import { useCart } from "context/cartContext";
 
 const AddToCart = ({ productId }) => {
@@ -54,8 +55,8 @@ const AddToCart = ({ productId }) => {
   return (
     <div className="justify-end">
       <button
-        className="bg-primary text-white text-[14px] flex px-3 py-2 gap-2
-         rounded-md items-center"
+        className="bg-primary text-white text-[13px] flex px-3 py-1.5 gap-2
+         rounded-[3px] items-center"
         onClick={handleAddToCart}
         disabled={isAdding || isAdded}
       >
@@ -64,12 +65,13 @@ const AddToCart = ({ productId }) => {
         ) : isAdded ? (
           <BsCheck className="text-base text-green-500" />
         ) : (
-          <BiCartAdd   className="text-xl justify-between font-bold" />
+          <BiCartAdd className="text-lg justify-between font-bold" />
         )}
-        {/* {isAdding ? "Adding..." : isAdded ? "Added" : "Add"} */}
+        {isAdding ? "Adding..." : isAdded ? "Added" : "Add"}
       </button>
     </div>
   );
 };
 
 export default AddToCart;
+
