@@ -26,8 +26,6 @@ const CartPage = () => {
   const estimatedTaxes = totalPrice * 0.05; // Example tax amount 5%
   const estimatedDeliveryHandling = 0; // Example delivery & handling charge
   useEffect(() => {
-    // fetchCart(sessionStorage.getItem('shoppingSession')); // Fetch cart when opening
-
     const totalAmount = totalPrice + estimatedTaxes + estimatedDeliveryHandling;
     setTotal(totalAmount);
   }, [totalPrice]);
@@ -120,10 +118,10 @@ const CartPage = () => {
           </h2>
         </div>
 
-        <hr className="my-10 border-neutral-300 xl:my-4" />
+        <hr className="my-10 border-neutral-300 lg:my-4" />
 
         <div className="flex flex-col lg:flex-row">
-          <div className="w-full divide-y divide-neutral-300 lg:w-[60%] xl:w-[55%]">
+          <div className="w-full divide-y divide-neutral-300  lg:w-[60%] xl:w-[55%]">
             {cart.length === 0 ? (
               <p className="text-center text-sm">
                 {" "}
@@ -139,7 +137,7 @@ const CartPage = () => {
           <div className="flex-1">
             <div className="sticky top-28">
               <div className="flex items-end justify-between">
-                <h3 className="text-2xl font-semibold">Summary</h3>
+                <h3 className="text-lg font-semibold">Order Summary</h3>
                 <span className="text-sm text-primary">
                   ({totalQuantity} Items)
                 </span>

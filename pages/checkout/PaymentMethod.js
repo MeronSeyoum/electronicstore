@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import { FaPaypal, FaRegCreditCard } from 'react-icons/fa6';
-import { MdOutlineCreditScore } from 'react-icons/md';
+import StripeCheckoutButton from "components/StripeCheckoutButton";
+import React, { useState } from "react";
+import { FaPaypal, FaRegCreditCard } from "react-icons/fa6";
+import { MdOutlineCreditScore } from "react-icons/md";
 
-import ButtonPrimary from 'shared/Button/ButtonPrimary';
-import ButtonSecondary from 'shared/Button/ButtonSecondary';
-import FormItem from 'shared/FormItem';
-import Input from 'shared/Input/Input';
-import Radio from 'shared/Radio/Radio';
+import ButtonPrimary from "shared/Button/ButtonPrimary";
+import ButtonSecondary from "shared/Button/ButtonSecondary";
+import FormItem from "shared/FormItem";
+import Input from "shared/Input/Input";
+import Radio from "shared/Radio/Radio";
 
 const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
-  const [methodActive, setMethodActive] = useState('Credit-Card');
+  const [methodActive, setMethodActive] = useState("Credit-Card");
 
   const renderDebitCredit = () => {
-    const active = methodActive === 'Credit-Card';
+    const active = methodActive === "Credit-Card";
     return (
       <div className="flex items-start space-x-4 sm:space-x-6">
         <Radio
@@ -20,23 +21,23 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
           name="payment-method"
           id="Credit-Card"
           defaultChecked={active}
-          onChange={(e) => setMethodActive('Credit-Card')}
+          onChange={(e) => setMethodActive("Credit-Card")}
         />
         <div className="flex-1">
           <div className="flex items-center space-x-4 sm:space-x-6">
             <div
               className={`rounded-xl border-2 p-2 ${
-                active ? 'border-primary' : 'border-neutral-300'
+                active ? "border-primary" : "border-neutral-300"
               }`}
             >
               <FaRegCreditCard className="text-2xl" />
             </div>
             <p className="font-medium text-sm">Debit / Credit Card</p>
           </div>
-
-          <div
+          <StripeCheckoutButton />
+          {/* <div
             className={`mb-4 mt-6 space-y-3 sm:space-y-5 ${
-              active ? 'block' : 'hidden'
+              active ? "block" : "hidden"
             }`}
           >
             <div className="max-w-lg">
@@ -85,35 +86,35 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
                 </FormItem>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );
   };
 
   const renderWallet = () => {
-    const active = methodActive === 'Wallet';
+    const active = methodActive === "Paypal";
     return (
       <div className="flex items-start space-x-4 sm:space-x-6">
-       <Radio
-  className="pt-4"
-  name="payment-method"
-  id="Wallet"
-  defaultChecked={active}
-  onChange={() => setMethodActive('Wallet')} // Change this line
-/>
+        <Radio
+          className="pt-4"
+          name="payment-method"
+          id="Paypal"
+          defaultChecked={active}
+          onChange={() => setMethodActive("Paypal")} // Change this line
+        />
         <div className="flex-1">
           <div className="flex items-center space-x-4 sm:space-x-6 ">
             <div
               className={`rounded-xl border-2 p-2 ${
-                active ? 'border-primary' : 'border-neutral-300'
+                active ? "border-primary" : "border-neutral-300"
               }`}
             >
               <FaPaypal className="text-3xl" />
             </div>
             <p className="font-medium">Paypal</p>
           </div>
-          <div className={`mb-4 mt-6 space-y-6 ${active ? 'block' : 'hidden'}`}>
+          <div className={` mt-6 space-y-6 ${active ? "block" : "hidden"}`}>
             <div className="max-w-lg">
               <FormItem label="PayPal email">
                 <Input
@@ -139,9 +140,11 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
         </span>
         <div className="flex w-full items-center justify-between">
           <div className="sm:ml-8">
-            <h3 className="uppercase tracking-tight text-[15px]">PAYMENT METHOD</h3>
-            <div className="mt-1 text-xs font-semibold">
-              <span className="">PayPal</span>
+            <h3 className="uppercase text-sm font-semibold">
+              PAYMENT METHOD
+            </h3>
+            <div className="mt-1 text-xs ">
+              <span className="">{methodActive}</span>
               <span className="ml-3">xxx-xxx-xx55</span>
             </div>
           </div>
@@ -157,7 +160,7 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
 
       <div
         className={`space-y-6 border-t border-neutral-300 px-6 py-7 ${
-          isActive ? 'block' : 'hidden'
+          isActive ? "block" : "hidden"
         }`}
       >
         {/* ==================== */}
@@ -173,7 +176,10 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
           >
             Confirm order
           </ButtonPrimary>
-          <ButtonSecondary className="ml-3 bg-neutral-300" onClick={onCloseActive}>
+          <ButtonSecondary
+            className="ml-3 bg-neutral-300"
+            onClick={onCloseActive}
+          >
             Cancel
           </ButtonSecondary>
         </div>

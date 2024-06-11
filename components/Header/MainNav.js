@@ -8,7 +8,7 @@ import MenuBar from "./MenuBar";
 import ProductSearch from "components/ProductSearch";
 import Link from "next/link";
 import { userService } from "services";
-const MainNav = () => {
+const MainNav = ({ onSearchIconClick }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -17,25 +17,25 @@ const MainNav = () => {
   }, []);
 
   return (
-    <div className="container flex items-center justify-between lg:py-2.5">
+    <div className="container flex items-center justify-between lg:py-2.5 ">
       <div className="flex-1 lg:hidden">
         <MenuBar />
       </div>
-      <div className="flex items-center pr-5 basis-[61%]">
+      <div className="flex items-center basis-[60%]">
         <Logo />
-       
       </div>
-      <div className="flex items-center justify-center flex-grow basis-[61%] me-10">
+      <div className="hidden lg:flex items-center justify-center flex-grow basis-[61%] me-10">
           <ProductSearch />
         </div>
-      <div className="flex flex-1 items-center justify-end lg:gap-5 gap-2 me-3">   <div className="relative hidden lg:block">
+      <div className="flex flex-1 items-center justify-end lg:gap-5 gap-2 me-3">  
+       <div className="relative hidden lg:block">
           <span className="absolute -top-1/4 left-3/4 aspect-square w-3 rounded-full bg-red-600" />
           <FaRegBell className="text-lg" />
         </div>
         <div className="flex items-center lg:divide-x divide-neutral-300 ">
-          <div className="relative lg:hidden">
-            <RiSearch2Line className="text-xl mx-2" />
-          </div>
+        <div className="relative lg:hidden" onClick={onSearchIconClick}>
+        <RiSearch2Line className="text-xl mx-2 cursor-pointer" />
+      </div>
           {user ? (
             <>
               <button

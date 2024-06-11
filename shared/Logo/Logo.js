@@ -7,7 +7,9 @@ import { RiMicrosoftLoopFill } from 'react-icons/ri';
   return (
     <Link href="/"  className="flex cursor-pointer items-center lg:gap-2 gap-1 ">
         <RiMicrosoftLoopFill className="text-2xl text-primary" />{' '}
-        <span className={`${className} lg:text-lg font-bold hidden lg:block w-64`}>Electronic Store     </span>
+        <span className={`${className} lg:text-lg font-bold hidden lg:block w-72`}>
+        Electronic Store 
+         </span>
       
     </Link>
   );

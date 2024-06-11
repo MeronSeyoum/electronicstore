@@ -20,10 +20,11 @@ const SingleProductPage = () => {
   const { fetchedData, error, loading } = useDataFetch('/api/product');
 
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isLoadingData, setIsLoadingData] = useState(true);
+  const [isLoadingData, setIsLoadingData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoadingData(true)
       try {
         // Wait for product data to be loaded
         await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate loading delay
@@ -31,10 +32,11 @@ const SingleProductPage = () => {
         // Find the selected product
         const filteredProduct = fetchedData.find((item) => item.slug === slug);
         setSelectedProduct(filteredProduct);
-        setIsLoadingData(false); // Set loading state to false
       } catch (error) {
         console.error("Error fetching product data:", error);
+      }finally{
         setIsLoadingData(false); // Set loading state to false
+
       }
     };
 

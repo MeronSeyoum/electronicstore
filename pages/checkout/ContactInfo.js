@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FaRegCircleUser } from 'react-icons/fa6';
 
 import ButtonPrimary from 'shared/Button/ButtonPrimary';
@@ -6,8 +6,17 @@ import ButtonSecondary from 'shared/Button/ButtonSecondary';
 import Checkbox from 'shared/Checkbox/Checkbox';
 import FormItem from 'shared/FormItem';
 import Input from 'shared/Input/Input';
+import { userService } from "services";
 
 const ContactInfo = ({ isActive, onCloseActive, onOpenActive }) => {
+  const [phone, setPhone] = useState(userService.userValue?.telephone || '');
+  const [email, setEmail] = useState(userService.userValue?.email || '');
+
+  const handleSave = () => {
+    // Here you can add logic to save the updated information
+    // Example: userService.updateUser({ phone, email });
+    onCloseActive();
+  };
   return (
     <div className="z-0 overflow-hidden rounded-xl border border-neutral-300">
       <div className="flex flex-col items-start p-4 sm:flex-row ">
@@ -16,10 +25,11 @@ const ContactInfo = ({ isActive, onCloseActive, onOpenActive }) => {
         </span>
         <div className="flex w-full items-center justify-between">
           <div className="sm:ml-8">
-            <div className="uppercase tracking-tight text-[14px] ">CONTACT INFORMATION</div>
-            <div className="mt-1 text-xs font-semibold">
-              <span className="">Clark Kent</span>
-              <span className="ml-3 tracking-tighter">+123-456-7890</span>
+            <div className="uppercase text-sm font-semibold ">CONTACT INFORMATION</div>
+            <div className="mt-1 text-xs ">           
+             
+              <span className="">  {userService.userValue?.first_name + " " + userService.userValue?.last_name}</span>
+              <span className="ml-3 tracking-tighter">+1 {userService.userValue?.telephone}</span>
             </div>
           </div>
           <ButtonSecondary
@@ -43,8 +53,9 @@ const ContactInfo = ({ isActive, onCloseActive, onOpenActive }) => {
               rounded="rounded-lg"
               sizeClass="h-9 px-4 py-3"
               className="border-neutral-300  bg-transparent placeholder:text-neutral-500 focus:border-primary"
-              defaultValue="+808 xxx"
-              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+                type="tel"
             />
           </FormItem>
         </div>
@@ -54,7 +65,8 @@ const ContactInfo = ({ isActive, onCloseActive, onOpenActive }) => {
               rounded="rounded-lg"
               sizeClass="h-9 px-4 py-3"
               className="border-neutral-300  bg-transparent placeholder:text-neutral-500 focus:border-primary"
-              defaultValue='example@email.com'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
             />
           </FormItem>
@@ -71,7 +83,7 @@ const ContactInfo = ({ isActive, onCloseActive, onOpenActive }) => {
         {/* ============ */}
         <div className="flex flex-col py-0 sm:flex-row">
           <ButtonPrimary
-            className="my-4 shadow-none sm:!px-7"
+            className=" shadow-none sm:!px-7"
             onClick={() => onCloseActive()}
           >
             Save and go to Shipping

@@ -3,9 +3,11 @@ import { useEffect, useState, useCallback, useMemo } from "react";
 import ProductCard from "components/ProductCard";
 import SidebarFilter from "components/SideBarFilter";
 import Link from "next/link";
-
+import Loading from "pages/Loading";
 export default function ProductSearchResult() {
+  const [fetchedData, setFetchedData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8; // Static value for items per page
   const router = useRouter();
@@ -13,15 +15,20 @@ export default function ProductSearchResult() {
 
   // Fetch products based on the query
   useEffect(() => {
+    setIsLoading(true);
     if (q) {
       const fetchProducts = async () => {
         try {
           const res = await fetch(`/api/product?q=${q}`);
           const data = await res.json();
+          setFetchedData(data);
           setFilteredData(data);
         } catch (error) {
           console.error("Error fetching data:", error);
+          setFetchedData([]);
           setFilteredData([]);
+        } finally {
+          setIsLoading(false);
         }
       };
 
@@ -30,8 +37,27 @@ export default function ProductSearchResult() {
   }, [q]);
 
   // Apply filters and reset current page to 1
-  const applyFilters = (filteredData) => {
-    setFilteredData(filteredData);
+  const applyFilters = (filters) => {
+    const {
+      selectedBrands,
+      selectedCategory,
+      selectedSizes,
+      selectedStorages,
+      selectedAvailability,
+      priceRange,
+    } = filters;
+
+    const data = fetchedData.filter((item) => {
+      if (selectedBrands.length > 0 && !selectedBrands.includes(item.category_name)) return false;
+      if (selectedCategory !== 'All' && selectedCategory !== item.category) return false;
+      if (selectedSizes.length > 0 && !selectedSizes.includes(item.size)) return false;
+      if (selectedStorages.length > 0 && !selectedStorages.includes(item.storage)) return false;
+      if (selectedAvailability.length > 0 && !selectedAvailability.includes(item.availability)) return false;
+      if (item.price < priceRange[0] || item.price > priceRange[1]) return false;
+      return true;
+    });
+
+    setFilteredData(data);
     setCurrentPage(1); // Reset current page to 1 when filters are applied
   };
 
@@ -44,9 +70,14 @@ export default function ProductSearchResult() {
 
   // Change page
   const paginate = useCallback((pageNumber) => setCurrentPage(pageNumber), []);
-
+ 
+//  delay the displaying result until result return
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="container relative flex flex-col lg:flex-row" id="body">
+        
       <div className="pr-2 py-10 lg:w-1/5">
         <SidebarFilter applyFilters={applyFilters} />
       </div>
@@ -57,7 +88,7 @@ export default function ProductSearchResult() {
             <span>
               <Link href="/">Home</Link>
             </span>{" "}
-            /{" "}
+            {" "}
             <span>
               <Link href="/productCollection">Shop</Link>
             </span>{" "}
@@ -66,14 +97,13 @@ export default function ProductSearchResult() {
         </div>
         {currentItems.length > 0 ? (
           <>
-            <div className="grid flex-1 gap-4  sm:grid-cols-2 
-            xl:grid-cols-4">
+            <div className="grid flex-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {currentItems.map((item) => (
                 <ProductCard showPrevPrice product={item} key={item.id} />
               ))}
             </div>
             {/* Pagination */}
-            <div className="flex justify-center my-4">
+            <div className="flex justify-end my-4">
               {Array.from(
                 { length: Math.ceil(filteredData.length / itemsPerPage) },
                 (_, i) => (
@@ -93,7 +123,7 @@ export default function ProductSearchResult() {
             </div>
           </>
         ) : (
-            <p className="product-info">No products were found matching your selection.</p>
+          <p className="product-info">No products were found matching your selection.</p>
         )}
       </div>
     </div>
