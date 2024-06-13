@@ -30,10 +30,10 @@ import playstation1 from "images/playstation1.webp";
 import playstation2 from "images/playstation2.webp";
 import playstation3 from "images/playstation3.webp";
 import playstation4 from "images/playstation4.webp";
-import shot1 from "images/shots/shot1.webp";
-import shot2 from "images/shots/shot2.webp";
-import shot3 from "images/shots/shot3.jpeg";
-import shot4 from "images/shots/shot4.jpeg";
+import shot1 from "images/shots/apple1.jpg";
+import shot2 from "images/shots/apple2.jpg";
+import shot3 from "images/shots/apple3.jpg";
+import shot4 from "images/shots/apple4.jpg";
 import shot5 from "images/shots/shot5.webp";
 import shot6 from "images/shots/shot6.jpeg";
 import shot7 from "images/shots/shot7.webp";
@@ -61,7 +61,7 @@ export const NavLinks = [
   {
     id: "ee46t",
     name: "Home",
-    href: "/home",
+    href: "/",
   },
   {
     id: "eerrrt",
@@ -71,7 +71,7 @@ export const NavLinks = [
   {
     id: "eexct",
     name: "Collection",
-    href: "/products",
+    href: "/productsCollection",
   },
 
   {
@@ -125,7 +125,7 @@ export const products = [
     reviews: 56,
     pieces_sold: 600,
     justIn: false,
-    shots: [CablesPackages1, shot1, shot2, shot3, shot4],
+    shots: [ shot1, shot2, shot3, shot4],
     overview:
       "When your workouts wade into the nitty gritty, the Nike Free Metcon 5 can meet you in the depths, help you dig deep to find that final ounce of force and come out of the other side on a high. It matches style with substance, forefoot flexibility with backend stability, perfect for flying through a cardio day or enhancing your agility. A revamped upper offers easier entry with a collar made just for your ankle.",
     shipment_details: [

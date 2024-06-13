@@ -35,7 +35,7 @@ import { BiCartAdd  } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { useCart } from "context/cartContext";
 
-const AddToCart = ({ productId }) => {
+const AddToCart = ({ productId ,className = '' , title}) => {
   const { addToCart } = useCart();
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
@@ -55,8 +55,8 @@ const AddToCart = ({ productId }) => {
   return (
     <div className="justify-end">
       <button
-        className="bg-primary text-white text-[13px] flex px-3 py-1.5 gap-2
-         rounded-[3px] items-center"
+        className={`bg-primary text-white text-[13px] flex  gap-2 rounded-[3px]
+         items-center ${className} ${isAdding || isAdded ? 'disabled' : ''}`}
         onClick={handleAddToCart}
         disabled={isAdding || isAdded}
       >
@@ -67,7 +67,7 @@ const AddToCart = ({ productId }) => {
         ) : (
           <BiCartAdd className="text-lg justify-between font-bold" />
         )}
-        {isAdding ? "Adding..." : isAdded ? "Added" : "Add"}
+        {isAdding ? "Adding..." : isAdded ? "Added" : title}
       </button>
     </div>
   );

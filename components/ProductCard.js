@@ -59,7 +59,7 @@ const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
           <p className="text-base font-bold ">
             ${parseFloat(product.price).toFixed(2)}
           </p>
-          <AddToCart productId={product.id} />
+          <AddToCart productId={product.id} className="px-3 py-1.5" title='Add' />
         </div>
       </div>
     </div>

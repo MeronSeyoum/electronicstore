@@ -35,7 +35,7 @@ export default function Slider({
     }
     if (windowWidth < 1024) {
       if (itemPerRow < 3) {
-        return setNumberOfItem(1.5);
+        return setNumberOfItem(2);
       }
       return setNumberOfItem(itemPerRow - 2 || 1);
     }
@@ -100,7 +100,7 @@ export default function Slider({
                     className="relative inline-block shrink-0 whitespace-normal px-2"
                     custom={direction}
                     initial={{
-                      x: `${(currentIndex - 1) * -100}%`,
+                      x: `${currentIndex  * -100}%`,
                     }}
                     animate={{
                       x: `${currentIndex * -100}%`,
@@ -118,13 +118,12 @@ export default function Slider({
             </motion.ul>
           </div>
 
-          {currentIndex && !hideNextPrev && (
-            <PrevBtn
-              onClick={() => changeItemId(currentIndex - 1)}
-              className={`absolute -left-3 z-[1] h-9 w-9 text-lg xl:-left-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}
-            />
-          )}
-
+          {currentIndex > 0 && !hideNextPrev && (
+  <PrevBtn
+    onClick={() => changeItemId(currentIndex - 1)}
+    className={`absolute -left-3 z-[1] h-9 w-9 text-lg xl:-left-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}
+  />
+)}
           {data.length > currentIndex + numberOfItems && !hideNextPrev && (
             <NextBtn
               onClick={() => changeItemId(currentIndex + 1)}

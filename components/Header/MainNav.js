@@ -10,14 +10,14 @@ import Link from "next/link";
 import { userService } from "services";
 const MainNav = ({ onSearchIconClick }) => {
   const [user, setUser] = useState(null);
-
+  const userId = userService.id;
   useEffect(() => {
     const subscription = userService.user.subscribe((x) => setUser(x));
     return () => subscription.unsubscribe();
   }, []);
 
   return (
-    <div className="container flex items-center justify-between lg:py-2.5 ">
+    <div className="container flex items-center justify-between lg:py-2.5 border-b-2  ">
       <div className="flex-1 lg:hidden">
         <MenuBar />
       </div>
@@ -40,9 +40,8 @@ const MainNav = ({ onSearchIconClick }) => {
             <>
               <button
                 type="button"
-                className="inline-flex items-center justify-center w-full
-                 px-2 lg:px-4  
-                 
+                className="inline-flex flex-grow items-center justify-center w-full
+                 px-2 lg:px-4  z-50
                  text-sm font-medium text-gray-700 bg-white rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-gray-100"
                 onClick={() => {
                   const dropdown = document.getElementById("dropdown-menu");
@@ -51,7 +50,7 @@ const MainNav = ({ onSearchIconClick }) => {
               >
                 <FaRegUser className="text-lg  " />
                 <span className="pl-1 ">
-                  {userService.userValue?.first_name + " "}
+                  {userService.userValue?.first_name}
                 </span>
                 <span className="lg:pe-2 hidden lg:block">
                   {userService.userValue?.last_name}
@@ -71,10 +70,10 @@ const MainNav = ({ onSearchIconClick }) => {
               </button>
               <div
                 id="dropdown-menu"
-                className="hidden absolute right-0 w-48 mt-10 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                className="hidden absolute right-36 w-48 mt-40 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
               >
                 <div className="py-1">
-                  <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <Link href={`/users/edit/1`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Profile
                   </Link>
                   <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">

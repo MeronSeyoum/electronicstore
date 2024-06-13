@@ -18,7 +18,7 @@ const MenuItem = () => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   return (
-    <div className="container ms-menu-container  translate-x-0 hidden lg:block ">
+    <div className="container ms-menu-container  translate-x-0 hidden lg:block z-2">
       <div className="flex h-11">
         <button
           type="button"

@@ -12,7 +12,7 @@ const StripeCheckoutButton = () => {
 
     if (response.ok) {
       const session = await response.json();
-      const stripe = await loadStripe('YOUR_STRIPE_PUBLIC_KEY');
+      const stripe = await loadStripe('pk_test_51LyrJeK94rfwpv4uW9fbu1s1s0X0ZySKwe1nHoNzOZKgwTntDQpWakO82BuOuV5FXcRGBgADrOIu7KDWRiRd8hOt001aTMagF9');
       stripe.redirectToCheckout({ sessionId: session.id });
     } else {
       console.error('Failed to initiate checkout:', response.statusText);

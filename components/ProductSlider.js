@@ -1,23 +1,19 @@
-'use client';
+"use client";
+import React from "react";
+import Slider from "shared/Slider/Slider";
+import ProductCard from "./ProductCard";
 
-import React from 'react';
-
-// import { products } from 'data/content';
-import Slider from 'shared/Slider/Slider';
-
-import ProductCard from './ProductCard';
-
-import useDataFetch  from 'hooks/useDataFetch';
-
-
-const ProductSlider = () => {
-  
-const { fetchedData, error } = useDataFetch('/api/product');
-const data = fetchedData.slice(3, 12);
+const ProductSlider = ({ fetchedData, error, loading }) => {
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  const data = fetchedData ? fetchedData.slice(3, 12) : [];
+
   return (
     <div className="">
       <Slider
@@ -28,7 +24,11 @@ const data = fetchedData.slice(3, 12);
             return null;
           }
           return (
-            <ProductCard showPrevPrice product={item} className="bg-white justify-items-center" />
+            <ProductCard
+              showPrevPrice
+              product={item}
+              className="bg-white justify-items-center"
+            />
           );
         }}
       />

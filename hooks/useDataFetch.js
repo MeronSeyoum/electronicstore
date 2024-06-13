@@ -29,7 +29,7 @@ const useDataFetch = (apiEndpoint) => {
     };
   }, [apiEndpoint]);
 
-  return { fetchedData, loading, error };
+  return { fetchedData, error, loading};
 };
 
 export default useDataFetch;

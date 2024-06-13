@@ -48,7 +48,8 @@ function Login() {
     <Layout>
       <div className="" data-nc-id="PageLogin">
         <div className="container mb-24 lg:mb-32 ">
-          <div className="flex justify-between px-20 ">
+         <div className="mx-auto max-w-md">
+           <div className="flex justify-between  ">
             <h2 className=" mb-6 px-1 flex items-center justify-start
            text-xl font-semibold leading-[115%] md:text-3xl
             md:leading-[115%]">
@@ -60,7 +61,6 @@ function Login() {
                 Back
               </Link></span>
           </div>
-          <div className="mx-auto max-w-md">
             <div className="space-y-6">
               <div className="">
                 <ButtonSecondary

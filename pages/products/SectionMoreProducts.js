@@ -5,11 +5,20 @@ import ProductCard from 'components/ProductCard';
 import useDataFetch from 'hooks/useDataFetch';
 
 import Heading from 'shared/Heading/Heading';
+import Loading from 'pages/Loading';
 
 const SectionMoreProducts = () => {
   const { fetchedData, error, loading } = useDataFetch('/api/product');
 
 const data = fetchedData.slice(3, 12);
+
+if(loading){
+  <div>
+  <Loading />
+  </div>
+  }
+
+
   return (
     <div>
       <Heading className="mb-0">Explore more products</Heading>

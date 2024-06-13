@@ -3,7 +3,6 @@ import { pathOr } from "ramda";
 import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 
-// import { products } from 'data/content';
 
 import SectionMoreProducts from "./SectionMoreProducts";
 import SectionNavigation from "./SectionNavigation";
@@ -32,6 +31,7 @@ const SingleProductPage = () => {
         // Find the selected product
         const filteredProduct = fetchedData.find((item) => item.slug === slug);
         setSelectedProduct(filteredProduct);
+        console.log(JSON.stringify(fetchedData))
       } catch (error) {
         console.error("Error fetching product data:", error);
       }finally{
@@ -43,7 +43,7 @@ const SingleProductPage = () => {
     fetchData(); // Call fetchData function
   }, [slug, fetchedData]);
 
-  if (loading || isLoadingData) {
+  if (isLoadingData || loading ) {
     return <Loading />;
   }
 
@@ -58,14 +58,16 @@ const SingleProductPage = () => {
 
       <div className="mb-20">
         <SectionProductHeader
-          shots={pathOr([], ["main_image"], selectedProduct)}
+      productId={pathOr(0,["id"],selectedProduct)}
+          productImage={pathOr([], ["main_image"], selectedProduct)}
           productName={pathOr("", ["product_name"], selectedProduct)}
           categoryName={pathOr("", ["category_name"], selectedProduct)}
+          productDesc={pathOr("", ["desc"], selectedProduct)}
           prevPrice={pathOr(0, ["price"], selectedProduct)}
           currentPrice={pathOr(0, ["price"], selectedProduct)}
           rating={pathOr(0, ["rating"], selectedProduct)}
           // pieces_sold={pathOr(0, ["pieces_sold"], selectedProduct)}
-          reviews={pathOr(0, ["desc"], selectedProduct)}
+          reviews={pathOr(0, ["reviews"], selectedProduct)}
         />
       </div>
 

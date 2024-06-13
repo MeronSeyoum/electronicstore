@@ -110,6 +110,27 @@
     z-index: 100;
 }
 
+.disabled {
+    background-color: #e0e0e0 !important;
+    /* Change background color for disabled state */
+    cursor: not-allowed;
+    /* Change cursor style for disabled state */
+    color: #000;
+}
+
+.product-desc {
+    margin-top: 6px;
+    font-size: 13px !important;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+    text-align: left;
+    color: #4a5157;
+    display: block;
+}
+
 
 /* .header-banner-title {
     text-transform: capitalize;

@@ -50,7 +50,7 @@ function Register() {
     <Layout>
       <div className={`nc-PageSignUp `} data-nc-id="PageSignUp">
         <div className="container mb-24 lg:mb-32">
-          <h2 className="my-8 flex items-center justify-center text-2xl font-semibold leading-[115%] md:text-3xl md:leading-[115%]">
+          <h2 className="my-8 flex items-center justify-center text-xl font-semibold leading-[115%] md:text-3xl md:leading-[115%]">
             Create New Account
           </h2>
           <div className="mx-auto max-w-md ">

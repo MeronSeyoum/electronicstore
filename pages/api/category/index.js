@@ -16,8 +16,8 @@ export default async function handler(req, res) {
         const get_exp_query = `
         SELECT 
             id,
-            name AS category_name
-            
+            name AS category_name,
+            image_url    
         FROM                
             electronic_shop.product_category     
     `;

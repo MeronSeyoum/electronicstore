@@ -1,12 +1,11 @@
-
-import React, { useState, useEffect } from 'react';
-import { TbTruckDelivery } from 'react-icons/tb';
-import ButtonPrimary from 'shared/Button/ButtonPrimary';
-import ButtonSecondary from 'shared/Button/ButtonSecondary';
-import FormItem from 'shared/FormItem';
-import Input from 'shared/Input/Input';
-import Radio from 'shared/Radio/Radio';
-import Select from 'shared/Select/Select';
+import React, { useState, useEffect } from "react";
+import { TbTruckDelivery } from "react-icons/tb";
+import ButtonPrimary from "shared/Button/ButtonPrimary";
+import ButtonSecondary from "shared/Button/ButtonSecondary";
+import FormItem from "shared/FormItem";
+import Input from "shared/Input/Input";
+import Radio from "shared/Radio/Radio";
+import Select from "shared/Select/Select";
 import { userService } from "services";
 
 // Separate AddressDetails component for displaying address information
@@ -14,21 +13,24 @@ const AddressDetails = ({ address }) => (
   <>
     <span className="uppercase text-sm font-semibold">SHIPPING ADDRESS</span>
     <div className="mt-1 text-xs ">
-      <p>{address.address_line1}, Apt {address.address_line2}, {address.city}, {address.state}</p>
-    </div>
+    {address[0]?.address_line1}, Apt {address[0]?.address_line2}
+                    , {address[0]?.city}, {address[0]?.state} </div>
   </>
 );
 
 const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
-  const [userId, setUserId] = useState(userService.userValue?.id || '');
-  const [addresses, setAddresses] = useState([null]);
+  const [userId, setUserId] = useState(userService.userValue?.id || "");
+  const [address, setAddress] = useState([null]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const [first_name, setFirst_name] = useState(
+    userService.userValue?.first_name || ""
+  );
+  const [last_name, setLast_name] = useState(
+    userService.userValue?.last_name || ""
+  );
 
-  const [first_name, setFirst_name] = useState(userService.userValue?.first_name || '');
-  const [last_name, setLast_name] = useState(userService.userValue?.last_name || '');
- 
   useEffect(() => {
     if (userId) {
       fetchAddresses(userId);
@@ -38,22 +40,25 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
   const fetchAddresses = async (userId) => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/address/UserAddress?userId=${userId}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `/api/address/UserAddress?userId=${userId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (!response.ok) {
-        throw new Error('Failed to retrieve user addresses');
+        throw new Error("Failed to retrieve user addresses");
       }
       const data = await response.json();
-      
-      setAddresses(data);
+
+      setAddress(data);
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching addresses:', error);
-      setError('Failed to retrieve user addresses');
+      console.error("Error fetching addresses:", error);
+      setError("Failed to retrieve user addresses");
       setLoading(false);
     }
   };
@@ -76,7 +81,19 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
             ) : error ? (
               <p>Error: {error}</p>
             ) : (
-              <AddressDetails address={addresses[0]} />
+              <>
+                {/* <span className="uppercase text-sm font-semibold">
+                  SHIPPING ADDRESS
+                </span>
+                <div className="mt-1 text-xs ">
+                  <p>
+                    {address[0]?.address_line1}, Apt {address[0]?.address_line2}
+                    , {address[0]?.city}, {address[0]?.state}
+                  </p>
+                </div> */}
+
+                <AddressDetails address={address} />
+              </>
             )}
           </div>
           <ButtonSecondary
@@ -90,7 +107,7 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
       </div>
       <div
         className={`space-y-4 border-t border-neutral-300 px-6 py-7 sm:space-y-6 ${
-          isActive ? 'block' : 'hidden'
+          isActive ? "block" : "hidden"
         }`}
       >
         {/* ============ */}
@@ -102,8 +119,8 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
                 sizeClass="h-9 px-3 py-3"
                 className="border-neutral-300  bg-transparent placeholder:text-neutral-100 focus:border-primary"
                 value={first_name}
-              onChange={(e) => setFirst_name(e.target.value)}
-              type='text'
+                onChange={(e) => setFirst_name(e.target.value)}
+                type="text"
               />
             </FormItem>
           </div>
@@ -114,8 +131,8 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
                 sizeClass="h-9 px-3 py-3"
                 className="border-neutral-300 bg-transparent placeholder:text-neutral-100 focus:border-primary"
                 value={last_name}
-              onChange={(e) => setLast_name(e.target.value)}
-              type='text'
+                onChange={(e) => setLast_name(e.target.value)}
+                type="text"
               />
             </FormItem>
           </div>
@@ -130,7 +147,7 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
                 sizeClass="h-9 px-3 py-3"
                 className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
                 placeholder=""
-                value={addresses[0]?.address_line1}
+                value={address[0]?.address_line1}
                 // onChange={(e) => setStreetAddress(e.target.value)}
                 type="text"
               />
@@ -142,7 +159,7 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
                 rounded="rounded-lg"
                 sizeClass="h-9 px-3 py-3"
                 className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
-                value={addresses[0]?.address_line2}
+                value={address[0]?.address_line2}
                 // onChange={(e) => setStreetAddress(e.target.value)}
                 type="text"
               />
@@ -158,7 +175,7 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
                 rounded="rounded-lg"
                 sizeClass="h-9 px-3 py-3"
                 className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
-                value={addresses[0]?.city}
+                value={address[0]?.city}
                 // onChange={(e) => setStreetAddress(e.target.value)}
                 type="text"
               />
@@ -169,9 +186,8 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
               <Select
                 sizeClass="h-9 px-3 py-1"
                 className="rounded-lg border-neutral-300 border  bg-transparent placeholder:text-neutral-500 focus:border-primary"
-               
               >
-             <option value="United States"> {addresses[0]?.country}</option>
+                <option value="United States"> {address[0]?.country}</option>
                 <option value="United States">United States</option>
                 <option value="United States">Canada</option>
                 <option value="United States">Mexico</option>
@@ -193,27 +209,27 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
                 rounded="rounded-lg"
                 sizeClass="h-9 px-3 py-3"
                 className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
-                value={addresses[0]?.state}
+                value={address[0]?.state}
                 // onChange={(e) => setStreetAddress(e.target.value)}
                 type="text"
               />
             </FormItem>
           </div>
-       
-        <div>
-          <FormItem label="Postal code">
-            <Input
-              rounded="rounded-lg"
-              sizeClass="h-9 px-3 py-3"
-              className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
-              value={addresses[0]?.postal_code}
+
+          <div>
+            <FormItem label="Postal code">
+              <Input
+                rounded="rounded-lg"
+                sizeClass="h-9 px-3 py-3"
+                className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
+                value={address[0]?.postal_code}
                 // onChange={(e) => setStreetAddress(e.target.value)}
                 type="text"
-            />
-          </FormItem>
+              />
+            </FormItem>
+          </div>
         </div>
       </div>
- </div>
       {/* ============ */}
       <div className="px-6">
         <FormItem label="Address type">
@@ -235,7 +251,10 @@ const ShippingAddress = ({ isActive, onCloseActive, onOpenActive }) => {
 
       {/* ============ */}
       <div className="flex flex-col p-6 sm:flex-row">
-        <ButtonPrimary className="shadow-none sm:!px-7 my-0" onClick={onCloseActive}>
+        <ButtonPrimary
+          className="shadow-none sm:!px-7 my-0"
+          onClick={onCloseActive}
+        >
           Save and go to Payment
         </ButtonPrimary>
         <ButtonSecondary

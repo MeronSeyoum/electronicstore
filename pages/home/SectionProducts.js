@@ -7,11 +7,11 @@ import { productsSection } from "data/content";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import Heading from "shared/Heading/Heading";
 
-import useDataFetch from "hooks/useDataFetch";
+// import useDataFetch from "hooks/useDataFetch";
 import Loading from "../Loading";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
-const SectionProducts = () => {
-  const { fetchedData, loading, error } = useDataFetch("/api/product");
+const SectionProducts = ({ fetchedData, error, loading }) => {
+  // const { fetchedData, loading, error } = useDataFetch("/api/product");
 
   if (loading) {
     return <Loading />;

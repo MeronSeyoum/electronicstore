@@ -34,8 +34,8 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
             </div>
             <p className="font-medium text-sm">Debit / Credit Card</p>
           </div>
-          <StripeCheckoutButton />
-          {/* <div
+          {/* <StripeCheckoutButton /> */}
+          <div
             className={`mb-4 mt-6 space-y-3 sm:space-y-5 ${
               active ? "block" : "hidden"
             }`}
@@ -45,7 +45,7 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
                 <Input
                   autoComplete="off"
                   rounded="rounded-lg"
-                  sizeClass="h-12 px-4 py-3"
+                  sizeClass="h-9 px-3 py-3"
                   className="border-neutral-300 bg-transparent  placeholder:text-neutral-500 focus:border-primary"
                   type="text"
                 />
@@ -56,37 +56,37 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
                 <Input
                   autoComplete="off"
                   rounded="rounded-lg"
-                  sizeClass="h-12 px-4 py-3"
+                  sizeClass="h-9 px-3 py-3"
                   className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
                   type="text"
                 />
               </FormItem>
             </div>
-            <div className="flex flex-col space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0">
-              <div className="sm:w-2/3">
+            <div className="flex flex-col space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0 max-w-lg">
+              <div className="sm:w-1/2">
                 <FormItem label="Expiration date (MM/YY)">
                   <Input
                     autoComplete="off"
                     rounded="rounded-lg"
-                    sizeClass="h-12 px-4 py-3"
+                    sizeClass="h-9 px-3 py-3"
                     className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
                     placeholder="MM/YY"
                   />
                 </FormItem>
               </div>
-              <div className="flex-1">
+              <div className=" sm:w-1/2">
                 <FormItem label="CVC">
                   <Input
                     autoComplete="off"
                     rounded="rounded-lg"
-                    sizeClass="h-12 px-4 py-3"
+                    sizeClass="h-9 px-3 py-3"
                     className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
                     placeholder="CVC"
                   />
                 </FormItem>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     );
@@ -120,7 +120,7 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
                 <Input
                   autoComplete="off"
                   rounded="rounded-lg"
-                  sizeClass="h-12 px-4 py-3"
+                  sizeClass="h-9 px-3 py-3"
                   className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
                   type="text"
                 />

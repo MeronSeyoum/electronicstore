@@ -59,7 +59,7 @@ export const CartProvider = ({ children }) => {
 
 
   // TODO
-  // 1. remove multiple calls to fetch the cart
+  // 1. remove multiple calls when fetching product t0 cart
   
   
   /**
@@ -211,8 +211,6 @@ const removeFromCart = async (cart_item_id) => {
   // Calculate total price and quantity of the items in the cart
   
     const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  
-  
   const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   // Provide cart context to the children components

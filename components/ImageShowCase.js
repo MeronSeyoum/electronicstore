@@ -1,48 +1,50 @@
-'use client';
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import LikeButton from "./LikeButton";
+import { products } from "data/content";
 
-import LikeButton from './LikeButton';
-
-import { products } from 'data/content';
-import Image from 'next/image';
-const ImageShowCase = ({ shots }) => {
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+const ImageShowCase = ({ productImage }) => {
+  // Combine productImage with shots
+  const productImages = [{ src: productImage }, ...products[0].shots];
+  const [activeImageIndex, setActiveImageIndex] = useState(productImage);
 
   return (
-    <div className="space-y-3 rounded-2xl border border-neutral-300 p-2">
-      <div className="relative overflow-hidden rounded-2xl md:h-[400px]">
-        <LikeButton className="absolute right-5 top-5" />
-      
-        <Image
-          src={shots}
-          alt="product image"
-          layout="fill"
-          objectFit="contain"
-        />
-      
-      </div>
-      <div className="grid grid-cols-8 gap-2">
-        {products[0].shots.map((shot, index) => (
+    <div className="flex flex-row mt-2 gap-x-6">
+      <div className="flex flex-col lg:gap-y-2">
+        {productImages.map((shot, index) => (
           <div
             key={shot.src}
             className={`${
-              activeImageIndex === index ? 'border-2 border-primary' : ''
-            } h-[100px] overflow-hidden rounded-lg`}
+              activeImageIndex === index ? "border-2 border-primary" : ""
+            } h-24 w-18 overflow-hidden`}
           >
             <button
               className="h-full w-full"
               type="button"
-              onClick={() => setActiveImageIndex(index)}
+              onClick={() => setActiveImageIndex(shot)}
             >
               <Image
                 src={shot.src}
                 alt={`image-${index}`}
-                width={100}
-                height={100}
-                objectFit="contain"
-              /> </button>
+                width={70}
+                height={50}
+                objectFit="cover"
+                className=""
+              />
+            </button>
           </div>
         ))}
+      </div>
+      <div className="flex justify-center rounded-2xl h-[500px] w-[500px]">
+        <Image
+          src={activeImageIndex}
+          alt={`product-image-${activeImageIndex}`}
+          height={500}
+          width={500}
+          objectFit="contain"
+        />
+        <LikeButton className="relative right-6" />
       </div>
     </div>
   );

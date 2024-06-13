@@ -5,12 +5,14 @@ import SectionBrands from "./SectionBrands";
 import SectionHeader from "./SectionHeader";
 import SectionProducts from "./SectionProducts";
 import HeaderSlider from "components/HeaderSlider";
+import SectionCategory from "./SectionCategory";
+import ServicesSection from "pages/home/ServicesSection";
+import useDataFetch from "hooks/useDataFetch";
 
 import mainBanner1 from "images/main-banner-1.jpg";
 import mainBanner2 from "images/main-banner-2.jpg";
 import mainBanner3 from "images/main-banner-3.jpg";
 import FooterBanner from "shared/Footer/FooterBanner";
-import ServicesSection from "pages/home/ServicesSection";
 
 const slides = [
   {
@@ -39,23 +41,38 @@ const slides = [
   },
 ];
 
+// Client-Side Data Fetching: Fetch data once at the top-level component or container 
+// component and pass it down to child components via props. This way, child components 
+// can access the data without making additional API requests.
 const HomePage = () => {
+
+  const { fetchedData, error, loading } = useDataFetch('/api/product');
+  
   return (
-    <div className="bg-main">
-      <div className="">
+    <div className="bg-main ">
+    
+    <div className="my-4 ">
+
+      <SectionCategory />
+      </div>
+
+      <div className="container">
+      
         <HeaderSlider slides={slides} autoPlayInterval={5000} />
       </div>
       <div className="mt-10">
         <ServicesSection />
       </div>
       <div className="my-16 ">
-        <SectionBestDeals />
+      <SectionBestDeals fetchedData={fetchedData} error={error} loading={loading} />
+   
       </div>
       <div className=" lg:mb-10 ">
         <SectionHeader />
       </div>
       <div className="mb-10">
-        <SectionProducts />
+      <SectionProducts fetchedData={fetchedData} error={error} loading={loading} />
+      
       </div>
 
       <div className="mb-10 ">

@@ -33,7 +33,7 @@ const HeaderSlider = ({ slides, autoPlayInterval = 6000 }) => {
   };
 
   return (
-    <div className="relative w-full bg-[#f2eeeb]" style={{ height: '450px' }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className=" relative w-full bg-[#f2eeeb]" style={{ height: '350px' }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="flex justify-center items-center h-full relative overflow-hidden">
         <motion.div
           className="absolute top-0 left-0 h-full w-full flex items-center"
@@ -58,9 +58,9 @@ const HeaderSlider = ({ slides, autoPlayInterval = 6000 }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: '100%' }}
               transition={{ duration: 0.5 }}
-              className=" lg:px-20 px-10 "
+              className=" lg:px-10 px-10 "
             >
-              <div className="flex flex-col justify-start lg:gap-14  gap-8 px-auto  header-banner-content">
+              <div className="flex flex-col justify-start lg:gap-8  gap-8 px-auto  header-banner-content">
                 <h2 className=" lg:text-lg text-base font-[500]" >Flat {slides[currentSlide].discount} Discount</h2>
                 <h1 className="capitalize text-black whitespace-normal text-left lg:text-4xl lg:leading-[52px] 
                 tracking-normal font-medium filter-none transform-none origin-center opacity-100 
