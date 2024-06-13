@@ -58,7 +58,7 @@ const SectionProductHeader = ({
           <span className="font-semibold text-[13px]">Description:</span>
           <p className="product-desc">{productDesc}</p>
         </div>
-        <div className="flex flex-row justify-between">
+        <div className="flex lg:flex-row justify-between">
         <ColorOptions
           colors={productAttributes.color}
           selectedColor={selectedColor}
