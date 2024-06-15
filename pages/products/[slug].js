@@ -58,7 +58,7 @@ const SingleProductPage = () => {
 
       <div className="mb-20">
         <SectionProductHeader
-      productId={pathOr(0,["id"],selectedProduct)}
+          productId={pathOr(0,["id"],selectedProduct)}
           productImage={pathOr([], ["main_image"], selectedProduct)}
           productName={pathOr("", ["product_name"], selectedProduct)}
           categoryName={pathOr("", ["category_name"], selectedProduct)}

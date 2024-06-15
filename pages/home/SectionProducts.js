@@ -11,7 +11,7 @@ import Heading from "shared/Heading/Heading";
 import Loading from "../Loading";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 const SectionProducts = ({ fetchedData, error, loading }) => {
-  // const { fetchedData, loading, error } = useDataFetch("/api/product");
+  const data = fetchedData ? fetchedData.slice(0, 15) : [];
 
   if (loading) {
     return <Loading />;
@@ -29,11 +29,11 @@ const SectionProducts = ({ fetchedData, error, loading }) => {
 
       <div className="flex flex-col gap-2 mb-4 ">
         <h3 className="text-xl font-bold ">Best Selling Products</h3>
-        <hr className="bg-black  h-[1px] justify-start" />
+        <hr className="bg-gray-400  h-[0.5px] justify-start" />
         <hr className="bg-primary  w-52 h-[4px] justify-start -mt-3" />
       </div>
-      <div className="grid gap-x-4 gap-y-6  grid-cols-2 lg:grid-cols-5">
-        {fetchedData.map((product) => (
+      <div className="grid gap-x-4 gap-y-8  grid-cols-2 lg:grid-cols-5 ">
+        {data.map((product) => (
           <ProductCard
             key={product.id}
             product={product}

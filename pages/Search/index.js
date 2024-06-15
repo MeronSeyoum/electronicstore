@@ -92,7 +92,7 @@ export default function ProductSearchResult() {
             <span>
               <Link href="/productCollection">Shop</Link>
             </span>{" "}
-            / <span>Search results for “{q}”</span>
+            / <span>Search results for “{q}”  ({currentItems.length})</span>
           </nav>
         </div>
         {currentItems.length > 0 ? (

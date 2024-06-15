@@ -52,7 +52,7 @@ if (loading) {
       <SidebarFilters applyFilters={applyFilters} fetchedData={fetchedData} />
      </div>
       <div className="relative flex-1 top-6 z-10 my-4 ml-4">
-        <div className="grid flex-1 gap-x-3 gap-y-5 sm:grid-cols-2 xl:grid-cols-4 ">
+        <div className="grid flex-1 gap-x-3 gap-y-5 grid-cols-2 xl:grid-cols-4 ">
           {currentItems.map((item) => (
             <ProductCard showPrevPrice product={item} key={item.id} />
           ))}

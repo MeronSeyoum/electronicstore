@@ -43,6 +43,13 @@ INSERT INTO electronic_shop.product (slug, product_name, `desc`, category_id, pr
 ('playstation', 'Play station 5', 'Overview 10', 3, 199, 600, 'Black', 'Standard', 0, (SELECT id FROM electronic_shop.discount WHERE name = 'No Discount'), NOW(), NOW()),
 ('slides', 'Apple Case for iPhone/iPad', 'Overview 11', 4, 199, 600, 'White', 'Standard', 0, (SELECT id FROM electronic_shop.discount WHERE name = 'No Discount'), NOW(), NOW()),
 ('playstation', 'Play Station 4', 'Overview 12', 3, 199, 600, 'Black', 'Standard', 1, (SELECT id FROM electronic_shop.discount WHERE name = 'No Discount'), NOW(), NOW());
+    ('airpod', 'Apple AirPods Pro', 'Wireless earbuds with active noise cancellation and transparency mode.', 13, 249, 100, 'White', 'Standard', 1, 1, '2024-06-14 00:00:00', '2024-06-14 00:00:00'),
+    ('watch', 'Apple Watch Series 7', 'Advanced smartwatch with Always-On Retina display and various health monitoring features.', 15, 399, 50, 'Black', 'Standard', 1, 1, '2024-06-14 00:00:00', '2024-06-14 00:00:00'),
+    ('camera', 'Canon EOS R5', 'High-resolution mirrorless camera with 45MP sensor, 8K video recording, and Dual Pixel CMOS AF II.', 12, 3699, 20, 'Black', 'Standard', 1, 1, '2024-06-14 00:00:00', '2024-06-14 00:00:00'),
+    ('mobile', 'Samsung Galaxy S22', 'Flagship smartphone with Exynos 2200/Snapdragon 8 Gen 2 processor, 6.6-inch AMOLED display, and advanced camera system.', 8, 1299, 150, 'Phantom Black', 'Standard', 1, 1, '2024-06-14 00:00:00', '2024-06-14 00:00:00'),
+    ('mouse', 'Logitech MX Master 3', 'Advanced wireless mouse with ultra-fast MagSpeed scrolling, customizable buttons, and ergonomic design.', 7, 99, 200, 'Graphite', 'Standard', 1, 1, '2024-06-14 00:00:00', '2024-06-14 00:00:00'),
+    ('mobile-cover', 'Spigen Liquid Air Armor Mobile Cover', 'Slim, shock-absorbing mobile cover with a matte finish for enhanced grip and protection.', 17, 19, 300, 'Black', 'Standard', 1, 1, '2024-06-14 00:00:00', '2024-06-14 00:00:00'),
+    ('speaker', 'Bose SoundLink Revolve+', 'Portable Bluetooth speaker with 360-degree sound, water-resistant design, and up to 16 hours of battery life.', 16, 249, 100, 'Triple Black', 'Standard', 1, 1, '2024-06-14 00:00:00', '2024-06-14 00:00:00');
 
 -- Insert data into product_images table
 INSERT INTO electronic_shop.product_images (product_id, image_path, isMain) VALUES

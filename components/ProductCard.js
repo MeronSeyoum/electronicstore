@@ -19,7 +19,7 @@ const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
     >
       <div className="h-[240px] w-full overflow-hidden rounded-base lg:h-[200px] 2xl:h-[300px] relative ">
         {product.justIn == 1 && (
-          <div className="absolute left-4 top-4 rounded-b-lg bg-black px-3 py-2 text-xs font-bold text-white shadow-md">
+          <div className="absolute left-2 top-2 rounded-b-lg bg-black px-3 py-1 text-xs font-semibold text-white shadow-md">
             Just In!
           </div>
         )}
@@ -28,7 +28,7 @@ const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
           src={mainImage}
           alt={`${product.product_name} cover photo`}
           className="h-full w-full border rounded-lg
-           hover:bg-neutral-100 lg:p-10 p-4 bg-transparent"
+           hover:bg-neutral-100 lg:p-10 p-4 bg-neutral-100"
           loading="lazy"
           sizes="(max-width: 300px) 100vw, 300px"
           width={300}
@@ -37,7 +37,7 @@ const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
         {/* </Link> */}
         {isHovered && (
           <div className="absolute inset-0 flex justify-center items-center">
-            <LikeButton className="absolute right-4 top-4" />
+            <LikeButton className="absolute right-2 top-2" />
 
             <ViewProduct isVisible={true} slug={product.slug} />
           </div>

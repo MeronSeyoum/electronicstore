@@ -17,22 +17,22 @@ const ProductInfoTab = ({ overview }) => {
   const shipment_details =
   [
     {
-      icon: <PiPercentFill className="text-xl text-secondary" />,
+      icon: <PiPercentFill className="text-xl text-primary" />,
       title: "Discount",
       description: "> $100 Disc 10%",
     },
     {
-      icon: <FaCalendarAlt className="text-xl text-secondary" />,
+      icon: <FaCalendarAlt className="text-xl text-primary" />,
       title: "Delivery Time",
       description: "6 - 12 Working days",
     },
     {
-      icon: <BsBoxFill className="text-xl text-secondary" />,
+      icon: <BsBoxFill className="text-xl text-primary" />,
       title: "Package",
       description: "Regular Premium Box",
     },
     {
-      icon: <FaTruckFast className="text-xl text-secondary" />,
+      icon: <FaTruckFast className="text-xl text-primary" />,
       title: "Estimated Arrival",
       description: "10 - 12 October 23",
     },
@@ -61,7 +61,7 @@ const ProductInfoTab = ({ overview }) => {
       {tabs.map((tab) => (
         <div
           key={tab}
-          className={`mb-10 ${activeTab === tab ? 'block' : 'hidden'}`}
+          className={`mb-10 text-sm ${activeTab === tab ? 'block' : 'hidden'}`}
         >
           {activeTab === 'Overview' ? (
             <p>{overview}</p>
@@ -74,7 +74,7 @@ const ProductInfoTab = ({ overview }) => {
                   </ButtonCircle3>
 
                   <div>
-                    <p className="text-sm text-neutral-500">{detail.title}</p>
+                    <p className="product-desc">{detail.title}</p>
                     <p>{detail.description}</p>
                   </div>
                 </div>

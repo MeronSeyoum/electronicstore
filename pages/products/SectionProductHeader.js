@@ -29,17 +29,22 @@ const SectionProductHeader = ({
   rating,
   reviews,
 }) => {
-  const [selectedColor, setSelectedColor] = useState(productAttributes.color[0]);
+  const [selectedColor, setSelectedColor] = useState(
+    productAttributes.color[0]
+  );
   const [selectedRAM, setSelectedRAM] = useState(productAttributes.RAM[0]);
-  const [selectedStorage, setSelectedStorage] = useState(productAttributes.internalStorage[0]);
+  const [selectedStorage, setSelectedStorage] = useState(
+    productAttributes.internalStorage[0]
+  );
 
   return (
     <div className="items-stretch justify-between space-y-10 lg:flex lg:space-y-0">
-      <div className="basis-[40%]">
+      
+      <div className="lg:basis-[35%]">
         <ImageShowCase productImage={productImage} />
       </div>
 
-      <div className="basis-[55%]">
+      <div className="lg:basis-[55%]">
         <ProductHeading
           productName={productName}
           categoryName={categoryName}
@@ -49,9 +54,14 @@ const SectionProductHeader = ({
           prevPrice={prevPrice}
         />
 
+
         <div className="flex gap-3 mb-3 items-center font-medium">
-          <h1 className="text-primary text-[20px]">${parseFloat(currentPrice).toFixed(2)}</h1>
-          <p className="text-neutral-500 line-through text-sm">${parseFloat(prevPrice).toFixed(2)}</p>
+          <h1 className="text-primary text-[20px]">
+            ${parseFloat(currentPrice).toFixed(2)}
+          </h1>
+          <p className="text-neutral-500 line-through text-sm">
+            ${parseFloat(prevPrice).toFixed(2)}
+          </p>
           <p className="text-green-500 text-sm font-bold">55% Off</p>
         </div>
         <div className="mb-6">
@@ -59,25 +69,25 @@ const SectionProductHeader = ({
           <p className="product-desc">{productDesc}</p>
         </div>
         <div className="flex lg:flex-row  flex-col justify-between">
-        <ColorOptions
-          colors={productAttributes.color}
-          selectedColor={selectedColor}
-          setSelectedColor={setSelectedColor}
-        />
+          <ColorOptions
+            colors={productAttributes.color}
+            selectedColor={selectedColor}
+            setSelectedColor={setSelectedColor}
+          />
 
-        <SizeOptions
-          sizes={productAttributes.RAM}
-          selectedSize={selectedRAM}
-          setSelectedSize={setSelectedRAM}
-          title="RAM"
-        />
+          <SizeOptions
+            sizes={productAttributes.RAM}
+            selectedSize={selectedRAM}
+            setSelectedSize={setSelectedRAM}
+            title="RAM"
+          />
 
-        <StorageOptions
-          storageOptions={productAttributes.internalStorage}
-          selectedStorage={selectedStorage}
-          setSelectedStorage={setSelectedStorage}
-        />
-</div>
+          <StorageOptions
+            storageOptions={productAttributes.internalStorage}
+            selectedStorage={selectedStorage}
+            setSelectedStorage={setSelectedStorage}
+          />
+        </div>
         <div className="my-">
           <InputNumber />
         </div>
@@ -93,8 +103,6 @@ const SectionProductHeader = ({
           />
         </div>
 
-      
-
         <div className="mb-4 flex items-end justify-between">
           <p className="text-sm font-semibold">Available specs:</p>
           <p className="flex items-center gap-1 text-sm text-neutral-500">
@@ -106,7 +114,12 @@ const SectionProductHeader = ({
   );
 };
 
-const ProductHeading = ({ rating, reviews, productName, categoryName, currentPrice, prevPrice }) => (
+const ProductHeading = ({
+  rating,
+  reviews,
+  productName,
+  categoryName
+}) => (
   <Heading isMain className="gap-y-3">
     <div className="flex flex-row items-center gap-1 mb-1 text-neutral-500 font-normal text-xs">
       <MdStar className="text-yellow-400 text-sm" />
@@ -119,7 +132,9 @@ const ProductHeading = ({ rating, reviews, productName, categoryName, currentPri
     </div>
     <div className="text-xl font-semibold">{productName}</div>
     <div className="">
-      <span className="font-medium text-neutral-500 text-sm">{categoryName}</span>
+      <span className="font-medium text-neutral-500 text-sm">
+        {categoryName}
+      </span>
     </div>
   </Heading>
 );
@@ -135,7 +150,9 @@ const ColorOptions = ({ colors, selectedColor, setSelectedColor }) => (
           style={{ backgroundColor: color }}
           onClick={() => setSelectedColor(color)}
         >
-          {selectedColor === color && <div className="w-full h-full rounded-full border-2 border-black" />}
+          {selectedColor === color && (
+            <div className="w-full h-full rounded-full border-2 border-black" />
+          )}
         </div>
       ))}
     </div>
@@ -144,12 +161,16 @@ const ColorOptions = ({ colors, selectedColor, setSelectedColor }) => (
 
 const SizeOptions = ({ sizes, selectedSize, setSelectedSize, title }) => (
   <div className="mb-4">
-    <h3 className="text-sm font-medium mb-2">{title}: {selectedSize}</h3>
+    <h3 className="text-sm font-medium mb-2">
+      {title}: {selectedSize}
+    </h3>
     <div className="flex gap-2">
       {sizes.map((size) => (
         <button
           key={size}
-          className={`text-xs px-2 py-1 border ${selectedSize === size ? 'border-primary' : 'border-gray-300'} rounded`}
+          className={`text-xs px-2 py-1 border ${
+            selectedSize === size ? "border-primary" : "border-gray-300"
+          } rounded`}
           onClick={() => setSelectedSize(size)}
         >
           {size}
@@ -159,14 +180,22 @@ const SizeOptions = ({ sizes, selectedSize, setSelectedSize, title }) => (
   </div>
 );
 
-const StorageOptions = ({ storageOptions, selectedStorage, setSelectedStorage }) => (
+const StorageOptions = ({
+  storageOptions,
+  selectedStorage,
+  setSelectedStorage,
+}) => (
   <div className="mb-4">
-    <h3 className="text-sm font-medium mb-2">Internal Storage: {selectedStorage}</h3>
+    <h3 className="text-sm font-medium mb-2">
+      Internal Storage: {selectedStorage}
+    </h3>
     <div className="flex gap-2">
       {storageOptions.map((storage) => (
         <button
           key={storage}
-          className={`text-xs px-2 py-1 border ${selectedStorage === storage ? 'border-primary' : 'border-gray-300'} rounded`}
+          className={`text-xs px-2 py-1 border ${
+            selectedStorage === storage ? "border-primary" : "border-gray-300"
+          } rounded`}
           onClick={() => setSelectedStorage(storage)}
         >
           {storage}

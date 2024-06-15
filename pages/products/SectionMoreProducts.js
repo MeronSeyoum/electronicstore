@@ -1,15 +1,11 @@
 import React from 'react';
-
 import ProductCard from 'components/ProductCard';
-// import { products } from 'data/content';
 import useDataFetch from 'hooks/useDataFetch';
-
 import Heading from 'shared/Heading/Heading';
 import Loading from 'pages/Loading';
 
 const SectionMoreProducts = () => {
-  const { fetchedData, error, loading } = useDataFetch('/api/product');
-
+const { fetchedData, error, loading } = useDataFetch('/api/product');
 const data = fetchedData.slice(3, 12);
 
 if(loading){
@@ -17,13 +13,12 @@ if(loading){
   <Loading />
   </div>
   }
-
-
+  
   return (
     <div>
-      <Heading className="mb-0">Explore more products</Heading>
+      <Heading className="mb-2">Explore more products</Heading>
 
-      <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 grid-cols-2 lg:grid-cols-5">
         {data.slice(4, 13).map((item) => (
           <ProductCard
             key={item.id}
