@@ -9,7 +9,7 @@ import ButtonSecondary from "shared/Button/ButtonSecondary";
 
 const Filter = () => {
   return (
-    <div className="mx-auto my-4 max-w-4xl items-center justify-between space-y-4
+    <div className="container mx-auto my-4 max-w-4xl items-center justify-between space-y-4
      rounded-md border border-neutral-300 p-2 md:flex md:space-y-0 md:rounded-md">
       <div className="grid basis-[75%] gap-3 md:grid-cols-4">
         {filters.map((filter) => (

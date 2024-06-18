@@ -1,19 +1,20 @@
-"use client"
-import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
-import { useSwipeable } from 'react-swipeable';
-import { useWindowSize } from 'react-use';
+"use client";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+import { useSwipeable } from "react-swipeable";
+import { useWindowSize } from "react-use";
 
-import NextBtn from 'shared/NextPrev/NextBtn';
-import PrevBtn from 'shared/NextPrev/PrevBtn';
-import { animationVariants } from 'Utils/animationVariants';
+import NextBtn from "shared/NextPrev/NextBtn";
+import PrevBtn from "shared/NextPrev/PrevBtn";
+import { animationVariants } from "Utils/animationVariants";
 
 export default function Slider({
-  className = '',
+  className = "",
   itemPerRow = 5,
   data,
+  category,
   renderItem = () => <div />,
-  arrowBtnClass = 'top-1/2 -translate-y-1/2 bg-primary text-white',
+  arrowBtnClass = "top-1/2 -translate-y-1/2 bg-primary text-white",
   renderSectionHeading,
   hideNextPrev = false,
 }) {
@@ -75,16 +76,17 @@ export default function Slider({
 
   return (
     <div className={`nc-Slider ${className}`}>
-      {renderSectionHeading && renderSectionHeading({
-        onClickPrev: () => changeItemId(currentIndex - 1),
-        onClickNext: () => changeItemId(currentIndex + 1),
-        showNext: data.length > currentIndex + numberOfItems,
-        showPrev: !!currentIndex,
-      })}
+      {renderSectionHeading &&
+        renderSectionHeading({
+          onClickPrev: () => changeItemId(currentIndex - 1),
+          onClickNext: () => changeItemId(currentIndex + 1),
+          showNext: data.length > currentIndex + numberOfItems,
+          showPrev: !!currentIndex,
+        })}
 
       <MotionConfig
         transition={{
-          x: { type: 'cubic-bezier', easing: [0.25, 1, 0.5, 1] },
+          x: { type: "cubic-bezier", easing: [0.25, 1, 0.5, 1] },
           opacity: { duration: 0.2 },
         }}
       >
@@ -100,7 +102,7 @@ export default function Slider({
                     className="relative inline-block shrink-0 whitespace-normal px-2"
                     custom={direction}
                     initial={{
-                      x: `${currentIndex  * -100}%`,
+                      x: `${currentIndex * -100}%`,
                     }}
                     animate={{
                       x: `${currentIndex * -100}%`,
@@ -118,13 +120,13 @@ export default function Slider({
             </motion.ul>
           </div>
 
-          {currentIndex > 0 && !hideNextPrev && (
-  <PrevBtn
-    onClick={() => changeItemId(currentIndex - 1)}
-    className={`absolute -left-3 z-[1] h-9 w-9 text-lg xl:-left-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}
-  />
-)}
-          {data.length > currentIndex + numberOfItems && !hideNextPrev && (
+          {currentIndex > 0 && !hideNextPrev && !category && (
+            <PrevBtn
+              onClick={() => changeItemId(currentIndex - 1)}
+              className={`absolute -left-3 z-[1] h-9 w-9 text-lg xl:-left-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}
+            />
+          )}
+          {data.length > currentIndex + numberOfItems && !hideNextPrev && !category &&(
             <NextBtn
               onClick={() => changeItemId(currentIndex + 1)}
               className={`absolute -right-3 z-[1] h-9 w-9 bg-white text-lg xl:-right-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}

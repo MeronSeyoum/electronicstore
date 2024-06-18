@@ -5,8 +5,8 @@ import ProductSlider from 'components/ProductSlider';
 
 const SectionBestDeals = ({ fetchedData, error, loading }) => {
   return (
-    <div className="container ">
-      <div className="overflow-hidden ">
+    <section className=" overflow-hidden">
+     
         <div className="items-center justify-between md:flex ">
          <div className="flex flex-col gap-2 ">
           <h3 className="text-xl font-bold ">Featured Product</h3>
@@ -21,8 +21,8 @@ const SectionBestDeals = ({ fetchedData, error, loading }) => {
         <ProductSlider fetchedData={fetchedData} error={error} loading={loading} />
         
         </div>
-      </div>
-    </div>
+      
+    </section>
   );
 };
 

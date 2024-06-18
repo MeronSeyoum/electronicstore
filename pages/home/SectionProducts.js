@@ -10,6 +10,7 @@ import Heading from "shared/Heading/Heading";
 // import useDataFetch from "hooks/useDataFetch";
 import Loading from "../Loading";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
+import Link from "next/link";
 const SectionProducts = ({ fetchedData, error, loading }) => {
   const data = fetchedData ? fetchedData.slice(0, 15) : [];
 
@@ -21,11 +22,11 @@ const SectionProducts = ({ fetchedData, error, loading }) => {
     return <div>Error: {error}</div>;
   }
   return (
-    <div className="container ">
+    <section className=" ">
       <Heading isCenter isMain desc={productsSection.description}>
         {productsSection.heading}
       </Heading>
-      <Filter />
+      {/* <Filter /> */}
 
       <div className="flex flex-col gap-2 mb-4 ">
         <h3 className="text-xl font-bold ">Best Selling Products</h3>
@@ -44,11 +45,13 @@ const SectionProducts = ({ fetchedData, error, loading }) => {
       </div>
 
       <div className="mt-10 flex items-center justify-center">
+      <Link href={`/productsCollection`}>
         <ButtonSecondary className=" bg-black text-white px-5 ">
           View More
         </ButtonSecondary>
+        </Link>
       </div>
-    </div>
+    </section>
   );
 };
 

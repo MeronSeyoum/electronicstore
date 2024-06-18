@@ -117,7 +117,7 @@ const CartSideBar = () => {
       <Transition appear show={isVisible} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-50 overflow-y-hidden"
+          className="fixed inset-0 z-50 overflow-y-auto"
           onClose={handleCloseMenu}
         >
           <div className="z-max fixed inset-y-0 right-0 w-full h-full max-w-md outline-none focus:outline-none lg:max-w-md">
@@ -133,7 +133,7 @@ const CartSideBar = () => {
               <div className="relative z-20">
                 <div className="overflow-hidden shadow-lg ring-1 ring-black/5">
                   <div className="relative h-screen bg-white">
-                    <div className="hiddenScrollbar h-screen overflow-y-auto p-5">
+                    <div className="hiddenScrollbar h-full overflow-y-0 p-5">
                       <div className="flex items-center justify-between">
                         <h3 className="text-lg font-semibold">Shopping cart</h3>
                         <ButtonCircle3 onClick={handleCloseMenu}>

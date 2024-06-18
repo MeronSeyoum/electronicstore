@@ -2,7 +2,7 @@ import React from "react";
 
 import SectionBestDeals from "./SectionBestDeal";
 import SectionBrands from "./SectionBrands";
-import SectionHeader from "./SectionHeader";
+import SectionHomeBanner from "./SectionHomeBanner";
 import SectionProducts from "./SectionProducts";
 import HeaderSlider from "components/HeaderSlider";
 import SectionCategory from "./SectionCategory";
@@ -41,44 +41,42 @@ const slides = [
   },
 ];
 
-// Client-Side Data Fetching: Fetch data once at the top-level component or container 
-// component and pass it down to child components via props. This way, child components 
+// Client-Side Data Fetching: Fetch data once at the top-level component or container
+// component and pass it down to child components via props. This way, child components
 // can access the data without making additional API requests.
 const HomePage = () => {
+  const { fetchedData, error, loading } = useDataFetch("/api/product");
 
-  const { fetchedData, error, loading } = useDataFetch('/api/product');
-  
   return (
-    <div className="bg-main ">
-    
-    <div className="my-4 ">
-
-      <SectionCategory />
+    <div className="bg-main container ">
+      <div className="my-4 ">
+        <SectionCategory />
       </div>
-
-      <div className="container">
-      
         <HeaderSlider slides={slides} autoPlayInterval={5000} />
-      </div>
-      <div className="mt-10">
+      <div className="mt-4">
         <ServicesSection />
       </div>
-      <div className="my-16 ">
-      <SectionBestDeals fetchedData={fetchedData} error={error} loading={loading} />
-   
+      <div className="my-12 ">
+        <SectionBestDeals
+          fetchedData={fetchedData}
+          error={error}
+          loading={loading}
+        />
       </div>
-      <div className=" lg:mb-10 ">
-        <SectionHeader />
+      <div className=" lg:mb-8 ">
+        <SectionHomeBanner />
       </div>
       <div className="mb-10">
-      <SectionProducts fetchedData={fetchedData} error={error} loading={loading} />
-      
+        <SectionProducts
+          fetchedData={fetchedData}
+          error={error}
+          loading={loading}
+        />
       </div>
 
-      <div className="mb-10 ">
         <SectionBrands />
-      </div>
-      <div className="container mb-10">
+  
+      <div className=" mb-4">
         <FooterBanner />
       </div>
     </div>

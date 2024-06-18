@@ -96,7 +96,7 @@ export default function ProductSearchResult() {
         
           </div> 
        <div className="flex flex-col lg:flex-row">
-      <div className="pr-2 py-4 lg:w-1/5">
+      <div className="pr-2 py-1 lg:w-1/5">
         <SidebarFilter applyFilters={applyFilters} />
       </div>
       <div className="relative flex-1 top-4 z-10 mb-3">

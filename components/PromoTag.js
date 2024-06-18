@@ -9,13 +9,13 @@ const PromoTag = () => {
     // <div className='relative h-full space-y-10 rounded-2xl  bg-[url("/bgPromo.png")] bg-contain bg-right-bottom bg-no-repeat p-5 text-white'>
     <div
       className=" items-start justify-start  rounded-2xl  px-4
-       flex flex-col  bg-neutral-200 h-72 bg-no-repeat "   style={{
+       flex flex-col  bg-neutral-200 h-[272px] bg-no-repeat "   style={{
         backgroundImage: 'url("/subBanner2.jpg")',
         backgroundSize: "100% 90%",
         backgroundPosition: "right bottom",
       }}
     >
-    <h4 className=" text-base font-semibold text-primary text-primary py-10">
+    <h4 className=" text-base font-semibold text-primary text-primary py-8">
             {headerSection.title}
           </h4>
        <div className=" flex flex-col gap-8 w-[50%] ">

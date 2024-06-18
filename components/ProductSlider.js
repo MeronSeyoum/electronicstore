@@ -12,13 +12,14 @@ const ProductSlider = ({ fetchedData, error, loading }) => {
     return <div>Error: {error}</div>;
   }
 
-  const data = fetchedData ? fetchedData.slice(3, 12) : [];
+  const data = fetchedData ? fetchedData.slice(1, 12) : [];
 
   return (
     <div className="">
       <Slider
         itemPerRow={5}
         data={data}
+        category={false}
         renderItem={(item) => {
           if (!item) {
             return null;

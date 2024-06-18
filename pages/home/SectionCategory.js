@@ -3,11 +3,11 @@ import React from "react";
 
 const SectionCategory = () => {
   return (
-    <div className="container ">
+    <section className="  ">
       <div className="overflow-hidden ">
         <CategorySlider />
       </div>
-    </div>
+    </section>
   );
 };
 

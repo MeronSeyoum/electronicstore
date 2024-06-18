@@ -4,13 +4,13 @@ import PromoTag from "components/PromoTag";
 import { headerSection } from "data/content";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 
-const SectionHeader = () => {
+const SectionHomeBanner = () => {
   return (
-    <div className="container items-stretch gap-y-5 py-0 lg:flex lg:gap-5  lg:gap-y-10 md:h-72  ">
+    <div className=" items-stretch gap-y-5 py-0 lg:flex lg:gap-5  lg:gap-y-10 md:h-72  ">
       {/* header banner */}
       <div
-        className="basis-[50%] items-center space-y-10 rounded-xl  p-4 
-       md:flex md:space-y-10 mb:mb-4  bg-[#506674] bg-no-repeat"
+        className="lg:w-1/2 items-center space-y-10 rounded-xl  p-4 
+       lg:flex lg:space-y-10 lg:mb-4  mb-4  bg-[#506674] bg-no-repeat"
         style={{
           backgroundImage: 'url("/subBanner1.jpg")',
           backgroundSize: "80% 90% ",
@@ -40,11 +40,11 @@ const SectionHeader = () => {
       
       </div>
 
-      <div className=" basis-[50%] lg:mt-0 md:mt-2  rounded-xl">
+      <div className="lg:w-1/2 lg:mt-0 mt-2  rounded-2xl border-2 border-neutral-200 h-[274px]">
         <PromoTag />
       </div>
     </div>
   );
 };
 
-export default SectionHeader;
+export default SectionHomeBanner;

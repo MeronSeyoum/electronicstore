@@ -9,12 +9,13 @@ const SearchResultHeader = ({productLength}) => {
   const handleStoreOnlyToggle = () => setStoreOnly(!storeOnly);
 
   return (
-    <section  className="mx-auto mb-3 p-3 bg-neutral-200">
+    <section  className="mx-auto mb-3 p-3 bg-neutral-200 ">
       <div className="flex justify-between items-center text-sm ">
         <div className="">{productLength} results</div>
         <div className="flex items-center space-x-4">
-          <div className="flex items-center">
-            <label className="flex items-center cursor-pointer">
+        
+          <div className=" items-center lg:block hidden">
+            <label className="flex items-center cursor-pointer ">
                <input
                 type="checkbox"
                 className="hidden"
@@ -32,7 +33,7 @@ const SearchResultHeader = ({productLength}) => {
             
             </label>
           </div>
-          <div className="flex items-center">
+          <div className="lg:block hidden items-center">
             <label className="flex items-center cursor-pointer">
                <input
                 type="checkbox"

@@ -5,6 +5,8 @@ import SidebarFilter from 'components/SideBarFilter';
 import Loading from 'pages/Loading';
 import useDataFetch from 'hooks/useDataFetch';
 import SearchResultHeader from 'components/SearchResultHeader';
+import Filter from 'components/Filter';
+import Heading from 'shared/Heading/Heading';
 
 const Page = () => {
   const router = useRouter();
@@ -57,18 +59,21 @@ const Page = () => {
 
   return (
     <div className="container relative " id="body">
-    <div className='flex pr-2 py-5 text-lg font-[500]  '>
+    <div className='flex'>
+    <Heading className="my-2  " isMain isCenter>
       {categoryId ? (fetchedData[0]?.category_name || 'Category'):('Product Collection')}
+      </Heading>
+
     </div> 
     <div className='flex flex-col lg:flex-row'>
-     <div className="pr-2 py-2 lg:w-1/5">
+     <div className="pr-2  lg:w-1/5">
         <SidebarFilter applyFilters={applyFilters} fetchedData={filteredData} />
       </div>
-      <div className="relative flex-1 z-10 my-2 ml-4">
+      <div className="relative flex-1 z-10  lg:ml-4">
       
-      {categoryId ? (<SearchResultHeader productLength={currentItems.length} />):('')}
+      {categoryId ? (<SearchResultHeader productLength={currentItems.length} />):(<Filter />)}
         
-        <div className="grid flex-1 gap-x-3 gap-y-5 grid-cols-2 xl:grid-cols-4">
+        <div className="grid flex-1 gap-x-3 gap-y-5 grid-cols-2 lg:grid-cols-4">
           {currentItems.map((item) => (
             <ProductCard showPrevPrice product={item} key={item.id} />
           ))}

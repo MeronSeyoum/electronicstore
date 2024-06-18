@@ -18,7 +18,7 @@ const itemPerRow = 12;
     if (itemPerRow < 3) {
       return setNumberOfItem(1);
     }
-    return setNumberOfItem(itemPerRow - 6 || 1);
+    return setNumberOfItem(itemPerRow - 5 || 1);
   }
 
 },[windowWidth]);
@@ -39,10 +39,11 @@ const itemPerRow = 12;
 
 //  const data = fetchedData ? fetchedData.slice(10, 34) : [];
   return (
-    <div className="">
+    <div className="-ml-3">
       <Slider
         itemPerRow={numberOfItems}
         data={fetchedData}
+        category={true}
         renderItem={(item) => {
           if (!item) {
             return null;
