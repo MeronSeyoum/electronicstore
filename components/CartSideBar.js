@@ -117,7 +117,7 @@ const CartSideBar = () => {
       <Transition appear show={isVisible} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-50 overflow-y-auto"
+          className="fixed inset-0 z-50 overflow-y-hidden"
           onClose={handleCloseMenu}
         >
           <div className="z-max fixed inset-y-0 right-0 w-full h-full max-w-md outline-none focus:outline-none lg:max-w-md">

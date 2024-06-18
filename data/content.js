@@ -742,8 +742,8 @@ export const contactSection = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit blandit velit semper aliquam.",
       contactLink: {
-        href: "mailto:support@hotckicks.com",
-        title: "support@hotckicks.com",
+        href: "mailto:support@gamil.com",
+        title: "support@gamil.com",
       },
     },
     {
@@ -752,18 +752,13 @@ export const contactSection = {
       description:
         "Lorem ipsum dolor sit amet consectetur adipiscing elit blandit velit semper aliquam.",
       contactLink: {
-        href: "mailto:influencers@hotckicks.com",
-        title: "influencers@hotckicks.com",
+        href: "mailto:influencers@gamil.com",
+        title: "influencers@gamil.com",
       },
     },
   ],
   instagramPhotos: [
-    "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=1479&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1463100099107-aa0980c362e6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1505784045224-1247b2b29cf3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1604671801908-6f0c6a092c05?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  ],
+    playstation1, playstation2, playstation3, playstation4,playstation4],
 };
 
 export const faqsData = {

@@ -165,8 +165,8 @@
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
-    text-align: center;
-    margin: 0 0 20px;
+    /* text-align: center; */
+    margin: 10px 0px 0px 0px;
     float: left;
     width: 100%;
 }

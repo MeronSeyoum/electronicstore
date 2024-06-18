@@ -9,7 +9,7 @@ import FormItem from "shared/FormItem";
 import Input from "shared/Input/Input";
 import Radio from "shared/Radio/Radio";
 
-const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
+const PaymentMethod = () => {
   const [methodActive, setMethodActive] = useState("Credit-Card");
 
   const renderDebitCredit = () => {
@@ -44,9 +44,9 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
               <FormItem label="Card number">
                 <Input
                   autoComplete="off"
-                  rounded="rounded-lg"
+                  rounded="rounded"
                   sizeClass="h-9 px-3 py-3"
-                  className="border-neutral-300 bg-transparent  placeholder:text-neutral-500 focus:border-primary"
+                  className="border-neutral-300 bg-neutral-100  placeholder:text-neutral-500 focus:border-primary"
                   type="text"
                 />
               </FormItem>
@@ -55,9 +55,9 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
               <FormItem label="Card holder name">
                 <Input
                   autoComplete="off"
-                  rounded="rounded-lg"
+                  rounded="rounded"
                   sizeClass="h-9 px-3 py-3"
-                  className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
+                  className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
                   type="text"
                 />
               </FormItem>
@@ -67,9 +67,9 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
                 <FormItem label="Expiration date (MM/YY)">
                   <Input
                     autoComplete="off"
-                    rounded="rounded-lg"
+                    rounded="rounded"
                     sizeClass="h-9 px-3 py-3"
-                    className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
+                    className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
                     placeholder="MM/YY"
                   />
                 </FormItem>
@@ -78,9 +78,9 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
                 <FormItem label="CVC">
                   <Input
                     autoComplete="off"
-                    rounded="rounded-lg"
+                    rounded="rounded"
                     sizeClass="h-9 px-3 py-3"
-                    className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
+                    className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
                     placeholder="CVC"
                   />
                 </FormItem>
@@ -119,9 +119,9 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
               <FormItem label="PayPal email">
                 <Input
                   autoComplete="off"
-                  rounded="rounded-lg"
+                  rounded="rounded"
                   sizeClass="h-9 px-3 py-3"
-                  className="border-neutral-300 bg-transparent placeholder:text-neutral-500 focus:border-primary"
+                  className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
                   type="text"
                 />
               </FormItem>
@@ -133,13 +133,13 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
   };
 
   return (
-    <div className="rounded-xl border border-neutral-300 ">
-      <div className="flex flex-col items-start p-6 sm:flex-row">
+    <div className=" ">
+      <div className="flex flex-col items-start py-4 sm:flex-row">
         <span className="hidden sm:block">
           <MdOutlineCreditScore className="text-3xl text-primary" />
         </span>
         <div className="flex w-full items-center justify-between">
-          <div className="sm:ml-8">
+          <div className="sm:ml-4">
             <h3 className="uppercase text-sm font-semibold">
               PAYMENT METHOD
             </h3>
@@ -148,20 +148,15 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
               <span className="ml-3">xxx-xxx-xx55</span>
             </div>
           </div>
-          <ButtonSecondary
-            sizeClass="py-2 px-4"
-            className="border-2 border-primary text-primary"
-            onClick={onOpenActive}
-          >
-            Edit
-          </ButtonSecondary>
+        
         </div>
       </div>
 
       <div
-        className={`space-y-6 border-t border-neutral-300 px-6 py-7 ${
-          isActive ? "block" : "hidden"
-        }`}
+        className={`space-y-6 border-t border-neutral-300  py-7 
+          `}
+        // ${  isActive ? "block" : "hidden"}
+
       >
         {/* ==================== */}
         <div>{renderDebitCredit()}</div>
@@ -172,13 +167,13 @@ const PaymentMethod = ({ isActive, onCloseActive, onOpenActive }) => {
         <div className="flex pt-6">
           <ButtonPrimary
             className="w-full max-w-[240px]"
-            onClick={onCloseActive}
+            // onClick={onCloseActive}
           >
             Confirm order
           </ButtonPrimary>
           <ButtonSecondary
             className="ml-3 bg-neutral-300"
-            onClick={onCloseActive}
+            // onClick={onCloseActive}
           >
             Cancel
           </ButtonSecondary>

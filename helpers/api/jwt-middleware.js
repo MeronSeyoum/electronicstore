@@ -16,6 +16,8 @@ function jwtMiddleware(req, res) {
             'api/cart/add',
             '/api/ShoppingSession',
             'api/address/*',
+            '/productsCollection?*',
+
             
              // Allow search queries without authentication
              { 

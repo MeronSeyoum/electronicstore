@@ -5,21 +5,17 @@ const { serverRuntimeConfig } = getConfig();
 
 export default async function handler(req, res) {
     if (req.method !== 'GET') {
-        return res.status(405).send({ message: 'Only GET requests allowed' });
+        return res.status(405).json({ message: 'Only GET requests allowed' });
     }
 
-    const { q } = req.query;
-
-    if (!q) {
-        return res.status(400).send({ message: 'Search query parameter `q` is required' });
-    }
+    const { id } = req.query;
 
     try {
         const connectionParams = serverRuntimeConfig.dbConfig;
         const connection = await mysql.createConnection(connectionParams);
 
-        // Query to fetch products based on search term
-        const query = `
+        // Base query to fetch data
+        let query = `
             SELECT 
                 p.id,
                 p.slug,
@@ -39,21 +35,28 @@ export default async function handler(req, res) {
                 electronic_shop.product AS p
             JOIN
                 electronic_shop.product_category AS pc ON p.category_id = pc.id
-            JOIN
+            LEFT JOIN
                 electronic_shop.discount AS d ON p.discount_id = d.id
             LEFT JOIN
                 electronic_shop.product_images AS pi ON p.id = pi.product_id AND pi.isMain = true
             LEFT JOIN
                 electronic_shop.ratings AS r ON p.id = r.product_id
-            WHERE
-                p.product_name LIKE ?
         `;
 
-        // Execute the query with search term
-        const [results] = await connection.execute(query, [`%${q}%`]);
+        // Array to hold query parameters
+        const values = [];
+
+        // Modify query if category ID is provided
+        if (id) {
+            query += ` WHERE p.category_id = ?`;
+            values.push(id);
+        }
+
+        // Execute the query and retrieve the results
+        const [results] = await connection.execute(query, values);
 
         // Close the connection when done
-        connection.end();
+        await connection.end();
 
         // Return the results as a JSON API response
         res.status(200).json(results);

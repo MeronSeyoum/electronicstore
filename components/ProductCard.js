@@ -28,7 +28,7 @@ const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
           src={mainImage}
           alt={`${product.product_name} cover photo`}
           className="h-full w-full border rounded-lg
-           hover:bg-neutral-100 lg:p-10 p-4 bg-neutral-100"
+           hover:bg-neutral-100 lg:p-10 p-4 bg-neutral-50"
           loading="lazy"
           sizes="(max-width: 300px) 100vw, 300px"
           width={300}

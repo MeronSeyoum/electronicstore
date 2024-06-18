@@ -5,18 +5,18 @@ const Checkbox = ({
   label = '',
   name,
   className = '',
-  sizeClassName = 'w-6 h-6',
+  sizeClassName = 'w-4 h-4',
   labelClassName = '',
   defaultChecked,
   onChange,
 }) => {
   return (
-    <div className={`flex text-sm sm:text-base ${className}`}>
+    <div className={`flex text-xs sm:text-base ${className}`}>
       <input
         id={name}
         name={name}
         type="checkbox"
-        className={`focus:ring-action-primary hover:border-neutarl-700 rounded border-neutral-400 bg-transparent text-primary  focus:ring-primary ${sizeClassName}`}
+        className={`focus:ring-action-primary hover:border-neutral-700 rounded border-neutral-400 bg-transparent text-primary  focus:ring-primary ${sizeClassName}`}
         defaultChecked={defaultChecked}
         onChange={(e) => onChange && onChange(e.target.checked)}
       />

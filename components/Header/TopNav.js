@@ -14,7 +14,7 @@ const TopNav = () => {
             <NavigationItem menuItem={item} key={item.id} />
           ))}
         </div>
-<p>Save upto 20% in all accessories and products on sale</p>
+        <p>Save upto 20% in all accessories and products on sale</p>
         <Language />
       </div>
     </div>

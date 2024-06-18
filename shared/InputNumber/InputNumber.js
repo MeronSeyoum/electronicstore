@@ -41,26 +41,29 @@ const InputNumber = ({
     <div className={`nc-InputNumber flex items-center justify-between space-x-5 ${className}`}>
       {label && renderLabel()}
       <div className="nc-NcInputNumber__content flex w-[104px] items-center justify-between sm:w-28">
+      <span className="block flex-1 select-none text-center leading-none mx-3  ">{value}</span>
+       <div> 
+       
         <button
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-white text-xl hover:border-neutral-700 focus:outline-none disabled:cursor-default disabled:opacity-50 disabled:hover:border-neutral-400"
-          type="button"
-          onClick={handleClickDecrement}
-          disabled={min >= value}
-        >
-          -
-        </button>
-        <span className="block flex-1 select-none text-center leading-none mx-3 ">{value}</span>
-        <button
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300
+          className="flex h-4 w-7 items-center justify-center  border border-neutral-300
            bg-white text-xl hover:border-neutral-700 focus:outline-none disabled:cursor-default 
-           disabled:opacity-50 disabled:hover:border-neutral-400 "
+           disabled:opacity-50 disabled:hover:border-neutral-400 py-1"
           type="button"
           onClick={handleClickIncrement}
           disabled={max ? max <= value : false}
         >
           +
         </button>
+         <button
+          className="flex h-4 w-7 items-center justify-center  border border-neutral-300 bg-white text-xl hover:border-neutral-700 focus:outline-none disabled:cursor-default disabled:opacity-50 disabled:hover:border-neutral-400"
+          type="button"
+          onClick={handleClickDecrement}
+          disabled={min >= value}
+        >
+          -
+        </button>
       </div>
+    </div>
     </div>
   );
 };

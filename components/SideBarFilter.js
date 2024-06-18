@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
+import useDataFetch from "hooks/useDataFetch";
 
 const brands = ["All", "Apple", "Samsung", "Motorola", "Accessories"];
-const categories = ["Smartphone", "Tablet", "Laptop", "Smartwatch"];
 const sizes = ["Small", "Medium", "Large"];
 const storages = ["32GB", "64GB", "128GB", "256GB", "512GB"];
-const availabilityOptions = ["In Stock", "Out of Stock"];
 const PRICE_RANGE = [0, 1000];
 
 const SideBarFilter = ({ applyFilters }) => {
+  const { fetchedData: categories, error, loading } = useDataFetch('/api/category');
+  
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedSizes, setSelectedSizes] = useState([]);
   const [selectedStorages, setSelectedStorages] = useState([]);
-  const [selectedAvailability, setSelectedAvailability] = useState([]);
   const [priceRange, setPriceRange] = useState(PRICE_RANGE);
 
   const handleApplyFilters = () => {
@@ -24,39 +24,40 @@ const SideBarFilter = ({ applyFilters }) => {
       selectedCategory,
       selectedSizes,
       selectedStorages,
-      selectedAvailability,
       priceRange,
     });
   };
+
+  if (loading) {
+    return <div>Loading categories...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading categories. Please try again later.</div>;
+  }
+
   return (
-    <div className=" hidden  lg:block border  rounded-lg">
-      <div className="bg-primary rounded-t-md ">
+    <div className="hidden lg:block border rounded-lg">
+      <div className="bg-primary rounded-t">
         <h2 className="text-base font-semibold py-2 px-4 text-white">
-          Filter{" "}
+          Filter
         </h2>
       </div>
       <div className="p-4">
-        <div className="mb-4">
-          <h3 className="text-sm font-semibold mb-2">Availability</h3>
-          {availabilityOptions.map((option) => (
-            <div key={option} className="flex items-center mb-2 text-xs">
+      <div className="mb-4">
+          <h3 className="text-sm font-semibold mb-2">Category</h3>
+          {categories.map((category) => (
+            <div key={category.id} className="flex items-center mb-2 text-xs">
               <input
-                type="checkbox"
-                id={option}
-                value={option}
-                checked={selectedAvailability.includes(option)}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    setSelectedAvailability([...selectedAvailability, option]);
-                  } else {
-                    setSelectedAvailability(
-                      selectedAvailability.filter((a) => a !== option)
-                    );
-                  }
-                }}
+                type="radio"
+                id={category.id}
+                name="category"
+                value={category.category_name}
+                checked={selectedCategory === category.category_name}
+                onChange={() => setSelectedCategory(category.category_name)}
                 className="mr-2"
               />
-              <label htmlFor={option}>{option}</label>
+              <label htmlFor={category.id}>{category.category_name}</label>
             </div>
           ))}
         </div>
@@ -84,23 +85,7 @@ const SideBarFilter = ({ applyFilters }) => {
             </div>
           ))}
         </div>
-        <div className="mb-4">
-          <h3 className="text-sm font-semibold mb-2">Category</h3>
-          {categories.map((category) => (
-            <div key={category} className="flex items-center mb-2 text-xs">
-              <input
-                type="radio"
-                id={category}
-                name="category"
-                value={category}
-                checked={selectedCategory === category}
-                onChange={() => setSelectedCategory(category)}
-                className="mr-2"
-              />
-              <label htmlFor={category}>{category}</label>
-            </div>
-          ))}
-        </div>
+        
         <div className="mb-4">
           <h3 className="text-sm font-semibold mb-2">Size</h3>
           {sizes.map((size) => (
@@ -149,7 +134,7 @@ const SideBarFilter = ({ applyFilters }) => {
         </div>
 
         <div className="mb-4">
-          <h3 className="text-xs font-semibold mb-2 ">Price Range</h3>
+          <h3 className="text-xs font-semibold mb-2">Price Range</h3>
           <Slider
             min={PRICE_RANGE[0]}
             max={PRICE_RANGE[1]}
@@ -157,15 +142,12 @@ const SideBarFilter = ({ applyFilters }) => {
             onChange={(value) => setPriceRange(value)}
             range
           />
-          <div className="flex justify-between text-xs ">
+          <div className="flex justify-between text-xs">
             <span>${priceRange[0]}</span>
             <span>${priceRange[1]}</span>
           </div>
         </div>
-        <ButtonPrimary
-          onClick={handleApplyFilters}
-          className="  "
-        >
+        <ButtonPrimary onClick={handleApplyFilters}>
           Apply Filters
         </ButtonPrimary>
       </div>

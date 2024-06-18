@@ -4,6 +4,7 @@ import ProductCard from "components/ProductCard";
 import SidebarFilter from "components/SideBarFilter";
 import Link from "next/link";
 import Loading from "pages/Loading";
+import SearchResultHeader from "components/SearchResultHeader";
 export default function ProductSearchResult() {
   const [fetchedData, setFetchedData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -76,14 +77,9 @@ export default function ProductSearchResult() {
     return <Loading />;
   }
   return (
-    <div className="container relative flex flex-col lg:flex-row" id="body">
-        
-      <div className="pr-2 py-10 lg:w-1/5">
-        <SidebarFilter applyFilters={applyFilters} />
-      </div>
-      <div className="relative flex-1 top-6 z-10 mb-3">
-        <div className="page-title pb-4">
-          <h3 className="entry-title-main">Search results: “{q}”</h3>
+    <div className="container relative " id="body">
+      <div className="flex ">
+      <div className="page-title py-2">
           <nav className="breadcrumb">
             <span>
               <Link href="/">Home</Link>
@@ -92,9 +88,21 @@ export default function ProductSearchResult() {
             <span>
               <Link href="/productCollection">Shop</Link>
             </span>{" "}
-            / <span>Search results for “{q}”  ({currentItems.length})</span>
-          </nav>
+            / <span>Search results for “{q}”  </span>
+          </nav> 
+             <h3 className="entry-title-main">Search results: “{q}”</h3>
+   
         </div>
+        
+          </div> 
+       <div className="flex flex-col lg:flex-row">
+      <div className="pr-2 py-4 lg:w-1/5">
+        <SidebarFilter applyFilters={applyFilters} />
+      </div>
+      <div className="relative flex-1 top-4 z-10 mb-3">
+
+      {q ? (<SearchResultHeader productLength={currentItems.length} />):('')}
+     
         {currentItems.length > 0 ? (
           <>
             <div className="grid flex-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -126,6 +134,7 @@ export default function ProductSearchResult() {
           <p className="product-info">No products were found matching your selection.</p>
         )}
       </div>
+    </div>
     </div>
   );
 }

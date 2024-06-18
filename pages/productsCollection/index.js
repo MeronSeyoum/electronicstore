@@ -1,19 +1,23 @@
-import React, { useState,useEffect } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import ProductCard from 'components/ProductCard';
-import SidebarFilters from 'components/SideBarFilter';
-import useDataFetch from 'hooks/useDataFetch';
+import SidebarFilter from 'components/SideBarFilter';
 import Loading from 'pages/Loading';
+import useDataFetch from 'hooks/useDataFetch';
+import SearchResultHeader from 'components/SearchResultHeader';
 
 const Page = () => {
+  const router = useRouter();
+  const { categoryId } = router.query;
 
-  const { fetchedData, error, loading } = useDataFetch('/api/product');
+  const dataSource = categoryId ? `/api/category/productByCategory?id=${categoryId}` : '/api/product';
+  
+  const { fetchedData, error, loading } = useDataFetch(dataSource);
 
   const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(8); // Change this value as per your requirement
-  
-  
+  const itemsPerPage = 8; // Change this value as per your requirement
+
   useEffect(() => {
     if (fetchedData) {
       setFilteredData(fetchedData);
@@ -24,7 +28,7 @@ const Page = () => {
     const { selectedBrands, selectedCategory, selectedSizes, selectedStorages, selectedAvailability, priceRange } = filters;
 
     const data = fetchedData.filter((item) => {
-      if (selectedBrands.length > 0 && !selectedBrands.includes(item.category_name)) return false;
+      if (selectedBrands.length > 0 && !selectedBrands.includes(item.brand)) return false;
       if (selectedCategory !== 'All' && selectedCategory !== item.category) return false;
       if (selectedSizes.length > 0 && !selectedSizes.includes(item.size)) return false;
       if (selectedStorages.length > 0 && !selectedStorages.includes(item.storage)) return false;
@@ -40,19 +44,31 @@ const Page = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
-  // Change page
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-//  delay the displaying result until result return
-if (loading) {
-  return <Loading />;
-}
+
+  if (error) {
+    return <div>Error loading products. Please try again later.</div>;
+  }
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
-    <div className="container relative flex flex-col lg:flex-row" id="body">
-      <div className="pr-2 py-10 lg:w-1/5">
-      <SidebarFilters applyFilters={applyFilters} fetchedData={fetchedData} />
-     </div>
-      <div className="relative flex-1 top-6 z-10 my-4 ml-4">
-        <div className="grid flex-1 gap-x-3 gap-y-5 grid-cols-2 xl:grid-cols-4 ">
+    <div className="container relative " id="body">
+    <div className='flex pr-2 py-5 text-lg font-[500]  '>
+      {categoryId ? (fetchedData[0]?.category_name || 'Category'):('Product Collection')}
+    </div> 
+    <div className='flex flex-col lg:flex-row'>
+     <div className="pr-2 py-2 lg:w-1/5">
+        <SidebarFilter applyFilters={applyFilters} fetchedData={filteredData} />
+      </div>
+      <div className="relative flex-1 z-10 my-2 ml-4">
+      
+      {categoryId ? (<SearchResultHeader productLength={currentItems.length} />):('')}
+        
+        <div className="grid flex-1 gap-x-3 gap-y-5 grid-cols-2 xl:grid-cols-4">
           {currentItems.map((item) => (
             <ProductCard showPrevPrice product={item} key={item.id} />
           ))}
@@ -71,7 +87,10 @@ if (loading) {
             </button>
           ))}
         </div>
+   
+    
       </div>
+    </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import FormItem from 'shared/FormItem';
 import Input from 'shared/Input/Input';
 import { userService } from "services";
 
-const ContactInfo = ({ isActive, onCloseActive, onOpenActive }) => {
+const ContactInfo = () => {
   const [phone, setPhone] = useState(userService.userValue?.telephone || '');
   const [email, setEmail] = useState(userService.userValue?.email || '');
 
@@ -18,13 +18,13 @@ const ContactInfo = ({ isActive, onCloseActive, onOpenActive }) => {
     onCloseActive();
   };
   return (
-    <div className="z-0 overflow-hidden rounded-xl border border-neutral-300">
-      <div className="flex flex-col items-start p-4 sm:flex-row ">
-        <span className="hidden sm:block">
-          <FaRegCircleUser className="text-2xl text-primary" />
+    <div className="overflow-hidden ">
+      <div className="flex flex-col items-center justify-center p-4 sm:flex-row ">
+        <span className="hidden sm:block ">
+          <FaRegCircleUser className="text-2xl text-primary " />
         </span>
         <div className="flex w-full items-center justify-between">
-          <div className="sm:ml-8">
+          <div className="sm:ml-4">
             <div className="uppercase text-sm font-semibold ">CONTACT INFORMATION</div>
             <div className="mt-1 text-xs ">           
              
@@ -32,27 +32,27 @@ const ContactInfo = ({ isActive, onCloseActive, onOpenActive }) => {
               <span className="ml-3 tracking-tighter">+1 {userService.userValue?.telephone}</span>
             </div>
           </div>
-          <ButtonSecondary
+          {/* <ButtonSecondary
             sizeClass="py-2 px-4"
             className="border-2 border-primary text-primary"
-            onClick={onOpenActive}
+            // onClick={onOpenActive}
           >
             Edit
-          </ButtonSecondary>
+          </ButtonSecondary> */}
         </div>
       </div>
       <div
-        className={`space-y-4 border-t border-neutral-300 px-6 py-7 sm:space-y-6 ${
-          isActive ? 'block' : 'hidden'
-        }`}
+        className={`space-y-4 border-t border-neutral-300 px- py-7 sm:space-y-6 
+        `}
+        // ${isActive ? 'block' : 'hidden'}
+
       >
-        <h3 className="text-lg font-semibold">Contact information</h3>
         <div className="max-w-lg">
           <FormItem label="Your phone number">
             <Input
               rounded="rounded-lg"
               sizeClass="h-9 px-4 py-3"
-              className="border-neutral-300  bg-transparent placeholder:text-neutral-500 focus:border-primary"
+              className="border-neutral-300  bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
                 type="tel"
@@ -64,7 +64,7 @@ const ContactInfo = ({ isActive, onCloseActive, onOpenActive }) => {
             <Input
               rounded="rounded-lg"
               sizeClass="h-9 px-4 py-3"
-              className="border-neutral-300  bg-transparent placeholder:text-neutral-500 focus:border-primary"
+              className="border-neutral-300  bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
