@@ -38,24 +38,24 @@ const InputNumber = ({
   };
 
   return (
-    <div className={`nc-InputNumber flex items-center justify-between space-x-5 ${className}`}>
+    <div className={`nc-InputNumber  space-x-5`}>
       {label && renderLabel()}
-      <div className="nc-NcInputNumber__content flex w-[104px] items-center justify-between sm:w-28">
-      <span className="block flex-1 select-none text-center leading-none mx-3  ">{value}</span>
-       <div> 
+      <div className="nc-NcInputNumber__content flex justify-between sm:w-28">
+       <div className={ `${className} flex flex-row items-center bg-white border border-neutral-300 rounded-md `}> 
        
         <button
-          className="flex h-4 w-7 items-center justify-center  border border-neutral-300
-           bg-white text-xl hover:border-neutral-700 focus:outline-none disabled:cursor-default 
-           disabled:opacity-50 disabled:hover:border-neutral-400 py-1"
+          className="flex h-7 w-7 items-center justify-center 
+          text-xl"
           type="button"
           onClick={handleClickIncrement}
           disabled={max ? max <= value : false}
         >
           +
         </button>
+        <span className="block flex-1 select-none text-center leading-none mx-3  ">{value}</span>
+     
          <button
-          className="flex h-4 w-7 items-center justify-center  border border-neutral-300 bg-white text-xl hover:border-neutral-700 focus:outline-none disabled:cursor-default disabled:opacity-50 disabled:hover:border-neutral-400"
+          className="flex h-7 w-7 items-center justify-center  text-xl "
           type="button"
           onClick={handleClickDecrement}
           disabled={min >= value}

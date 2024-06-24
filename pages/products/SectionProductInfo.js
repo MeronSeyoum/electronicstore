@@ -6,14 +6,14 @@ import Ratings from './Ratings';
 
 
 const SectionProductInfo = ({
-  overview,
+  productDesc,
   ratings,
   reviews,
 }) => {
 
   return (
-    <div className="grid gap-16 lg:grid-cols-2">
-      <ProductInfoTab overview={overview}  />
+    <div className="grid gap-16 lg:grid-cols-2 ">
+      <ProductInfoTab overview={productDesc}  />
       <Ratings rating={ratings} reviews={reviews} />
     </div>
   );

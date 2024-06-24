@@ -12,7 +12,7 @@ import Loading from "../Loading";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 import Link from "next/link";
 const SectionProducts = ({ fetchedData, error, loading }) => {
-  const data = fetchedData ? fetchedData.slice(0, 15) : [];
+  const data = fetchedData ? fetchedData.slice(0, 10) : [];
 
   if (loading) {
     return <Loading />;
@@ -22,7 +22,7 @@ const SectionProducts = ({ fetchedData, error, loading }) => {
     return <div>Error: {error}</div>;
   }
   return (
-    <section className=" ">
+    <section className=" bg-white p-6 rounded-md">
       <Heading isCenter isMain desc={productsSection.description}>
         {productsSection.heading}
       </Heading>
@@ -33,7 +33,7 @@ const SectionProducts = ({ fetchedData, error, loading }) => {
         <hr className="bg-gray-400  h-[0.5px] justify-start" />
         <hr className="bg-primary  w-52 h-[4px] justify-start -mt-3" />
       </div>
-      <div className="grid gap-x-4 gap-y-8  grid-cols-2 lg:grid-cols-5 ">
+      <div className="grid gap-x-6 gap-y-8  grid-cols-2 lg:grid-cols-5 ">
         {data.map((product) => (
           <ProductCard
             key={product.id}

@@ -48,12 +48,12 @@ const HomePage = () => {
   const { fetchedData, error, loading } = useDataFetch("/api/product");
 
   return (
-    <div className="bg-main container ">
-      <div className="my-4 ">
+    <div className=" container ">
+      <div className="py-3 ">
         <SectionCategory />
       </div>
         <HeaderSlider slides={slides} autoPlayInterval={5000} />
-      <div className="mt-4">
+      <div className="mt-3">
         <ServicesSection />
       </div>
       <div className="my-12 ">

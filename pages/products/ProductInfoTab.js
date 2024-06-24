@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-import ButtonCircle3 from 'shared/Button/ButtonCircle3';
-import Heading from 'shared/Heading/Heading';
+import React, { useState } from "react";
+import ButtonCircle3 from "shared/Button/ButtonCircle3";
+import Heading from "shared/Heading/Heading";
 import { BsBoxFill } from "react-icons/bs";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaTruckFast } from "react-icons/fa6";
 
 import { PiPercentFill } from "react-icons/pi";
-import { from } from 'rxjs';
+import { from } from "rxjs";
 
 const ProductInfoTab = ({ overview }) => {
-  const [activeTab, setActiveTab] = useState('Shipment details');
+  const [activeTab, setActiveTab] = useState("Shipment details");
 
-  const tabs = ['Overview', 'Shipment details'];
+  const tabs = ["Overview", "Shipment details"];
 
-
-  const shipment_details =
-  [
+  const shipment_details = [
     {
       icon: <PiPercentFill className="text-xl text-primary" />,
       title: "Discount",
@@ -38,19 +36,19 @@ const ProductInfoTab = ({ overview }) => {
     },
   ];
   return (
-    <div>
+    <div className="">
       <Heading className="mb-0">Product Info</Heading>
 
-      <div className="mb-10 flex items-center gap-5">
+      <div className=" flex items-center gap-2 border-b-2 border-black rounded-t-md bg-white ">
         {tabs.map((tab) => (
           <button
             type="button"
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`py-4 ${
+            className={`p-3 rounded-t-md font-semibold text-sm ${
               activeTab === tab
-                ? 'border-b-2 border-primary'
-                : 'text-neutral-500'
+                ? "bg-primary text-white border-b-2 border-black"
+                : " bg-neutral-200 border-2 border-white"
             }`}
           >
             {tab}
@@ -61,21 +59,27 @@ const ProductInfoTab = ({ overview }) => {
       {tabs.map((tab) => (
         <div
           key={tab}
-          className={`mb-10 text-sm ${activeTab === tab ? 'block' : 'hidden'}`}
+          className={`p-6 h-40  rounded-b-md -mt-[0.5px] bg-white ${
+            activeTab === tab ? "block" : "hidden"
+          }`}
         >
-          {activeTab === 'Overview' ? (
-            <p>{overview}</p>
+          {activeTab === "Overview" ? (
+            <p className="product-desc">{overview}</p>
           ) : (
             <div className="grid gap-5 md:grid-cols-2">
               {shipment_details.map((detail) => (
                 <div key={detail.title} className="flex items-center gap-2">
-                  <ButtonCircle3 size="w-12 h-12" className="bg-neutral-300">
+                  <ButtonCircle3 size="w-10 h-10" className="bg-neutral-300">
                     {detail.icon}
                   </ButtonCircle3>
 
                   <div>
-                    <p className="product-desc">{detail.title}</p>
-                    <p>{detail.description}</p>
+                    <p className="text-sm font-medium text-gray-500">
+                      {detail.title}
+                    </p>
+                    <p className="text-xs font-semibold">
+                      {detail.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -83,11 +87,7 @@ const ProductInfoTab = ({ overview }) => {
           )}
         </div>
       ))}
-
-      <div className="space-y-2">
-        <h3 className="text-xl font-medium">Note</h3>
-        {/* <p className="text-neutral-500">{note}</p> */}
-      </div>
+      
     </div>
   );
 };

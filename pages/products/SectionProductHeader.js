@@ -38,13 +38,13 @@ const SectionProductHeader = ({
   );
 
   return (
-    <div className="items-stretch justify-between space-y-10 lg:flex lg:space-y-0">
+    <div className="items-stretch justify-between space-y-10 lg:flex lg:space-y-0 ">
       
-      <div className="lg:basis-[35%]">
+      <div className="lg:basis-[45%] bg-white p-4 rounded-md">
         <ImageShowCase productImage={productImage} />
       </div>
 
-      <div className="lg:basis-[55%]">
+      <div className="lg:basis-[50%]">
         <ProductHeading
           productName={productName}
           categoryName={categoryName}
@@ -55,7 +55,7 @@ const SectionProductHeader = ({
         />
 
 
-        <div className="flex gap-3 mb-3 items-center font-medium">
+        <div className="flex gap-3 mb-2 items-center font-medium">
           <h1 className="text-primary text-[20px]">
             ${parseFloat(currentPrice).toFixed(2)}
           </h1>
@@ -64,11 +64,14 @@ const SectionProductHeader = ({
           </p>
           <p className="text-green-500 text-sm font-bold">55% Off</p>
         </div>
-        <div className="mb-6">
-          <span className="font-semibold text-[13px]">Description:</span>
+        <div className="">
+          {/* <span className="font-semibold text-[13px]">Description:</span> */}
           <p className="product-desc">{productDesc}</p>
+          <hr className="mt-4 h-[2px] bg-neutral-300"/>
         </div>
-        <div className="flex lg:flex-row  flex-col justify-between">
+
+
+        <div className="flex lg:flex-row  flex-col justify-between my-5">
           <ColorOptions
             colors={productAttributes.color}
             selectedColor={selectedColor}
@@ -88,22 +91,26 @@ const SectionProductHeader = ({
             setSelectedStorage={setSelectedStorage}
           />
         </div>
-        <div className="my-">
-          <InputNumber />
-        </div>
-
-        <div className="my-4 flex items-center gap-x-5">
-          <ButtonSecondary className="border-2 text-black border-primary">
-            Buy Now
-          </ButtonSecondary>
-          <AddToCart
+        
+        <div className="flex flex-col flex-nowrap  " >
+         <div className="flex flex-row gap-3 lg:mb-2">
+         <span>
+          <InputNumber className="py-2 px-4"/></span>
+           <AddToCart
             productId={productId}
-            className="px-6 py-3.5 rounded-md"
+            className="px-6 py-3 rounded-md border-primary"
             title="Add To Cart"
           />
+       </div>
+        <div className="flex flex-grow items-center w-full ">
+          <ButtonSecondary className="border-2 text-white bg-black w-72">
+            Buy Now
+          </ButtonSecondary>
+         
         </div>
+ </div>
 
-        <div className="mb-4 flex items-end justify-between">
+        <div className="my-4 flex items-end justify-between">
           <p className="text-sm font-semibold">Available specs:</p>
           <p className="flex items-center gap-1 text-sm text-neutral-500">
             Specs guide <LuInfo />

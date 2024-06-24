@@ -12,7 +12,7 @@ const tabs = [];
 const SectionNavigation = () => {
   const [activeTab, setActiveTab] = useState('New Arrival');
   return (
-    <div className="my-3 flex items-center justify-between">
+    <div className="mb-3 flex items-center justify-between">
       <Link href="/">
         <ButtonCircle3 size="w-8 h-8" className="border border-neutral-300 hover:text-primary">
           <MdArrowBack className="text-xl " />

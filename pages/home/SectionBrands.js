@@ -7,7 +7,7 @@ import Heading from 'shared/Heading/Heading';
 
 const SectionBrands = () => {
   return (
-    <section className=" ">
+    <section className="bg-white p-6 rounded-md ">
     
       <Heading desc={brandsSection.description} isCenter isMain>
         {brandsSection.heading}

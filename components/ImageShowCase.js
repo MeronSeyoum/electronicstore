@@ -2,33 +2,31 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import LikeButton from "./LikeButton";
-import { products } from "data/content";
 
 const ImageShowCase = ({ productImage }) => {
-   const [activeImageIndex, setActiveImageIndex] = useState(productImage);
-  // Combine productImage with shots
- const productImages = [{ src: productImage }, ...products[0].shots];
- 
+  const images = productImage.split(','); // Convert the comma-separated string to an array
+  const [activeImageIndex, setActiveImageIndex] = useState(0); // Initialize with the first image
+
   return (
-    <div className="flex flex-row justify-between ">
+    <div className="flex flex-row justify-between">
       <div className="flex flex-col gap-y-3 ">
-        {productImages.map((shot, index) => (
+        {images.map((image, index) => (
           <div
-            key={shot.src}
+            key={index}
             className={`${
-              activeImageIndex === index ? "border-2 border-primary" : ""
-            } h-20 w-20 overflow-hidden`}
+              activeImageIndex === index ? "border border-primary rounded-md" : ""
+            } h-20 w-20 overflow-hidden border rounded-md p-1`}
           >
             <button
               className="h-full w-full"
               type="button"
-              onClick={() => setActiveImageIndex(shot)}
+              onClick={() => setActiveImageIndex(index)}
             >
               <Image
-                src={shot.src}
+                src={image}
                 alt={`image-${index}`}
-                width={65}
-                height={40}
+                width={80}
+                height={100}
                 objectFit="cover"
                 className=""
               />
@@ -36,15 +34,15 @@ const ImageShowCase = ({ productImage }) => {
           </div>
         ))}
       </div>
-      <div className="flex  h-[450px] w-[270px] lg:w-[350px]">
+      <div className="flex h-[450px] w-[270px] lg:w-[490px] justify-center rounded-lg  bg-neutral-200">
         <Image
-          src={activeImageIndex}
+          src={images[activeImageIndex]}
           alt={`product-image-${activeImageIndex}`}
           height={400}
           width={350}
-          objectFit="contain"
+          objectFit="cover"
         />
-        <LikeButton className="relative right-6" />
+        <LikeButton className="relative -right-5 top-5 p-2 border" />
       </div>
     </div>
   );

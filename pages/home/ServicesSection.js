@@ -25,18 +25,20 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="services-section">
+    <section className="services-section bg-white rounded-md">
       <div className=" mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-3 lg:gap-6 ">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-3 lg:gap- lg:divide-x divide-neutral-300  p-6">
           {services.map((service, index) => (
-            <div key={index} className="flex lg:flex-row flex-co lg:items-end items-center  py-2 px-0 lg:justify-start ">
-              <span className=" lg:text-3xl text-2xl mb-0  text-red-400 ">
+            <div key={index} className="flex lg:flex-row flex-co lg:items-end items-center  py-2 px-0 lg:justify-evenly ">
+             <div className='flex flex-row items-center gap-5'>
+              <span className=" lg:text-4xl text-2xl mb-0  text-red-400 ">
                 {<service.icon />}
               </span>
-              <div className="lg:text-start ml-3">
-                <h5 className="lg:text-base text-sm  font-semibold ">{service.title}</h5>
-                <p className="text-gray-600 lg:text-xs text-[12px]">{service.description}</p>
+              <div className="lg:text-start">
+                <h5 className="lg:text-base   font-semibold ">{service.title}</h5>
+                <p className="text-gray-600 lg:text-sm text-[12px]">{service.description}</p>
               </div>
+            </div>
             </div>
           ))}
         </div>

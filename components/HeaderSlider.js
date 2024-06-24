@@ -39,11 +39,11 @@ const HeaderSlider = ({ slides, autoPlayInterval = 6000 }) => {
 
   return (
     <div
-      className="relative w-full  bg-[#f2eeeb] h-[400px]  lg:h-[380px]"
+      className="relative w-full  bg-[#f2eeeb] h-[400px]  lg:h-[380px] border rounded-md "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="flex justify-center items-center h-full relative overflow-hidden">
+      <div className="flex  justify-center items-center h-full relative overflow-hidden">
         <motion.div
           className="absolute top-0 left-0 h-full w-full flex items-center"
           key={currentSlide}

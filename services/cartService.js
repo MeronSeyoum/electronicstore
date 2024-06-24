@@ -31,7 +31,7 @@ alert("retrieving data")
   const connection = await createConnection(connectionParams);
   try {
     const [rows] = await connection.query(
-      "SELECT ci.id AS cart_item_id,p.id AS product_id, p.slug, p.product_name, p.desc AS description, pc.name AS category_name, d.percentage, p.price, p.quantity, p.color, p.size, p.justIn, pi.image_path AS main_image, r.rating, r.reviews FROM electronic_shop.cart_item AS ci JOIN electronic_shop.shopping_session AS ss ON ci.session_id = ss.id JOIN electronic_shop.product AS p ON ci.product_id = p.id JOIN electronic_shop.product_category AS pc ON p.category_id = pc.id JOIN electronic_shop.discount AS d ON p.discount_id = d.id LEFT JOIN electronic_shop.product_images AS pi ON p.id = pi.product_id AND pi.isMain = true LEFT JOIN electronic_shop.ratings AS r ON p.id = r.product_id WHERE  ss.id =  ?",
+      "SELECT ci.id AS cart_item_id,p.id AS product_id, p.slug, p.product_name, p.description AS description, pc.name AS category_name, d.percentage, p.price, p.quantity, p.color, p.size, p.justIn, pi.image_path AS main_image, r.rating, r.reviews FROM electronic_shop.cart_item AS ci JOIN electronic_shop.shopping_session AS ss ON ci.session_id = ss.id JOIN electronic_shop.product AS p ON ci.product_id = p.id JOIN electronic_shop.product_category AS pc ON p.category_id = pc.id JOIN electronic_shop.discount AS d ON p.discount_id = d.id LEFT JOIN electronic_shop.product_images AS pi ON p.id = pi.product_id AND pi.isMain = true LEFT JOIN electronic_shop.ratings AS r ON p.id = r.product_id WHERE  ss.id =  ?",
       [userId]
     );
     return rows;

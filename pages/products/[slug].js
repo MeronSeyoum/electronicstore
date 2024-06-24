@@ -31,7 +31,7 @@ const SingleProductPage = () => {
         // Find the selected product
         const filteredProduct = fetchedData.find((item) => item.slug === slug);
         setSelectedProduct(filteredProduct);
-        console.log(JSON.stringify(fetchedData))
+        
       } catch (error) {
         console.error("Error fetching product data:", error);
       }finally{
@@ -53,16 +53,16 @@ const SingleProductPage = () => {
 
   if (selectedProduct) {
   return (
-    <div className="container">
+    <div className="container my-10">
       <SectionNavigation />
 
-      <div className="mb-20">
+      <div className="mb-10">
         <SectionProductHeader
           productId={pathOr(0,["id"],selectedProduct)}
           productImage={pathOr([], ["main_image"], selectedProduct)}
           productName={pathOr("", ["product_name"], selectedProduct)}
           categoryName={pathOr("", ["category_name"], selectedProduct)}
-          productDesc={pathOr("", ["desc"], selectedProduct)}
+          productDesc={pathOr("", ["description"], selectedProduct)}
           prevPrice={pathOr(0, ["price"], selectedProduct)}
           currentPrice={pathOr(0, ["price"], selectedProduct)}
           rating={pathOr(0, ["rating"], selectedProduct)}
@@ -71,17 +71,19 @@ const SingleProductPage = () => {
         />
       </div>
 
-      <div className="mb-28">
+      <div className="my-6">
         <SectionProductInfo
-          overview={pathOr("", ["desc"], selectedProduct)}
-          // shipment_details={shipment_details}
+          productDesc={pathOr("", ["description"], selectedProduct)}
           ratings={pathOr(0, ["rating"], selectedProduct)}
           reviews={pathOr(0, ["reviews"], selectedProduct)}
         />
       </div>
 
-      <div className="mb-28">
-        <SectionMoreProducts />
+      <div className="mb-6">
+        <SectionMoreProducts
+        // note for customer about product
+        overview={pathOr("", ["description"], selectedProduct)}
+           />
       </div>
     </div>
   );

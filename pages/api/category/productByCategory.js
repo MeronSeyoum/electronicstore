@@ -20,7 +20,7 @@ export default async function handler(req, res) {
                 p.id,
                 p.slug,
                 p.product_name,
-                p.desc,
+                p.description,
                 pc.name AS category_name,
                 d.percentage AS discount_percentage,
                 p.price,

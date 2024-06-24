@@ -56,12 +56,12 @@ const BrandCard = ({
         {products.map((product, index) => (
           <div
             key={index}
-            className="h-[150px] overflow-hidden rounded-lg border p-2 bg-white"
+            className="h-[150px] overflow-hidden rounded-lg border p-2 bg-neutral-200"
           >
             <Image
               src={product}
               alt="product Image"
-              className="h-full w-full object-fit object-bottom "
+              className="h-full w-full object-fit object-bottom rounded-md"
             />
           </div>
         ))}

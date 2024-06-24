@@ -18,7 +18,7 @@ const Page = () => {
 
   const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; // Change this value as per your requirement
+  const itemsPerPage = 15; // Change this value as per your requirement
 
   useEffect(() => {
     if (fetchedData) {
@@ -27,14 +27,13 @@ const Page = () => {
   }, [fetchedData]);
 
   const applyFilters = (filters) => {
-    const { selectedBrands, selectedCategory, selectedSizes, selectedStorages, selectedAvailability, priceRange } = filters;
+    const { selectedBrands, selectedCategory, selectedSizes, selectedStorages, priceRange } = filters;
 
     const data = fetchedData.filter((item) => {
       if (selectedBrands.length > 0 && !selectedBrands.includes(item.brand)) return false;
-      if (selectedCategory !== 'All' && selectedCategory !== item.category) return false;
+      if (selectedCategory !== 'All' && selectedCategory === item.category_id) return false;
       if (selectedSizes.length > 0 && !selectedSizes.includes(item.size)) return false;
       if (selectedStorages.length > 0 && !selectedStorages.includes(item.storage)) return false;
-      if (selectedAvailability.length > 0 && !selectedAvailability.includes(item.availability)) return false;
       if (item.price < priceRange[0] || item.price > priceRange[1]) return false;
       return true;
     });
@@ -65,15 +64,13 @@ const Page = () => {
       </Heading>
 
     </div> 
-    <div className='flex flex-col lg:flex-row'>
-     <div className="pr-2  lg:w-1/5">
-        <SidebarFilter applyFilters={applyFilters} fetchedData={filteredData} />
-      </div>
-      <div className="relative flex-1 z-10  lg:ml-4">
+    <div className='flex flex-col lg:flex-row bg-white p-6'>
+    
+      <div className="relative flex-1 ">
       
-      {categoryId ? (<SearchResultHeader productLength={currentItems.length} />):(<Filter />)}
+      {categoryId ? (<SearchResultHeader productLength={currentItems.length} />):(<Filter applyFilters={applyFilters} fetchedData={fetchedData} />)}
         
-        <div className="grid flex-1 gap-x-3 gap-y-5 grid-cols-2 lg:grid-cols-4">
+        <div className="grid flex-1 gap-x-3 gap-y-8 grid-cols-2 lg:grid-cols-5">
           {currentItems.map((item) => (
             <ProductCard showPrevPrice product={item} key={item.id} />
           ))}
