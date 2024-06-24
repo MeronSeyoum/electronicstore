@@ -60,7 +60,7 @@ const ShippingAddress = () => {
 
   return (
     <div className="">
-      <div className="flex flex-col p-4 sm:flex-row items-center">
+      <div className="flex flex-col pb-4 sm:flex-row items-center">
         <span className="hidden sm:block">
           <TbTruckDelivery className="text-3xl text-primary" />
         </span>

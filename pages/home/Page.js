@@ -63,20 +63,20 @@ const HomePage = () => {
           loading={loading}
         />
       </div>
-      <div className=" lg:mb-8 ">
+      <div className=" lg:mb-6 ">
         <SectionHomeBanner />
       </div>
-      <div className="mb-10">
+      <div className="">
         <SectionProducts
           fetchedData={fetchedData}
           error={error}
           loading={loading}
         />
       </div>
-
+<div className="my-10">
         <SectionBrands />
-  
-      <div className=" mb-4">
+        </div>
+      <div className=" mb-10">
         <FooterBanner />
       </div>
     </div>

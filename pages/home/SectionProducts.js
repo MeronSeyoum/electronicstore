@@ -22,7 +22,7 @@ const SectionProducts = ({ fetchedData, error, loading }) => {
     return <div>Error: {error}</div>;
   }
   return (
-    <section className=" bg-white p-6 rounded-md">
+    <section className=" bg-white p-6 rounded-lg border">
       <Heading isCenter isMain desc={productsSection.description}>
         {productsSection.heading}
       </Heading>

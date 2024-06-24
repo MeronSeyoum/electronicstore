@@ -61,15 +61,15 @@ const OrderSummary = ({
           <div>
             <div className="flex justify-between">
               <div>
-                <h3 className="font-medium text-sm">
+                <h3 className=" text-sm">
                   <Link href={`/products/${slug}`}>{product_name}</Link>
                 </h3>
                 <div className="flex items-center gap-2">
-                  <span className="my-1 text-xs text-neutral-500">
+                  <span className="my-1 text-xs text-gray-500">
                     {category_name}
                   </span>
                   <MdStar className="text-yellow-400" />
-                  <span className="text-xs">{rating}</span>
+                  <span className="text-[10px]">{rating}</span>
                 </div>
                 {/* <span className="my-2 text-xs text-neutral-500">{description}</span> */}
               </div>
@@ -101,7 +101,7 @@ const OrderSummary = ({
     );
   };
   return (
-    <div className=" border border-neutral-300 px-4 py-1  w-full bg-neutral-100 h-full">
+    <div className=" border border-neutral-300 px-4 py-1 mt-10  w-full bg-white ">
       <div className="flex items-end justify-between">
         <h3 className="text-lg font-semibold">Order Summary</h3>
         <span className="text-sm text-primary">({totalQuantity} Items)</span>

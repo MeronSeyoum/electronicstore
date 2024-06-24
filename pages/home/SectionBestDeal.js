@@ -5,7 +5,7 @@ import ProductSlider from 'components/ProductSlider';
 
 const SectionBestDeals = ({ fetchedData, error, loading }) => {
   return (
-    <section className=" overflow-hidden bg-white p-6 rounded-md">
+    <section className=" overflow-hidden bg-white p-6 rounded-lg border">
      
         <div className="items-center justify-between md:flex ">
          <div className="flex flex-col gap-2 ">

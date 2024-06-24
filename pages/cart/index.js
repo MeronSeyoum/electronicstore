@@ -118,9 +118,9 @@ const CartPage = () => {
           </h2>
         </div>
 
-        <hr className="my-10 border-neutral-300 lg:my-4" />
+        <hr className="my-10 border-neutral-300 lg:my-4 " />
 
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row bg-white rounded-lg p-4">
           <div className="w-full divide-y divide-neutral-300  lg:w-[60%] xl:w-[55%]">
             {cart.length === 0 ? (
               <p className="text-center text-sm">
@@ -135,7 +135,7 @@ const CartPage = () => {
           </div>
           <div className="my-10 shrink-0 border-t border-neutral-300 lg:mx-10 lg:my-0 lg:border-l lg:border-t-0 xl:mx-16 2xl:mx-20" />
           <div className="flex-1">
-            <div className="sticky top-28">
+            <div className="sticky top-28 bg-neutral-100 p-4">
               <div className="flex items-end justify-between">
                 <h3 className="text-lg font-semibold">Order Summary</h3>
                 <span className="text-sm text-primary">
@@ -184,7 +184,7 @@ const CartPage = () => {
             </div>
           </div>
         </div>
-        <hr className="my-10 border-neutral-300 xl:my-4" />
+        {/* <hr className="my-10 border-neutral-300 xl:my-4" /> */}
 
       </main>
     </div>

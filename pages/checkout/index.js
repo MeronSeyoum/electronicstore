@@ -39,10 +39,10 @@ const CheckoutPage = () => {
         <div className="flex flex-col  lg:w-3/5 ">
       
           {/* Tabs */}
-          <div className=" text-sm mb-6 border-b-2">
+          <div className=" text-sm mb-0 border-b-2">
             <button
               className={`${
-                activeTab === "ContactInfo" ? "bg-neutral-200 font-semibold border-b-2 border-primary" : ""
+                activeTab === "ContactInfo" ? "bg-white font-semibold border-b-2 border-primary" : ""
               }  py-2 px-6 lg:px-10  text-left`}
               onClick={() => setActiveTab("ContactInfo")}
             >
@@ -50,7 +50,7 @@ const CheckoutPage = () => {
             </button>
             <button
               className={`${
-                activeTab === "ShippingAddress" ? "bg-neutral-200 font-semibold border-b-2 border-primary" : ""
+                activeTab === "ShippingAddress" ? "bg-white font-semibold border-b-2 border-primary" : ""
               } py-2 px-6 lg:px-10   text-left`}
               onClick={() => setActiveTab("ShippingAddress")}
             >
@@ -58,7 +58,7 @@ const CheckoutPage = () => {
             </button>
             <button
               className={`${
-                activeTab === "PaymentMethod" ? "bg-neutral-200 font-semibold border-b-2 border-primary" : ""
+                activeTab === "PaymentMethod" ? "bg-white font-semibold border-b-2 border-primary" : ""
               } py-2 px-6 lg:px-10   text-left`}
               onClick={() => setActiveTab("PaymentMethod")}
             >
@@ -66,7 +66,7 @@ const CheckoutPage = () => {
             </button>
           </div>
           {/* Render active tab content */}
-          <div className="">{renderTabContent()}</div>
+          <div className=" bg-white p-4">{renderTabContent()}</div>
         </div>
         {/* Order summary */}
         <div className="lg:w-2/5 lg:ml-6 ">

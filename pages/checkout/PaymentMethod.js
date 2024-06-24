@@ -134,7 +134,7 @@ const PaymentMethod = () => {
 
   return (
     <div className=" ">
-      <div className="flex flex-col items-start py-4 sm:flex-row">
+      <div className="flex flex-col items-start pb-4 sm:flex-row">
         <span className="hidden sm:block">
           <MdOutlineCreditScore className="text-3xl text-primary" />
         </span>
