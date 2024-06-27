@@ -12,26 +12,23 @@ export default async function handler(req, res) {
 
   try {
     const connectionParams = serverRuntimeConfig.dbConfig;
-
     const connection = await mysql.createConnection(connectionParams);
 
     // Base query to fetch data
     let query = `
-            SELECT p.id, p.slug, p.product_name, p.description, 
-                   pc.name AS category_name,  
-                   d.percentage, 
-                   p.price, p.quantity, p.color, p.size, p.justIn, 
-                   GROUP_CONCAT(pi.image_path) AS main_image,
-                   r.rating,
-                   r.reviews
-            FROM electronic_shop.product AS p
-            JOIN electronic_shop.product_category AS pc ON p.category_id = pc.id
-            JOIN electronic_shop.discount AS d ON p.discount_id = d.id
-            LEFT JOIN electronic_shop.product_images AS pi ON p.id = pi.product_id
-            LEFT JOIN electronic_shop.ratings AS r ON p.id = r.product_id
-            GROUP BY p.id, p.slug, p.product_name, p.description, pc.name, d.percentage, 
-            p.price, p.quantity, p.color, p.size, p.justIn, r.rating, r.reviews;
-        `;
+      SELECT p.id, p.slug, p.product_name, p.description, 
+             pc.name AS category_name,  
+             d.percentage, 
+             p.price, p.quantity, p.color, p.size, p.justIn, 
+             GROUP_CONCAT(pi.image_path) AS main_image,
+             r.rating,
+             r.reviews
+      FROM electronic_shop.product AS p
+      JOIN electronic_shop.product_category AS pc ON p.category_id = pc.id
+      JOIN electronic_shop.discount AS d ON p.discount_id = d.id
+      LEFT JOIN electronic_shop.product_images AS pi ON p.id = pi.product_id
+      LEFT JOIN electronic_shop.ratings AS r ON p.id = r.product_id
+    `;
 
     // Array to hold query parameters
     let values = [];
@@ -41,6 +38,12 @@ export default async function handler(req, res) {
       query += ` WHERE p.product_name LIKE ?`;
       values.push(`%${q}%`);
     }
+
+    // Append GROUP BY clause after WHERE clause
+    query += `
+      GROUP BY p.id, p.slug, p.product_name, p.description, pc.name, d.percentage, 
+               p.price, p.quantity, p.color, p.size, p.justIn, r.rating, r.reviews
+    `;
 
     // Execute the query and retrieve the results
     const [results] = await connection.execute(query, values);

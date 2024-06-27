@@ -22,7 +22,7 @@ const SectionProducts = ({ fetchedData, error, loading }) => {
     return <div>Error: {error}</div>;
   }
   return (
-    <section className=" bg-white p-6 rounded-lg border">
+    <section className=" lg:bg-white lg:p-4 lg:rounded-lg lg:border">
       <Heading isCenter isMain desc={productsSection.description}>
         {productsSection.heading}
       </Heading>
@@ -30,8 +30,8 @@ const SectionProducts = ({ fetchedData, error, loading }) => {
 
       <div className="flex flex-col gap-2 mb-4 ">
         <h3 className="text-xl font-bold ">Best Selling Products</h3>
-        <hr className="bg-gray-400  h-[0.5px] justify-start" />
-        <hr className="bg-primary  w-52 h-[4px] justify-start -mt-3" />
+        {/* <hr className="bg-gray-400  h-[0.5px] justify-start" /> */}
+        <hr className="bg-primary  w-52 h-[4px] justify-start -mt-1" />
       </div>
       <div className="grid gap-x-6 gap-y-8  grid-cols-2 lg:grid-cols-5 ">
         {data.map((product) => (

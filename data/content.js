@@ -107,7 +107,7 @@ export const headerSection =
  };
 
 export const promotionTag = {
-  heading: "MacBook Pro With Smart Phone",
+  heading: "New Samsung Ultra 24 With Smart Pen",
   description:
     "Join the Smartphone Accessory Sale 2023 on October 23rd. We have exciting deals and activities supported by leading brands!",
     BannerImage: subBanner2,
@@ -630,9 +630,10 @@ export const brandsSection = {
 };
 
 export const footerBannerData = {
-  heading: "BRINGING YOU TO UPDATE WITH FANTASTIC HEADSET",
+  heading: "Bringing You to Update with Fantastic Wireless Earbuds",
   description:
-    "View all brands of our collection on Electronic shop, there is another collection. Please check it out bro, like seriously",
+  "", 
+  // "View all brands of our collection on Electronic shop, there is another collection. Please check it out bro, like seriously",
 };
 
 export const footerData = {

@@ -64,11 +64,13 @@ const Page = () => {
       </Heading>
 
     </div> 
-    <div className='flex flex-col lg:flex-row bg-white p-6'>
+    <div className='flex flex-col lg:flex-row lg:bg-white lg:p-6'>
     
       <div className="relative flex-1 ">
-      
-      {categoryId ? (<SearchResultHeader productLength={currentItems.length} />):(<Filter applyFilters={applyFilters} fetchedData={fetchedData} />)}
+      {/* :(<Filter applyFilters={applyFilters} fetchedData={fetchedData} />) */}
+
+      { (<SearchResultHeader productLength={currentItems.length} applyFilters={applyFilters} fetchedData={fetchedData}  />)
+            }
         
         <div className="grid flex-1 gap-x-3 gap-y-8 grid-cols-2 lg:grid-cols-5">
           {currentItems.map((item) => (

@@ -40,7 +40,7 @@ const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className='bg-[#f5f5f5] '>
       
           <Header />
           <Suspense fallback={<Loading />}>

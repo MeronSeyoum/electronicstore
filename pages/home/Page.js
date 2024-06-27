@@ -48,38 +48,44 @@ const HomePage = () => {
   const { fetchedData, error, loading } = useDataFetch("/api/product");
 
   return (
-    <div className=" container ">
-      <div className="py-3 ">
-        <SectionCategory />
-      </div>
-        <HeaderSlider slides={slides} autoPlayInterval={5000} />
-      <div className="mt-3">
-        <ServicesSection />
-      </div>
-      <div className="my-12 ">
-        <SectionBestDeals
-          fetchedData={fetchedData}
-          error={error}
-          loading={loading}
-        />
-      </div>
-      <div className=" lg:mb-6 ">
-        <SectionHomeBanner />
-      </div>
-      <div className="">
-        <SectionProducts
-          fetchedData={fetchedData}
-          error={error}
-          loading={loading}
-        />
-      </div>
-<div className="my-10">
-        <SectionBrands />
+    <>
+      <div className=" container ">
+        <div className="lg:py-3 py-2  ">
+          <SectionCategory />
         </div>
-      <div className=" mb-10">
-        <FooterBanner />
       </div>
-    </div>
+      <div className="lg:container ">
+        <HeaderSlider slides={slides} autoPlayInterval={5000} />
+      </div>
+      <div className="container">
+        <div className="mt-3">
+          <ServicesSection />
+        </div>
+        <div className="my-12 ">
+          <SectionBestDeals
+            fetchedData={fetchedData}
+            error={error}
+            loading={loading}
+          />
+        </div>
+        <div className=" mb-6 ">
+          <SectionHomeBanner />
+        </div>
+        <div className="">
+          <SectionProducts
+            fetchedData={fetchedData}
+            error={error}
+            loading={loading}
+          />
+        </div>
+        <div className="my-10">
+          <SectionBrands />
+        </div>
+        <div className=" mb-10">
+          <FooterBanner />
+        </div>
+      </div>
+    </>
   );
 };
 

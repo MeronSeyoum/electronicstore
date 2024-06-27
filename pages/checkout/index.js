@@ -66,7 +66,7 @@ const CheckoutPage = () => {
             </button>
           </div>
           {/* Render active tab content */}
-          <div className=" bg-white p-4">{renderTabContent()}</div>
+          <div className=" bg-white lg:p-4 mt-6 lg:mt-0">{renderTabContent()}</div>
         </div>
         {/* Order summary */}
         <div className="lg:w-2/5 lg:ml-6 ">

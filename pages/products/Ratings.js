@@ -28,12 +28,12 @@ const Ratings = ({ rating, reviews }) => {
   ];
 
   return (
-    <div>
+    <div className='lg:basis-[50%]'>
       <Heading className="">Ratings</Heading>
 
-      <div className="flex items-center gap-5 bg-white p-4 rounded-md">
+      <div className="flex items-center gap-5 bg-white p-7 rounded-md">
         <div className="space-y-1">
-          <p className="text-[70px] font-semibold md:text-[100px]">
+          <p className="lg:text-[101px] font-semibold text-[70px]">
             {rating}
             <span className="text-base text-secondary">/5</span>
           </p>

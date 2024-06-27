@@ -15,7 +15,7 @@ const ImageShowCase = ({ productImage }) => {
             key={index}
             className={`${
               activeImageIndex === index ? "border border-primary rounded-md" : ""
-            } h-20 w-20 overflow-hidden border rounded-md p-1`}
+            } h-20 lg:w-20 w-16 overflow-hidden border rounded-md lg:p-1`}
           >
             <button
               className="h-full w-full"
@@ -34,15 +34,16 @@ const ImageShowCase = ({ productImage }) => {
           </div>
         ))}
       </div>
-      <div className="flex h-[450px] w-[270px] lg:w-[490px] justify-center rounded-lg  bg-neutral-200">
+      <div className="flex h-[450px] w-[255px] lg:w-[490px] justify-center rounded-lg  bg-neutral-200">
         <Image
           src={images[activeImageIndex]}
           alt={`product-image-${activeImageIndex}`}
           height={400}
           width={350}
-          objectFit="cover"
+          objectFit="contain"
+          className="p-2"
         />
-        <LikeButton className="relative -right-5 top-5 p-2 border" />
+        <LikeButton className="lg:relative absolute lg:-right-9 right-8 lg:mt-3 mt-3  p-2 border" />
       </div>
     </div>
   );

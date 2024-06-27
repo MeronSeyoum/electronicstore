@@ -1,20 +1,20 @@
 "use client";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect, useCallback, useMemo } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { MdClose } from "react-icons/md";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import useDataFetch from "hooks/useDataFetch";
 
 const brands = ["All", "Apple", "Samsung", "Motorola", "Accessories"];
 const sizes = ["Small", "Medium", "Large"];
 const storages = ["32GB", "64GB", "128GB", "256GB", "512GB"];
 const PRICE_RANGE = [0, 2000];
+
 const SideBarFilter = ({ applyFilters, fetchedData }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedBrands, setSelectedBrands] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('All'); 
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedSizes, setSelectedSizes] = useState([]);
   const [selectedStorages, setSelectedStorages] = useState([]);
   const [priceRange, setPriceRange] = useState(PRICE_RANGE);
@@ -33,15 +33,15 @@ const SideBarFilter = ({ applyFilters, fetchedData }) => {
     }));
   };
 
-  const handleCategoryChange = (category) => {
+  const handleCategoryChange = useCallback((category) => {
     if (selectedCategory.includes(category)) {
       setSelectedCategory(selectedCategory.filter((cat) => cat !== category));
     } else {
       setSelectedCategory([...selectedCategory, category]);
     }
-  };
+  }, [selectedCategory]);
 
-  const handleApplyFilters = () => {
+  const handleApplyFilters = useCallback(() => {
     applyFilters({
       selectedBrands,
       selectedCategory,
@@ -49,15 +49,19 @@ const SideBarFilter = ({ applyFilters, fetchedData }) => {
       selectedStorages,
       priceRange,
     });
-  };
+  }, [selectedBrands, selectedCategory, selectedSizes, selectedStorages, priceRange, applyFilters]);
 
   const handleOpenMenu = () => setIsVisible(true);
   const handleCloseMenu = () => setIsVisible(false);
 
+  const filteredFetchedData = useMemo(() => {
+    if (!fetchedData) return [];
+    return fetchedData.length > 0 ? fetchedData : [{ id: 0, category_name: 'No categories available' }];
+  }, [fetchedData]);
   return (
     <>
       <button type="button" onClick={handleOpenMenu} className="flex gap-x-3">
-        <span className="text-sm ml-2 ">More Filter</span>
+        <span className="text-sm ml-2">More Filter</span>
       </button>
 
       <Transition appear show={isVisible} as={Fragment}>
@@ -93,14 +97,14 @@ const SideBarFilter = ({ applyFilters, fetchedData }) => {
                           </h3>
                           {openSections.category && (
                             <div className="mb-4">
-                              {fetchedData.map((category) => (
+                              {filteredFetchedData.map((category) => (
                                 <div key={category.id} className="flex items-center mb-2 text-xs">
                                   <input
                                     type="checkbox"
                                     id={category.id}
                                     value={category.category_name}
                                     checked={selectedCategory.includes(category.category_name)}
-                                    onChange={() => handleCategoryChange(category.category_name)} 
+                                    onChange={() => handleCategoryChange(category.category_name)}
                                     className="mr-2"
                                   />
                                   <label htmlFor={category.id}>{category.category_name}</label>

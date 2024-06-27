@@ -12,7 +12,7 @@ const SectionProductInfo = ({
 }) => {
 
   return (
-    <div className="grid gap-16 lg:grid-cols-2 ">
+    <div className="flex lg:flex-row flex-col  ">
       <ProductInfoTab overview={productDesc}  />
       <Ratings rating={ratings} reviews={reviews} />
     </div>

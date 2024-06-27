@@ -39,7 +39,7 @@ const HeaderSlider = ({ slides, autoPlayInterval = 6000 }) => {
 
   return (
     <div
-      className="relative w-full  bg-[#f2eeeb] h-[400px]  lg:h-[380px] border-2 rounded-lg  "
+      className="relative w-full  bg-[#f2eeeb] h-[380px] lg:border-2 rounded-lg"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

@@ -3,7 +3,7 @@ import React from "react";
 
 const SectionCategory = () => {
   return (
-    <section className=" bg-white p-4 rounded-lg border ">
+    <section className=" lg:bg-white lg:py-4 lg:rounded-lg lg:border ">
       <div className="overflow-hidden ">
         <CategorySlider />
       </div>

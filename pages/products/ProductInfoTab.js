@@ -17,7 +17,7 @@ const ProductInfoTab = ({ overview }) => {
     {
       icon: <PiPercentFill className="text-xl text-primary" />,
       title: "Discount",
-      description: "> $100 Disc 10%",
+      description: "More than $100 Discount 10%",
     },
     {
       icon: <FaCalendarAlt className="text-xl text-primary" />,
@@ -36,10 +36,10 @@ const ProductInfoTab = ({ overview }) => {
     },
   ];
   return (
-    <div className="">
-      <Heading className="mb-0">Product Info</Heading>
+    <div className="lg:basis-[45%] lg:mr-20">
+      <Heading className="">Product Info</Heading>
 
-      <div className=" flex items-center gap-2 border-b-2 border-black rounded-t-md bg-white ">
+      <div className=" flex items-center gap-1   ">
         {tabs.map((tab) => (
           <button
             type="button"
@@ -47,8 +47,8 @@ const ProductInfoTab = ({ overview }) => {
             onClick={() => setActiveTab(tab)}
             className={`p-3 rounded-t-md font-semibold text-sm ${
               activeTab === tab
-                ? "bg-primary text-white border-b-2 border-black"
-                : " bg-neutral-200 border-2 border-white"
+                ? "bg-primary text-white "
+                : " bg-neutral-300"
             }`}
           >
             {tab}
@@ -59,21 +59,21 @@ const ProductInfoTab = ({ overview }) => {
       {tabs.map((tab) => (
         <div
           key={tab}
-          className={`p-6 h-40  rounded-b-md -mt-[0.5px] bg-white ${
+          className={`p-6   rounded-b-md h-48 bg-white ${
             activeTab === tab ? "block" : "hidden"
           }`}
         >
           {activeTab === "Overview" ? (
             <p className="product-desc">{overview}</p>
           ) : (
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid lg:gap-10 gap-4 my-3 grid-cols-2 ">
               {shipment_details.map((detail) => (
-                <div key={detail.title} className="flex items-center gap-2">
-                  <ButtonCircle3 size="w-10 h-10" className="bg-neutral-300">
+                <div key={detail.title} className="flex items-center  ">
+                  <ButtonCircle3 size="w-10 h-10 mr-3" className="bg-neutral-300">
                     {detail.icon}
                   </ButtonCircle3>
 
-                  <div>
+                  <div className="">
                     <p className="text-sm font-medium text-gray-500">
                       {detail.title}
                     </p>

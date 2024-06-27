@@ -1,7 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Import Google Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Tailwind CSS */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global Styles */
+
 * {
     font-family: 'Inter', sans-serif;
 }
@@ -11,12 +19,14 @@ body {
     color: black;
 }
 
+
+/* Custom Classes */
+
 .bg-primary {
-    /* background-color: #ef4444 !important; */
     background-color: #ef4444 !important;
 }
 
-.hover\:text-primary {
+.hover\:text-primary:hover {
     color: #ef4444 !important;
 }
 
@@ -33,7 +43,7 @@ body {
 }
 
 .subscribe {
-    background-color: #54545473;
+    background-color: rgba(84, 84, 84, 0.451) !important;
     height: 200px !important;
 }
 
@@ -69,11 +79,8 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Three columns with equal width */
     grid-template-rows: auto auto;
-    /* Automatically sized rows */
     gap: 10px;
-    /* Gap between grid items */
     margin-left: 100px !important;
 }
 
@@ -90,7 +97,6 @@ body {
 }
 
 .counter {
-    /* font-smoothing: subpixel-antialiased; */
     background-color: #ef4444;
     border-radius: 50%;
     color: black;
@@ -112,9 +118,7 @@ body {
 
 .disabled {
     background-color: #e0e0e0 !important;
-    /* Change background color for disabled state */
     cursor: not-allowed;
-    /* Change cursor style for disabled state */
     color: #000;
 }
 
@@ -128,26 +132,7 @@ body {
     letter-spacing: -0.5px;
     text-align: left;
     color: #4a5157;
-    display: block;
 }
-
-
-/* .header-banner-title {
-    text-transform: capitalize;
-    color: rgb(51, 51, 51);
-    white-space: wrap;
-    text-align: left;
-    font-size: 2.2rem;
-    line-height: 52px;
-    letter-spacing: 0px;
-    font-weight: 500;
-    backdrop-filter: none;
-    filter: none;
-    transform-origin: 50% 50%;
-    opacity: 1;
-    transform: translate(0px, 0px);
-    visibility: visible;
-} */
 
 .header-banner-content {
     max-width: 500px !important;
@@ -165,8 +150,7 @@ body {
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
-    /* text-align: center; */
-    margin: 10px 0px 0px 0px;
+    margin: 10px 0;
     float: left;
     width: 100%;
 }
@@ -181,25 +165,21 @@ body {
     color: #000;
     font-weight: normal;
     padding: 0 5px;
-    line-height: 24px;
 }
 
 .product-info {
     position: relative;
-    /* Ensure position is relative for the ::before pseudo-element positioning */
-    background: #ef444422;
+    background: rgba(239, 68, 68, 0.13);
     color: #5e7f96;
-    border: 1px solid #ef444439;
+    border: 1px solid rgba(239, 68, 68, 0.57);
     border-top: 2px solid #ef4444;
     clear: both;
     font-size: 13px;
     padding: 1em;
     padding-left: 40px;
-    /* Add some padding for better readability */
 }
 
 .product-info::before {
-    background-color: #ef4444;
     content: "i";
     font-family: Times, Georgia, serif;
     font-style: italic;
@@ -214,28 +194,35 @@ body {
     text-align: center;
     color: #fff;
     padding-top: .9em;
-    /* Adjust padding to center the content vertically */
 }
 
-@media (min-width: 640px) {
+
+/* Media Queries */
+
+@media screen and (max-width: 480px) {
     .container {
         max-width: 640px;
     }
-}
-
-@media (min-width: 768px) {
-    .container {
-        max-width: 768px;
+    body {
+        background-color: #ffffff;
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        max-width: 768px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
     .container {
         max-width: 1024px;
     }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1280px) and (max-width: 1535px) {
     .container {
         max-width: 1280px;
         padding-right: 40px;
@@ -251,6 +238,9 @@ body {
     }
 }
 
+
+/* Other Styles */
+
 html {
     scroll-behavior: smooth;
 }
@@ -264,7 +254,6 @@ html {
 }
 
 .loader .circle {
-    --color: #fd5545;
     --dim: 1.2rem;
     width: var(--dim);
     height: var(--dim);
@@ -319,16 +308,11 @@ html {
     display: none;
 }
 
-
-/* Hide scrollbar for IE, Edge and Firefox */
-
 .hiddenScrollbar {
     -ms-overflow-style: none;
-    /* IE and Edge */
     scrollbar-width: none;
-    /* Firefox */
 }
 
-.hover:text-primary {
+.hover\:text-primary {
     color: #ef4444 !important;
 }

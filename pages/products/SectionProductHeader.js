@@ -40,7 +40,7 @@ const SectionProductHeader = ({
   return (
     <div className="items-stretch justify-between space-y-10 lg:flex lg:space-y-0 ">
       
-      <div className="lg:basis-[45%] bg-white p-4 rounded-md">
+      <div className="lg:basis-[45%] lg:bg-white lg:p-4 rounded-lg border shadow-md">
         <ImageShowCase productImage={productImage} />
       </div>
 

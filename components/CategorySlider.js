@@ -10,6 +10,7 @@ const CategorySlider = () => {
   const windowWidth = useWindowSize().width;
  
   const { fetchedData, error, loading } = useDataFetch("/api/category");
+  
   const [numberOfItems, setNumberOfItem] = useState(12);
  useEffect(() => {
 const itemPerRow = 12;
@@ -36,7 +37,6 @@ const itemPerRow = 12;
     return <div>Error: {error}</div>;
   }
   
-
 //  const data = fetchedData ? fetchedData.slice(10, 34) : [];
   return (
     <div className="-ml-3">
