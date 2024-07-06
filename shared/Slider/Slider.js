@@ -14,7 +14,7 @@ export default function Slider({
   data,
   category,
   renderItem = () => <div />,
-  arrowBtnClass = "top-1/2 -translate-y-1/2 bg-primary text-white",
+  arrowBtnClass = "top-1/2 -translate-y-1/2  text-whit",
   renderSectionHeading,
   hideNextPrev = false,
 }) {
@@ -99,7 +99,7 @@ export default function Slider({
               <AnimatePresence initial={false} custom={direction}>
                 {data.map((item, indx) => (
                   <motion.li
-                    className="relative inline-block shrink-0 whitespace-normal px-2"
+                    className="relative inline-block shrink-0 whitespace-normal pr-3"
                     custom={direction}
                     initial={{
                       x: `${currentIndex * -100}%`,
@@ -129,7 +129,7 @@ export default function Slider({
           {data.length > currentIndex + numberOfItems && !hideNextPrev && !category &&(
             <NextBtn
               onClick={() => changeItemId(currentIndex + 1)}
-              className={`absolute -right-3 z-[1] h-9 w-9 bg-white text-lg xl:-right-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}
+              className={`absolute -right-3 z-[1] h-9 w-9 bg-red-500  text-lg xl:-right-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}
             />
           )}
         </div>

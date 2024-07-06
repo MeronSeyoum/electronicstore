@@ -33,7 +33,7 @@ const SectionBrands = () => {
   };
 
   return (
-    <section className="lg:bg-white lg:p-4 lg:rounded-lg lg:border">
+    <section className="lg:bg-white lg:p-4 lg:rounded-md lg:border">
       <Heading desc={brandsSection.description} isCenter isMain>
         {brandsSection.heading}
       </Heading>
@@ -46,9 +46,7 @@ const SectionBrands = () => {
           <BrandCard key={brand.brandName} {...brand} />
         ))}
       </div>
-      <div className="mt-10 flex items-center justify-center">
-        {/* Add your view more button or link */}
-      </div>
+     
     </section>
   );
 };

@@ -30,7 +30,7 @@ const SectionCmsBannerThree = () => {
   return (
     <section className="flex flex-wrap lg:flex-row flex-col mb-10 gap-5">
       {banners.map((banner) => (
-        <div key={banner.id} className="w-[32.3%]">
+        <div key={banner.id} className="lg:w-[32.3%]">
           <div className="relative rounded-md overflow-hidden">
             <Image 
               src={banner.image}
@@ -40,10 +40,10 @@ const SectionCmsBannerThree = () => {
               className="object-cover rounded-md"
             />
             <div className="absolute inset-0 bg-black bg-opacity-20 flex flex-col justify-center
-             px-8  ">
-              <div className='flex gap-3 flex-col w-[60%]'>
+             lg:px-8 px-4  ">
+              <div className='flex lg:gap-3 gap-2 flex-col lg:w-[60%]'>
 
-              <h2 className="text-2xl font-semibold text-white">{banner.title}</h2>
+              <h2 className="lg:text-2xl text-lg font-semibold text-white">{banner.title}</h2>
               <span className="text-sm text-white">From &nbsp;
               <span className={`font-semibold text-2xl text-primary-light ${banner.color}`}>{ banner.price}</span></span>
               <div className="mt-4">

@@ -107,6 +107,8 @@ export const headerSection =
  };
 
 export const promotionTag = {
+  title: "NEW ARRIVAL!",
+
   heading: "New Samsung Ultra 24 With Smart Pen",
   description:
     "Join the Smartphone Accessory Sale 2023 on October 23rd. We have exciting deals and activities supported by leading brands!",

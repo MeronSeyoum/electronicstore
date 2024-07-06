@@ -59,14 +59,14 @@ const HomePage = () => {
         <div className="mt-3">
           <ServicesSection />
         </div>
-        <div className="my-12 ">
+        <div className="my-10 ">
           <SectionBestDeals
             fetchedData={fetchedData}
             error={error}
             loading={loading}
           />
         </div>
-        <div className=" mb-6 ">
+        <div className=" mb-10 ">
           <SectionHomeBanner />
         </div>
         <div className="">
@@ -79,7 +79,9 @@ const HomePage = () => {
         <div className="my-10">
           <SectionBrands />
         </div>
+        <div className="">
         <SectionCmsBannerThree />
+        </div>
         <div className="mb-10">
           <SectionBestProducts
             fetchedData={fetchedData}

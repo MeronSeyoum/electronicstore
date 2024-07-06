@@ -46,7 +46,7 @@ const SectionBestProducts = ({ fetchedData, error, loading }) => {
 
       <div className="mt-10 flex items-center justify-center">
       <Link href={`/productsCollection`}>
-        <ButtonSecondary className=" bg-black text-white px-5 ">
+        <ButtonSecondary className=" bg-primary text-white px-5 ">
           View More
         </ButtonSecondary>
         </Link>

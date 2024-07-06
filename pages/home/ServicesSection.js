@@ -27,10 +27,10 @@ const ServicesSection = () => {
   return (
     <section className="services-section lg:bg-white  lg:rounded-lg lg:border">
       <div className=" mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-6 gap-x-3 lg:gap- lg:divide-x divide-neutral-300  lg:p-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4  lg:gap- lg:divide-x divide-neutral-300  lg:p-6">
           {services.map((service, index) => (
-            <div key={index} className="flex lg:flex-row flex-col lg:items-end items-center  lg:justify-evenly ">
-             <div className='flex flex-row items-center gap-5'>
+            <div key={index} className="flex lg:flex-row flex-col lg:border-0 border  lg:py-0 py-3 lg:items-end items-center  lg:justify-evenly ">
+             <div className='flex flex-row items-center gap-2 lg:gap-5'>
               <span className=" lg:text-4xl text-2xl mb-0  text-primary-light ">
                 {<service.icon />}
               </span>

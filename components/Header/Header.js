@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className="nc-Header relative z-50 w-full border-b border-neutral-300 ">
       <TopNav />
-      <div className="sticky top-0 bg-white ">
+      <div className="sticky top-8 bg-white ">
         {showMobileSearchBar ? (
          
           <NavMobileSearchBar onBackClick={toggleMobileSearchBar} />
