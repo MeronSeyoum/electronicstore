@@ -18,7 +18,7 @@ const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
     >
       <div className="h-[240px] w-full overflow-hidden rounded-base lg:h-[200px] 2xl:h-[300px] relative">
         {product.justIn === 1 && (
-          <div className="absolute left-2 top-2 rounded-b-lg bg-black px-3 py-1 text-xs font-semibold text-white shadow-md">
+          <div className="absolute left-2 top-2 rounded-b-lg bg-primary-light px-3 py-1 text-xs font-semibold text-white shadow-md">
             Just In!
           </div>
         )}
@@ -27,7 +27,7 @@ const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
             <Image
               src={mainImage}
               alt={`${product.product_name} cover photo`}
-              className="h-full w-full hover:bg-neutral-100 lg:p-8 p-4 bg-neutral-100"
+              className="h-full w-full hover:bg-neutral-light lg:p-8 p-4 bg-neutral-light"
               loading="lazy"
               sizes="(max-width: 300px) 100vw, 300px"
               width={300}
@@ -45,13 +45,13 @@ const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
 
       <div className="text-sm space-y-0 py-2">
         <div className="flex flex-col items-start justify-between space-y-1">
-          <h2 className="font-semibold lg:w-60 break-words">
+          <h4 className="font-semibold text-[13px] lg:w-60 break-words">
             {product.product_name}
-          </h2>
-          <p className="text-xs text-neutral-500">{product.category_name}</p>
+          </h4>
+          <p className="text-[11px] text-neutral-500">{product.category_name}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="font-semibold">
+          <p className="font-semibold text-primary-light">
             ${parseFloat(product.price).toFixed(2)}
           </p>
           <AddToCart productId={product.id} className="px-3 py-1.5" title='Add' />

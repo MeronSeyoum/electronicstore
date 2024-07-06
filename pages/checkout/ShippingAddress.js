@@ -83,7 +83,7 @@ const ShippingAddress = () => {
               <Input
                 rounded="rounded"
                 sizeClass="h-9 px-3 py-3"
-                className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-100 focus:border-primary"
+                className="border-neutral-300 bg-neutral-light placeholder:text-neutral-100 focus:border-primary"
                 value={first_name}
                 onChange={(e) => setFirst_name(e.target.value)}
                 type="text"
@@ -95,7 +95,7 @@ const ShippingAddress = () => {
               <Input
                 rounded="rounded-sm"
                 sizeClass="h-9 px-3 py-3"
-                className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-100 focus:border-primary"
+                className="border-neutral-300 bg-neutral-light placeholder:text-neutral-100 focus:border-primary"
                 value={last_name}
                 onChange={(e) => setLast_name(e.target.value)}
                 type="text"
@@ -109,7 +109,7 @@ const ShippingAddress = () => {
               <Input
                 rounded="rounded-sm"
                 sizeClass="h-9 px-3 py-3"
-                className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                className="border-neutral-300 bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
                 value={address[0]?.address_line1}
                 type="text"
               />
@@ -120,7 +120,7 @@ const ShippingAddress = () => {
               <Input
                 rounded="rounded-sm"
                 sizeClass="h-9 px-3 py-3"
-                className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                className="border-neutral-300 bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
                 value={address[0]?.address_line2}
                 type="text"
               />
@@ -133,7 +133,7 @@ const ShippingAddress = () => {
               <Input
                 rounded="rounded-sm"
                 sizeClass="h-9 px-3 py-3"
-                className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                className="border-neutral-300 bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
                 value={address[0]?.city}
                 type="text"
               />
@@ -143,7 +143,7 @@ const ShippingAddress = () => {
             <FormItem label="Country">
               <Select
                 sizeClass="h-9 px-3 py-1"
-                className="rounded-sm border-neutral-300 border bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                className="rounded-sm border-neutral-300 border bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
               >
                 <option value={address[0]?.country}>{address[0]?.country}</option>
                 <option value="United States">United States</option>
@@ -164,7 +164,7 @@ const ShippingAddress = () => {
               <Input
                 rounded="rounded-sm"
                 sizeClass="h-9 px-3 py-3"
-                className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                className="border-neutral-300 bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
                 value={address[0]?.state}
                 type="text"
               />
@@ -175,7 +175,7 @@ const ShippingAddress = () => {
               <Input
                 rounded="rounded-sm"
                 sizeClass="h-9 px-3 py-3"
-                className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                className="border-neutral-300 bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
                 value={address[0]?.postal_code}
                 type="text"
               />
@@ -204,7 +204,7 @@ const ShippingAddress = () => {
         <ButtonPrimary className="shadow-none sm:!px-7 my-0">
           Save and go to Payment
         </ButtonPrimary>
-        <ButtonSecondary className="my-4 sm:ml-3 sm:mt-0 bg-neutral-300">
+        <ButtonSecondary className="my-4 sm:ml-3 sm:mt-0 bg-neutral-light">
           Cancel
         </ButtonSecondary>
       </div>

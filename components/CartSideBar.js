@@ -155,7 +155,7 @@ const CartSideBar = () => {
                         )}
                       </div>
                     </div>
-                    <div className="absolute bottom-0 left-0 w-full bg-neutral-100 p-4">
+                    <div className="absolute bottom-0 left-0 w-full bg-neutral-light p-4">
                       <p className="flex justify-between">
                         <span>
                           <span className="font-medium">Subtotal</span>

@@ -67,7 +67,7 @@ const SectionProductHeader = ({
         <div className="">
           {/* <span className="font-semibold text-[13px]">Description:</span> */}
           <p className="product-desc">{productDesc}</p>
-          <hr className="mt-4 h-[2px] bg-neutral-300"/>
+          <hr className="mt-4 h-[2px] bg-neutral-light"/>
         </div>
 
 
@@ -92,18 +92,18 @@ const SectionProductHeader = ({
           />
         </div>
         
-        <div className="flex flex-col flex-nowrap  " >
-         <div className="flex flex-row gap-3 lg:mb-2">
+        <div className="flex flex-col flex-nowrap lg:gap-0 gap-2  " >
+         <div className="flex flex-row gap-2 lg:mb-2">
          <span>
-          <InputNumber className="py-2 px-4"/></span>
+          <InputNumber className="py-1.5 px-4"/></span>
            <AddToCart
             productId={productId}
-            className="px-6 py-3 rounded-md border-primary"
+            className="px-7 py-2.5 border border-black rounded-md "
             title="Add To Cart"
           />
        </div>
         <div className="flex flex-grow items-center w-full ">
-          <ButtonSecondary className="border-2 text-white bg-black w-72">
+          <ButtonSecondary className=" text-white bg-red-500 w-72  ">
             Buy Now
           </ButtonSecondary>
          

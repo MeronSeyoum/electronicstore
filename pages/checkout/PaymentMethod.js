@@ -46,7 +46,7 @@ const PaymentMethod = () => {
                   autoComplete="off"
                   rounded="rounded"
                   sizeClass="h-9 px-3 py-3"
-                  className="border-neutral-300 bg-neutral-100  placeholder:text-neutral-500 focus:border-primary"
+                  className="border-neutral-300 bg-neutral-light  placeholder:text-neutral-500 focus:border-primary"
                   type="text"
                 />
               </FormItem>
@@ -57,7 +57,7 @@ const PaymentMethod = () => {
                   autoComplete="off"
                   rounded="rounded"
                   sizeClass="h-9 px-3 py-3"
-                  className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                  className="border-neutral-300 bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
                   type="text"
                 />
               </FormItem>
@@ -69,7 +69,7 @@ const PaymentMethod = () => {
                     autoComplete="off"
                     rounded="rounded"
                     sizeClass="h-9 px-3 py-3"
-                    className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                    className="border-neutral-300 bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
                     placeholder="MM/YY"
                   />
                 </FormItem>
@@ -80,7 +80,7 @@ const PaymentMethod = () => {
                     autoComplete="off"
                     rounded="rounded"
                     sizeClass="h-9 px-3 py-3"
-                    className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                    className="border-neutral-300 bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
                     placeholder="CVC"
                   />
                 </FormItem>
@@ -121,7 +121,7 @@ const PaymentMethod = () => {
                   autoComplete="off"
                   rounded="rounded"
                   sizeClass="h-9 px-3 py-3"
-                  className="border-neutral-300 bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+                  className="border-neutral-300 bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
                   type="text"
                 />
               </FormItem>
@@ -172,7 +172,7 @@ const PaymentMethod = () => {
             Confirm order
           </ButtonPrimary>
           <ButtonSecondary
-            className="ml-3 bg-neutral-300"
+            className="ml-3 bg-neutral-light"
             // onClick={onCloseActive}
           >
             Cancel

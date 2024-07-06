@@ -12,9 +12,9 @@ const SectionProductInfo = ({
 }) => {
 
   return (
-    <div className="flex lg:flex-row flex-col  ">
-      <ProductInfoTab overview={productDesc}  />
-      <Ratings rating={ratings} reviews={reviews} />
+    <div className=" ">
+      <ProductInfoTab overview={productDesc}  rating={ratings} reviews={reviews} />
+      {/* <Ratings rating={ratings} reviews={reviews} /> */}
     </div>
   );
 };

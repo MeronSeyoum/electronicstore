@@ -24,7 +24,7 @@ const Filter = ({ applyFilters, fetchedData}) => {
         ))}
       </div>
 
-      <div className="hidden h-5 w-px bg-neutral-300 md:block " />
+      <div className="hidden h-5 w-px bg-neutral-light md:block " />
 
       <ButtonSecondary className="space-y-1 gap-2 h-9 py-3 border-2 border-black bg-black text-white  ">
       <SideBarFilter  applyFilters={applyFilters} fetchedData={fetchedData} />

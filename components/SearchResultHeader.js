@@ -12,7 +12,7 @@ const SearchResultHeader = ({ productLength , applyFilters, fetchedData}) => {
   const handleStoreOnlyToggle = () => setStoreOnly(!storeOnly);
 
   return (
-    <section className="mx-auto mb-3 lg:p-3 py-3 bg-neutral-200 ">
+    <section className="mx-auto mb-3 lg:p-3 py-3 bg-neutral-light ">
       <div className="flex justify-between items-center text-sm lg:flex-row flex-col">
         <div className="">{productLength} results</div>
         <div className="flex items-center lg:space-x-4  lg:space-y-0 space-y-2 ">

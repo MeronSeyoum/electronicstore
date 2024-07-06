@@ -8,7 +8,7 @@ const CountDownTimer = () => {
   const timeLeft = useCountDownTime();
 
   return (
-    <div className="inline-flex rounded-lg bg-black mx-9 px-3 py-2 text-xs text-white">
+    <div className="inline-flex rounded-lg bg-black  px-4 py-2 text-xs text-white">
       Ends in : {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
     </div>
   );

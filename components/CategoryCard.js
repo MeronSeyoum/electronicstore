@@ -14,7 +14,7 @@ const CategoryCard = ({ category }) => {
     <div className="flex flex-col justify-center items-center lg:w-[120px] w-[100px]">
       <Link href={`/productsCollection?categoryId=${category.id}`}>
         <div className="flex flex-col justify-center items-center">
-          <div className="relative lg:w-20 lg:h-20 w-16 h-16 rounded-full bg-neutral-200 cursor-pointer">
+          <div className="relative lg:w-20 lg:h-20 w-16 h-16 rounded-full bg-neutral-light cursor-pointer">
             <Image
               src={category.image_url}
               alt={`Image of ${category.category_name}`}

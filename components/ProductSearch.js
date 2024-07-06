@@ -19,7 +19,7 @@ const ProductSearch = () => {
     <div className='flex flex-grow gap-x-3'>
       <Input
         type="text"
-        className="border-white rounded-md bg-neutral-200 placeholder:text-neutral-500 focus:border-transparent mx-0"
+        className="border-white rounded-md bg-neutral-light placeholder:text-neutral-500 focus:border-transparent mx-0"
         placeholder="Search ..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}

@@ -8,7 +8,7 @@ const Select = ({
 }) => {
   return (
     <select
-      className={`nc-Select ${sizeClass} ${className} block w-full rounded-full border bg-neutral-100 text-sm
+      className={`nc-Select ${sizeClass} ${className} block w-full rounded-full border bg-neutral-light text-sm
        focus:border-transparent focus:ring focus:ring-transparent focus:ring-opacity-50`}
       {...args}
     >

@@ -72,7 +72,7 @@ function Login() {
                 </ButtonSecondary>
               </div>
               <div className="relative text-center">
-                <span className="relative z-10 inline-block rounded-full bg-neutral-300 px-4 text-sm font-medium ">
+                <span className="relative z-10 inline-block rounded-full bg-neutral-light px-4 text-sm font-medium ">
                   OR
                 </span>
                 <div className="absolute left-0 top-1/2 w-full -translate-y-1/2 border border-neutral-300" />

@@ -64,7 +64,7 @@ function Register() {
                 </ButtonSecondary>
               </div>
               <div className="relative text-center">
-                <span className="relative z-10 inline-block rounded-full  px-4 text-sm font-medium  bg-neutral-300">
+                <span className="relative z-10 inline-block rounded-full  px-4 text-sm font-medium  bg-neutral-light">
                   OR
                 </span>
                 <div className="absolute left-0 top-1/2 w-full -translate-y-1/2 border border-neutral-300" />

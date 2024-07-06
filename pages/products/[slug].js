@@ -77,6 +77,7 @@ const SingleProductPage = () => {
           ratings={pathOr(0, ["rating"], selectedProduct)}
           reviews={pathOr(0, ["reviews"], selectedProduct)}
         />
+        
       </div>
 
       <div className="mb-6">

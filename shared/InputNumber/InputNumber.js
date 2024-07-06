@@ -43,6 +43,19 @@ const InputNumber = ({
       <div className="nc-NcInputNumber__content flex justify-between sm:w-28">
        <div className={ `${className} flex flex-row items-center bg-white border border-neutral-300 rounded-md `}> 
        
+      
+      
+         <button
+          className="flex h-7 w-7 items-center justify-center  text-xl "
+          type="button"
+          onClick={handleClickDecrement}
+          disabled={min >= value}
+        >
+          -
+        </button>
+
+  <span className="block flex-1 select-none text-center leading-none mx-3  ">{value}</span>
+     
         <button
           className="flex h-7 w-7 items-center justify-center 
           text-xl"
@@ -51,16 +64,6 @@ const InputNumber = ({
           disabled={max ? max <= value : false}
         >
           +
-        </button>
-        <span className="block flex-1 select-none text-center leading-none mx-3  ">{value}</span>
-     
-         <button
-          className="flex h-7 w-7 items-center justify-center  text-xl "
-          type="button"
-          onClick={handleClickDecrement}
-          disabled={min >= value}
-        >
-          -
         </button>
       </div>
     </div>

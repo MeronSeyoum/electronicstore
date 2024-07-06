@@ -52,7 +52,7 @@ const ContactInfo = () => {
             <Input
               rounded="rounded-lg"
               sizeClass="h-9 px-4 py-3"
-              className="border-neutral-300  bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+              className="border-neutral-300  bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
                 type="tel"
@@ -64,7 +64,7 @@ const ContactInfo = () => {
             <Input
               rounded="rounded-lg"
               sizeClass="h-9 px-4 py-3"
-              className="border-neutral-300  bg-neutral-100 placeholder:text-neutral-500 focus:border-primary"
+              className="border-neutral-300  bg-neutral-light placeholder:text-neutral-500 focus:border-primary"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
@@ -89,7 +89,7 @@ const ContactInfo = () => {
             Save and go to Shipping
           </ButtonPrimary>
           <ButtonSecondary
-            className="my-4 sm:ml-3 sm:mt-0 bg-neutral-300"
+            className="my-4 sm:ml-3 sm:mt-0 bg-neutral-light"
             onClick={() => onCloseActive()}
           >
             Cancel

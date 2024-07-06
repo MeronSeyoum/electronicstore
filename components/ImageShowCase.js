@@ -34,7 +34,7 @@ const ImageShowCase = ({ productImage }) => {
           </div>
         ))}
       </div>
-      <div className="flex h-[450px] w-[255px] lg:w-[490px] justify-center rounded-lg  bg-neutral-200">
+      <div className="flex h-[450px] w-[255px] lg:w-[490px] justify-center rounded-lg  bg-neutral-light">
         <Image
           src={images[activeImageIndex]}
           alt={`product-image-${activeImageIndex}`}

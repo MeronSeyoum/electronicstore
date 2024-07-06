@@ -22,11 +22,13 @@ body {
 
 /* Custom Classes */
 
-.bg-primary {
-    background-color: #ef4444 !important;
-}
 
-.hover\:text-primary:hover {
+/* .bg-primary {
+    background-color: #ef4444 !important;
+} */
+
+
+/* .hover\:text-primary:hover {
     color: #ef4444 !important;
 }
 
@@ -36,9 +38,9 @@ body {
 
 .text-primary {
     color: #ef4444 !important;
-}
+} */
 
-.bg-neutral-200 {
+.bg-neutral-light {
     background-color: rgb(238, 238, 238) !important;
 }
 

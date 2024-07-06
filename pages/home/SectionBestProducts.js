@@ -11,7 +11,7 @@ import Heading from "shared/Heading/Heading";
 import Loading from "../Loading";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 import Link from "next/link";
-const SectionProducts = ({ fetchedData, error, loading }) => {
+const SectionBestProducts = ({ fetchedData, error, loading }) => {
   const data = fetchedData ? fetchedData.slice(0, 10) : [];
 
   if (loading) {
@@ -55,4 +55,4 @@ const SectionProducts = ({ fetchedData, error, loading }) => {
   );
 };
 
-export default SectionProducts;
+export default SectionBestProducts;

@@ -41,7 +41,7 @@ export const HeaderBannerSlider = () => {
             animate={{ opacity: 1, x: 0, y: 0 }} // Animation to full opacity and position
             transition={{ duration: 0.5 }} // Transition duration
           >
-            <div className="basis-[68%] items-center space-y-10 rounded-2xl p-5 md:flex md:space-y-0 bg-neutral-200">
+            <div className="basis-[68%] items-center space-y-10 rounded-2xl p-5 md:flex md:space-y-0 bg-neutral-light">
               <div className="basis-[63%]">
                 <h4 className="mb-5 text-lg font-semibold text-primary text-primary">{section.title}</h4>
                 <h1 className="text-[50px] font-medium tracking-tight uppercase" style={{ lineHeight: '1.2em' }}>{section.heading}</h1>

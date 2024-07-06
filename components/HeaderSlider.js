@@ -74,7 +74,7 @@ const HeaderSlider = ({ slides, autoPlayInterval = 6000 }) => {
                 {slides[currentSlide].text}
               </h1>
               <h3 className="text-lg md:text-xl lg:text-2xl text-primary font-medium">
-                <span className="text-black">From </span> {slides[currentSlide].price}
+                <span className="text-black text-lg">From </span> {slides[currentSlide].price}
               </h3>
               <ButtonPrimary onClick={nextSlide} className="w-32  lg:w-36">
                 Shop Now

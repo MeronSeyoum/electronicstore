@@ -3,7 +3,8 @@ import React from "react";
 import SectionBestDeals from "./SectionBestDeal";
 import SectionBrands from "./SectionBrands";
 import SectionHomeBanner from "./SectionHomeBanner";
-import SectionProducts from "./SectionProducts";
+import SectionBestProducts from "./SectionBestProducts";
+import SectionNewProducts from "./SectionNewProducts.js";
 import HeaderSlider from "components/HeaderSlider";
 import SectionCategory from "./SectionCategory";
 import ServicesSection from "pages/home/ServicesSection";
@@ -13,6 +14,7 @@ import mainBanner1 from "images/main-banner-1.jpg";
 import mainBanner2 from "images/main-banner-2.jpg";
 import mainBanner3 from "images/main-banner-3.jpg";
 import FooterBanner from "shared/Footer/FooterBanner";
+import SectionCmsBannerThree from "./SectionCmsBannerThree";
 
 const slides = [
   {
@@ -53,11 +55,7 @@ const HomePage = () => {
         <div className="lg:py-3 py-2  ">
           <SectionCategory />
         </div>
-      </div>
-      <div className="lg:container ">
         <HeaderSlider slides={slides} autoPlayInterval={5000} />
-      </div>
-      <div className="container">
         <div className="mt-3">
           <ServicesSection />
         </div>
@@ -72,7 +70,7 @@ const HomePage = () => {
           <SectionHomeBanner />
         </div>
         <div className="">
-          <SectionProducts
+          <SectionNewProducts
             fetchedData={fetchedData}
             error={error}
             loading={loading}
@@ -80,6 +78,14 @@ const HomePage = () => {
         </div>
         <div className="my-10">
           <SectionBrands />
+        </div>
+        <SectionCmsBannerThree />
+        <div className="mb-10">
+          <SectionBestProducts
+            fetchedData={fetchedData}
+            error={error}
+            loading={loading}
+          />
         </div>
         <div className=" mb-10">
           <FooterBanner />

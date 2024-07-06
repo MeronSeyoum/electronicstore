@@ -55,7 +55,7 @@ const AddToCart = ({ productId ,className = '' , title}) => {
   return (
     <div className="justify-end">
       <button
-        className={`bg-primary text-white text-[13px] flex  gap-2 rounded-[3px]
+        className={`bg-black text-white text-[13px] flex  gap-2 rounded-[3px]
          items-center ${className} ${isAdding || isAdded ? 'disabled' : ''}`}
         onClick={handleAddToCart}
         disabled={isAdding || isAdded}

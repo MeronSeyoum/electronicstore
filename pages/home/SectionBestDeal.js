@@ -13,7 +13,7 @@ const SectionBestDeals = ({ fetchedData, error, loading }) => {
          {/* <hr className='bg-black w-screen h-[1px] justify-start'  /> */}
          <hr className='bg-primary  w-42 h-[3px] justify-start -mt-1'  />
          </div>
-         <div className="absolute transform right-8 mb-1 hidden lg:block">
+         <div className="  hidden lg:block">
           <CountDownTimer />
           </div>
         </div>
