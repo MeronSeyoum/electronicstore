@@ -55,7 +55,7 @@ const SectionProductHeader = ({
         />
 
 
-        <div className="flex gap-3 mb-2 items-center font-medium">
+        <div className="flex gap-3 -mt-2 items-center font-medium">
           <h1 className="text-primary text-[20px]">
             ${parseFloat(currentPrice).toFixed(2)}
           </h1>
@@ -66,7 +66,7 @@ const SectionProductHeader = ({
         </div>
         <div className="">
           {/* <span className="font-semibold text-[13px]">Description:</span> */}
-          <p className="product-desc">{productDesc}</p>
+          <p className="pdp-title-extra-info">{productDesc}</p>
           <hr className="mt-4 h-[2px] bg-neutral-light"/>
         </div>
 
@@ -137,9 +137,9 @@ const ProductHeading = ({
       </div>
       <PiSealCheckFill className="text-green-600" />
     </div>
-    <div className="text-xl font-semibold">{productName}</div>
+    <h1 className="product-meta__title">{productName}</h1>
     <div className="">
-      <span className="font-medium text-neutral-500 text-sm">
+      <span className="font-medium text-neutral-500 text-xs">
         {categoryName}
       </span>
     </div>

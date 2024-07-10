@@ -98,6 +98,27 @@ body {
     grid-row: span 2;
 }
 
+.product-meta__title {
+    margin-bottom: -.2rem;
+    font-size: 28px;
+    line-height: normal;
+    letter-spacing: -1.12px;
+    color: #1a2024 !important;
+}
+
+.pdp-title-extra-info {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: -0.48px;
+    text-align: left;
+    color: #4a5157;
+    display: block;
+}
+
 .counter {
     background-color: #ef4444;
     border-radius: 50%;
