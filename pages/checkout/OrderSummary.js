@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import ButtonPrimary from 'shared/Button/ButtonPrimary';
 import Input from 'shared/Input/Input';
 import CartProductCard from 'components/CartProductCard'; // Import CartProductCard component
-import { useCart } from 'context/cartContext'; // Import useCart hook if needed
+import CheckoutButton from './CheckoutButton';
 
 const OrderSummary = ({ cart, totalPrice, totalQuantity}) => {
   const [total, setTotal] = useState(0);
+  const storedSessionId = sessionStorage.getItem('shoppingSession');
 
   const estimatedTaxes = totalPrice * 0.05; // Example tax amount 5%
   const estimatedDeliveryHandling = 0; // Example delivery & handling charge
@@ -66,9 +65,10 @@ const OrderSummary = ({ cart, totalPrice, totalQuantity}) => {
             ${total.toFixed(2)}
           </span>
         </div>
-        <ButtonPrimary className="mt-8 w-full">
+        {/* <ButtonPrimary className="mt-8 w-full">
           Pay ${total.toFixed(2)}
-        </ButtonPrimary>
+        </ButtonPrimary> */}
+        <CheckoutButton sessionId={storedSessionId} total={total} />
       </div>
     </div>
   );

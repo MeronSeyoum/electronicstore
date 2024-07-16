@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback, useMemo } from "react";
+import { createContext, useContext, useState, useEffect, useCallback } from "react";
 
 // Create a context for the cart
 const CartContext = createContext();
@@ -14,7 +14,6 @@ export const CartProvider = ({ children }) => {
   const [userId, setUserId] = useState(3); // State to hold the user ID
   const [session_id, setSession_id] = useState(null); // State to hold the session ID
   const [initialCartFetched, setInitialCartFetched] = useState(false); // Flag to prevent multiple cart fetches
-  const [initialSessionCreate, setInitialSessionCreate] = useState(false); // Flag to prevent multiple cart fetches
 
   /**
    * Function to create a new shopping session.
@@ -22,8 +21,8 @@ export const CartProvider = ({ children }) => {
    * @returns {Promise<string|null>} - The session ID if created successfully, otherwise null.
    */
   const createShoppingSession = useCallback(async (userId) => {
-    const total = 0; // Initial total amount for the shopping session
-    if(!initialSessionCreate){
+    const total = 100; // Initial total amount for the shopping session
+
     try {
       const response = await fetch("/api/shoppingSession/createShoppingSession", {
         method: "POST",
@@ -36,11 +35,9 @@ export const CartProvider = ({ children }) => {
       if (response.ok) {
         const data = await response.json();
         setSession_id(data.sessionId);
-        setInitialSessionCreate(true);
         if (typeof window !== 'undefined') {
           sessionStorage.setItem("shoppingSession", data.sessionId); // Store session ID in session storage
         }
-       
         return data.sessionId;
       } else {
         console.error("Failed to create shopping session:", response.statusText);
@@ -50,18 +47,8 @@ export const CartProvider = ({ children }) => {
       console.error("Error creating shopping session:", error);
       return null;
     }
-  }else{
-    console.error("  shopping session exist:", error);
-
-    return null;
-  }
   }, []);
 
-
-  // TODO
-  // 1. remove multiple calls when fetching product t0 cart
-  
-  
   /**
    * Function to fetch the cart items for a given session ID.
    * @param {string} sessionId - The session ID.
@@ -84,7 +71,6 @@ export const CartProvider = ({ children }) => {
       console.error("Error fetching cart:", error);
     }
   }, []);
-  
 
   // Effect to set userId and session_id when component mounts
   useEffect(() => {
@@ -102,15 +88,9 @@ export const CartProvider = ({ children }) => {
       const storedSessionId = sessionStorage.getItem('shoppingSession');
       if (storedSessionId) {
         setSession_id(storedSessionId);
-      } else {
-        createShoppingSession(userId).then(newSessionId => {
-          if (newSessionId) {
-            setSession_id(newSessionId);
-          }
-        });
       }
     }
-  }, [createShoppingSession, userId]);
+  }, []);
 
   // Effect to fetch the cart when session_id changes and initial cart has not been fetched yet
   useEffect(() => {
@@ -124,8 +104,9 @@ export const CartProvider = ({ children }) => {
    * Function to add a product to the cart.
    * @param {number} productId - The ID of the product to add.
    * @param {number} quantity - The quantity of the product to add.
+   * @param {number} price - The price of the product to add.
    */
-  const addToCart = async (productId, quantity) => {
+  const addToCart = async (productId, quantity, price) => {
     try {
       let currentSessionId = session_id;
       if (!currentSessionId) {
@@ -138,12 +119,12 @@ export const CartProvider = ({ children }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ session_id: currentSessionId, productId, quantity }),
+        body: JSON.stringify({ session_id: currentSessionId, productId, quantity, price }),
       });
 
       if (response.ok) {
         const newCartItem = await response.json();
-      fetchCart(session_id);
+        fetchCart(currentSessionId);
         setCart((prevCart) => [...prevCart, newCartItem]); // Add new item to the cart
       } else {
         console.error("Error adding to cart:", response.statusText);
@@ -153,36 +134,34 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-/**
- * Function to remove a product from the cart.
- * @param {number} cart_item_id - The ID of the product to remove from the cart.
- * @param {string} session_id - The session ID associated with the cart.
- */
-const removeFromCart = async (cart_item_id) => {
-  try {
-    const response = await fetch(`/api/cart/shoppingCartAPI`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ cart_item_id }),
-    });
-    if (response.ok) {
-      // Update the cart state after successful removal
-      const updatedCart = cart.filter((item) => item.product_id !== productId);
-      
-      setCart(updatedCart);
-    } else {
-      console.error("Error removing from cart:", response.statusText);
+  /**
+   * Function to remove a product from the cart.
+   * @param {number} cart_item_id - The ID of the product to remove from the cart.
+   */
+  const removeFromCart = async (cart_item_id) => {
+    try {
+      const response = await fetch(`/api/cart/shoppingCartAPI`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cart_item_id }),
+      });
+      if (response.ok) {
+        // Update the cart state after successful removal
+        const updatedCart = cart.filter((item) => item.cart_item_id !== cart_item_id);
+        setCart(updatedCart);
+      } else {
+        console.error("Error removing from cart:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error removing from cart:", error);
     }
-  } catch (error) {
-    console.error("Error removing from cart:", error);
-  }
-};
+  };
 
   /**
    * Function to update the quantity of a product in the cart.
-   * @param {number} cartItemId - The ID of the cart item to update.
+   * @param {number} cart_item_id - The ID of the cart item to update.
    * @param {number} quantity - The new quantity.
    */
   const updateCartQuantity = async (cart_item_id, quantity) => {
@@ -197,7 +176,7 @@ const removeFromCart = async (cart_item_id) => {
       if (response.ok) {
         setCart((prevCart) =>
           prevCart.map((item) =>
-            item.cart_item_id === cart_item_id ? { ...item, quantity } : item // Corrected variable name
+            item.cart_item_id === cart_item_id ? { ...item, quantity } : item
           )
         ); // Update the quantity of the item in the cart
       } else {
@@ -207,10 +186,22 @@ const removeFromCart = async (cart_item_id) => {
       console.error("Error updating cart quantity:", error);
     }
   };
-  
+
+
+  /**
+   * Function to reset the session ID and cart.
+   */
+  const resetSession = () => {
+    setSession_id(null);
+    setCart([]);
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('shoppingSession');
+    }
+  };
+
+
   // Calculate total price and quantity of the items in the cart
-  
-    const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   // Provide cart context to the children components
@@ -224,6 +215,7 @@ const removeFromCart = async (cart_item_id) => {
         removeFromCart,
         updateCartQuantity,
         fetchCart,
+        resetSession,
       }}
     >
       {children}

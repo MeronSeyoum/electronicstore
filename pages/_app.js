@@ -9,6 +9,37 @@ import Header from "components/Header/Header";
 import Loading from "./Loading";
 import Footer from "shared/Footer/Footer";
 import { CartProvider } from "context/cartContext";
+import Head from "next/head";
+
+
+export const meta_Data = {
+  title: 'Electronic Shop E-commerce Site',
+  icons: [
+    {
+      rel: 'apple-touch-icon',
+      url: '/apple-touch-icon.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      url: '/favicon.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      url: '/favicon.png',
+    },
+    {
+      rel: 'icon',
+      url: '/favicon.ico',
+    },
+  ],
+}
+
+
+
 
 export default App;
 
@@ -76,6 +107,12 @@ function App({ Component, pageProps }) {
 
   return (
     <>
+   <Head>
+        <title>{meta_Data.title}</title>
+        {meta_Data.icons.map((icon, index) => (
+          <link key={index} rel={icon.rel} href={icon.url} type={icon.type} sizes={icon.sizes} />
+        ))}
+      </Head>
       <CartProvider>
       <Header />
       <Suspense fallback={<Loading />}>

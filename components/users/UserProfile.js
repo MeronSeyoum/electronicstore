@@ -11,9 +11,9 @@ import Input from "shared/Input/Input";
 import ShippingAddress from "pages/checkout/ShippingAddress";
 
 // import ShippingAddress from "./ShippingAddress";
-export { AddEdit };
+export { UserProfile };
 
-const AddEdit = (props) => {
+const UserProfile = (props) => {
   const user = props?.user;
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("user");
@@ -105,7 +105,7 @@ const AddEdit = (props) => {
   return (
     <div className="container mx-auto mt-5 mb-5 p-5 bg-white rounded">
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/4 border-r flex flex-col items-center p-5">
+        <div className="md:w-1/5 border-r flex flex-col items-center p-5">
           <img
             className="rounded-full mt-5"
             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
@@ -116,16 +116,16 @@ const AddEdit = (props) => {
           <span className="font-bold mt-3">{userService.userValue?.username}</span>
           <span className="text-gray-500">{userService.userValue?.email}</span>
           </div>
-        <div className="md:w-3/4 p-5">
+        <div className="md:w-3/4 px-12">
           <div className="flex border-b mb-4">
             <button
-              className={`px-4 py-2 ${activeTab === "user" ? "border-b-2 border-purple-700" : ""}`}
+              className={`px-4 py-2 ${activeTab === "user" ? "border-b-2 border-primary" : ""}`}
               onClick={() => setActiveTab("user")}
             >
               User
             </button>
             <button
-              className={`px-4 py-2 ${activeTab === "address" ? "border-b-2 border-purple-700" : ""}`}
+              className={`px-4 py-2 ${activeTab === "address" ? "border-b-2 border-primary" : ""}`}
               onClick={() => setActiveTab("address")}
             >
               Address
@@ -224,7 +224,7 @@ const AddEdit = (props) => {
                       <input
                         type="checkbox"
                         {...register("isActive")}
-                        className="form-checkbox h-5 w-5 text-purple-600"
+                        className="form-checkbox h-5 w-5 text-black"
                       />
                       <span className="ml-2 text-gray-700">Active</span>
                     </div>
@@ -241,7 +241,7 @@ const AddEdit = (props) => {
               <button
                 type="submit"
                 disabled={formState.isSubmitting}
-                className="bg-purple-700 text-white py-2 px-4 rounded hover:bg-purple-800 mr-2"
+                className="bg-black text-white py-2 px-4 rounded hover:bg-primary mr-2"
               >
                 {formState.isSubmitting && (
                   <span className="spinner-border spinner-border-sm mr-1"></span>
@@ -252,12 +252,15 @@ const AddEdit = (props) => {
                 type="button"
                 onClick={() => reset(formOptions.defaultValues)}
                 disabled={formState.isSubmitting}
-                className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 mr-2"
+                className="bg-red-600 text-white py-2 px-4 rounded hover:bg-gray-600 mr-2"
               >
                 Reset
               </button>
-              <Link href="/users" className="text-blue-500 hover:underline">
+              <Link href="/users" >
+              <button
+                type="button" className="bg-neutral-light py-2 px-4 rounded hover:bg-gray-600 mr-2">
                 Cancel
+                </button>
               </Link>
             </div>
           </form>

@@ -1,2 +1,2 @@
-export * from './AddEdit';
+export * from './UserProfile';
 export * from './Layout';

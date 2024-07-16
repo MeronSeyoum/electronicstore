@@ -8,14 +8,14 @@ const ImageShowCase = ({ productImage }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0); // Initialize with the first image
 
   return (
-    <div className="flex flex-row justify-between">
-      <div className="flex flex-col gap-y-3 ">
+    <div className="flex lg:flex-row flex-col-reverse justify-between">
+      <div className="flex lg:flex-col flex-row lg:gap-3 gap-1 lg:m-0 m-1">
         {images.map((image, index) => (
           <div
             key={index}
             className={`${
               activeImageIndex === index ? "border border-primary rounded-md" : ""
-            } h-20 lg:w-20 w-16 overflow-hidden border rounded-md lg:p-1`}
+            } h-20 w-20 overflow-hidden border rounded-md lg:p-1 p-1.5 lg:bg-neutral-50  bg-neutral-light`}
           >
             <button
               className="h-full w-full"
@@ -34,16 +34,17 @@ const ImageShowCase = ({ productImage }) => {
           </div>
         ))}
       </div>
-      <div className="flex h-[450px] w-[255px] lg:w-[490px] justify-center rounded-lg  bg-neutral-light">
+      <div className="flex h-[450px] w-[380px] lg:w-[500px] justify-center lg:rounded-r-lg   bg-neutral-light">
         <Image
           src={images[activeImageIndex]}
           alt={`product-image-${activeImageIndex}`}
           height={400}
-          width={350}
+          width={400}
           objectFit="contain"
           className="p-2"
         />
-        <LikeButton className="lg:relative absolute lg:-right-9 right-8 lg:mt-3 mt-3  p-2 border" />
+        <LikeButton className="lg:relative absolute
+         lg:-right-5 right-8 lg:mt-3 mt-3  p-2 border" />
       </div>
     </div>
   );

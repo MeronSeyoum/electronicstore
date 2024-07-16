@@ -7,7 +7,6 @@ import { PiSealCheckFill } from "react-icons/pi";
 
 import ImageShowCase from "components/ImageShowCase";
 import AddToCart from "components/AddToCart";
-import ButtonPrimary from "shared/Button/ButtonPrimary";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 import Heading from "shared/Heading/Heading";
 import InputNumber from "shared/InputNumber/InputNumber";
@@ -29,22 +28,13 @@ const SectionProductHeader = ({
   rating,
   reviews,
 }) => {
-  const [selectedColor, setSelectedColor] = useState(
-    productAttributes.color[0]
-  );
+  const [selectedColor, setSelectedColor] = useState(productAttributes.color[0]);
   const [selectedRAM, setSelectedRAM] = useState(productAttributes.RAM[0]);
-  const [selectedStorage, setSelectedStorage] = useState(
-    productAttributes.internalStorage[0]
-  );
+  const [selectedStorage, setSelectedStorage] = useState(productAttributes.internalStorage[0]);
 
   return (
-    <div className="items-stretch justify-between space-y-10 lg:flex lg:space-y-0 ">
-      
-      <div className="lg:basis-[45%] lg:bg-white lg:p-4 rounded-lg border shadow-md">
-        <ImageShowCase productImage={productImage} />
-      </div>
-
-      <div className="lg:basis-[50%]">
+    <div className="flex flex-col lg:flex-row items-stretch justify-between ">
+      <div className="lg:hidden">
         <ProductHeading
           productName={productName}
           categoryName={categoryName}
@@ -53,62 +43,61 @@ const SectionProductHeader = ({
           currentPrice={currentPrice}
           prevPrice={prevPrice}
         />
+      </div>
+
+      <div className="lg:basis-[45%] lg:bg-white lg:p-3 rounded-lg border shadow-md">
+        <ImageShowCase productImage={productImage} />
+      </div>
 
 
-        <div className="flex gap-3 -mt-2 items-center font-medium">
-          <h1 className="text-primary text-[20px]">
-            ${parseFloat(currentPrice).toFixed(2)}
-          </h1>
-          <p className="text-neutral-500 line-through text-sm">
-            ${parseFloat(prevPrice).toFixed(2)}
-          </p>
-          <p className="text-green-500 text-sm font-bold">55% Off</p>
+      <div className="lg:basis-[50%] flex flex-col">
+        <div className="hidden lg:block">
+          <ProductHeading
+            productName={productName}
+            categoryName={categoryName}
+            rating={rating}
+            reviews={reviews}
+            currentPrice={currentPrice}
+            prevPrice={prevPrice}
+          />
         </div>
-        <div className="">
-          {/* <span className="font-semibold text-[13px]">Description:</span> */}
-          <p className="pdp-title-extra-info">{productDesc}</p>
-          <hr className="mt-4 h-[2px] bg-neutral-light"/>
-        </div>
 
-
-        <div className="flex lg:flex-row  flex-col justify-between my-5">
+        <div className="flex flex-col lg:flex-row justify-between ">
           <ColorOptions
             colors={productAttributes.color}
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
           />
-
           <SizeOptions
             sizes={productAttributes.RAM}
             selectedSize={selectedRAM}
             setSelectedSize={setSelectedRAM}
             title="RAM"
           />
-
           <StorageOptions
             storageOptions={productAttributes.internalStorage}
             selectedStorage={selectedStorage}
             setSelectedStorage={setSelectedStorage}
           />
         </div>
-        
-        <div className="flex flex-col flex-nowrap lg:gap-0 gap-2  " >
-         <div className="flex flex-row gap-2 lg:mb-2">
-         <span>
-          <InputNumber className="py-1.5 px-4"/></span>
-           <AddToCart
-            productId={productId}
-            className="px-7 py-2.5 border border-black rounded-md "
-            title="Add To Cart"
-          />
-       </div>
-        <div className="flex flex-grow items-center w-full ">
-          <ButtonSecondary className=" text-white bg-red-500 w-72  ">
-            Buy Now
-          </ButtonSecondary>
-         
+
+        <div className="flex flex-col flex-nowrap lg:gap-0 gap-2 mt-4">
+          <div className="flex flex-row gap-2 lg:mb-2">
+            <span>
+              <InputNumber className="py-1.5 px-4" />
+            </span>
+            <AddToCart
+              productId={productId}
+              className="px-7 py-2.5 border border-black rounded-md"
+              title="Add To Cart"
+            />
+          </div>
+          <div className="flex flex-grow items-center w-full">
+            <ButtonSecondary className="text-white bg-red-500 w-72">
+              Buy Now
+            </ButtonSecondary>
+          </div>
         </div>
- </div>
 
         <div className="my-4 flex items-end justify-between">
           <p className="text-sm font-semibold">Available specs:</p>
@@ -121,13 +110,8 @@ const SectionProductHeader = ({
   );
 };
 
-const ProductHeading = ({
-  rating,
-  reviews,
-  productName,
-  categoryName
-}) => (
-  <Heading isMain className="gap-y-3">
+const ProductHeading = ({ rating, reviews, productName, categoryName, currentPrice, prevPrice }) => (
+  <Heading isMain className="lg:pb-0 pb-5">
     <div className="flex flex-row items-center gap-1 mb-1 text-neutral-500 font-normal text-xs">
       <MdStar className="text-yellow-400 text-sm" />
       <div className="flex flex-row gap-3">
@@ -138,16 +122,22 @@ const ProductHeading = ({
       <PiSealCheckFill className="text-green-600" />
     </div>
     <h1 className="product-meta__title">{productName}</h1>
-    <div className="">
-      <span className="font-medium text-neutral-500 text-xs">
-        {categoryName}
-      </span>
+    <span className="font-medium text-neutral-500 text-xs">{categoryName}</span>
+    <div className="flex gap-3  items-center font-medium py-4">
+      <h1 className="text-primary text-2xl">
+        ${parseFloat(currentPrice).toFixed(2)}
+      </h1>
+      <p className="text-neutral-500 line-through text-base">
+        ${parseFloat(prevPrice).toFixed(2)}
+      </p>
+      <p className="text-green-500 text-sm font-bold">55% Off</p>
     </div>
+
   </Heading>
 );
 
 const ColorOptions = ({ colors, selectedColor, setSelectedColor }) => (
-  <div className="mb-4">
+  <div className="">
     <h3 className="text-sm font-medium mb-2">Color: {selectedColor}</h3>
     <div className="flex gap-2">
       {colors.map((color) => (
@@ -158,7 +148,7 @@ const ColorOptions = ({ colors, selectedColor, setSelectedColor }) => (
           onClick={() => setSelectedColor(color)}
         >
           {selectedColor === color && (
-            <div className="w-full h-full rounded-full border-2 border-black" />
+            <div className="w-full h-full rounded-full border border-primary" />
           )}
         </div>
       ))}
@@ -175,9 +165,8 @@ const SizeOptions = ({ sizes, selectedSize, setSelectedSize, title }) => (
       {sizes.map((size) => (
         <button
           key={size}
-          className={`text-xs px-2 py-1 border ${
-            selectedSize === size ? "border-primary" : "border-gray-300"
-          } rounded`}
+          className={`text-xs px-2 py-1 border ${selectedSize === size ? "border-primary" : "border-gray-300"
+            } rounded`}
           onClick={() => setSelectedSize(size)}
         >
           {size}
@@ -187,11 +176,7 @@ const SizeOptions = ({ sizes, selectedSize, setSelectedSize, title }) => (
   </div>
 );
 
-const StorageOptions = ({
-  storageOptions,
-  selectedStorage,
-  setSelectedStorage,
-}) => (
+const StorageOptions = ({ storageOptions, selectedStorage, setSelectedStorage }) => (
   <div className="mb-4">
     <h3 className="text-sm font-medium mb-2">
       Internal Storage: {selectedStorage}
@@ -200,9 +185,8 @@ const StorageOptions = ({
       {storageOptions.map((storage) => (
         <button
           key={storage}
-          className={`text-xs px-2 py-1 border ${
-            selectedStorage === storage ? "border-primary" : "border-gray-300"
-          } rounded`}
+          className={`text-xs px-2 py-1 border ${selectedStorage === storage ? "border-primary" : "border-gray-300"
+            } rounded`}
           onClick={() => setSelectedStorage(storage)}
         >
           {storage}

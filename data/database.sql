@@ -220,6 +220,7 @@ CREATE TABLE electronic_shop.shopping_session (
     id INT(30) NOT NULL AUTO_INCREMENT,
     user_id INT(10) DEFAULT NULL,
     total DECIMAL(10) NOT NULL DEFAULT '0.00',
+    session_status VARCHAR(20) NOT NULL,
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE KEY session_index (id,user_id) USING BTREE,
@@ -237,6 +238,7 @@ CREATE TABLE electronic_shop.cart_item (
     session_id INT(20) NOT NULL,
     product_id INT(20) NOT NULL,
     quantity INT(10) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    

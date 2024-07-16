@@ -35,7 +35,7 @@ import { BiCartAdd  } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { useCart } from "context/cartContext";
 
-const AddToCart = ({ productId ,className = '' , title}) => {
+const AddToCart = ({ productId, price ,className = '' , title}) => {
   const { addToCart } = useCart();
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
@@ -43,7 +43,7 @@ const AddToCart = ({ productId ,className = '' , title}) => {
   const handleAddToCart = async () => {
     setIsAdding(true);
     try {
-      await addToCart(productId, 1);
+      await addToCart(productId, 1, price);
       setIsAdded(true);
     } catch (error) {
       console.error("Error adding to cart:", error);

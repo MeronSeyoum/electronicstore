@@ -1,19 +1,15 @@
-// /pages/api/cart/add.js
-
 import { createConnection } from 'mysql2/promise';
 import getConfig from 'next/config';
 
 const { serverRuntimeConfig } = getConfig();
 
 export default async function handler(req, res) {
-  const { session_id, productId, quantity, cart_item_id } = req.body;
+  const { session_id, productId, quantity, price, cart_item_id } = req.body;
   const sessionId = req.query.session_id; // Assuming session_id is passed in the query parameters
 
   try {
     const connectionParams = serverRuntimeConfig.dbConfig;
     const connection = await createConnection(connectionParams);
-
-
 
     if (req.method === 'GET') {
       // Fetch cart items based on session_id
@@ -52,28 +48,28 @@ export default async function handler(req, res) {
           ss.id = ?`; // Use placeholder for session_id
 
       // Execute the query with the session_id as parameter and retrieve the results
-      const [rows, fields] = await connection.execute(queryString, [sessionId]);
+      const [rows] = await connection.execute(queryString, [sessionId]);
       await connection.end();
 
       // Return the fetched data as JSON response
       return res.status(200).json(rows);
     } else if (req.method === 'POST') {
       // Add item to cart or update quantity
-      const queryString = `INSERT INTO cart_item (session_id, product_id, quantity) VALUES (?, ?, ?)
+      const queryString = `INSERT INTO cart_item (session_id, product_id, quantity, price) VALUES (?, ?, ?, ?)
                            ON DUPLICATE KEY UPDATE quantity = quantity + VALUES(quantity)`;
-      const [rows, fields] = await connection.execute(queryString, [session_id, productId, quantity]);
+      const [rows] = await connection.execute(queryString, [session_id, productId, quantity, price]);
       await connection.end();
       return res.status(200).json({ cart: rows });
     } else if (req.method === 'DELETE') {
       // Delete item from cart
       const queryString = `DELETE FROM cart_item WHERE id = ?`;
-      const [rows, fields] = await connection.execute(queryString, [cart_item_id]);
+      const [rows] = await connection.execute(queryString, [cart_item_id]);
       await connection.end();
       return res.status(200).json({ cart: rows });
     } else if (req.method === 'PUT') {
       // Update item quantity in cart
       const queryString = `UPDATE cart_item SET quantity = ? WHERE id = ?`;
-      const [rows, fields] = await connection.execute(queryString, [quantity, cart_item_id]);
+      const [rows] = await connection.execute(queryString, [quantity, cart_item_id]);
       await connection.end();
       return res.status(200).json({ cart: rows });
     } else {

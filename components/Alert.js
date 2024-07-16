@@ -24,12 +24,18 @@ function Alert() {
 
     if (!alert) return null;
 
+    const alertClass = alert.type === 'alert-success'
+        ? 'bg-green-500 text-white'
+        : 'bg-red-600 text-white';
+
     return (
-        <div className="container">
+        <div className="container mx-auto">
             <div className="m-3">
-                <div className={`alert alert-dismissible ${alert.type}`}>
-                    {alert.message}
-                    <button type="button" className="btn-close" onClick={() => alertService.clear()}></button>
+                <div className={`alert ${alertClass} p-4 rounded-lg flex justify-between items-center`}>
+                    <span>{alert.message}</span>
+                    <button type="button" className="btn-close bg-transparent text-white ml-2" onClick={() => alertService.clear()}>
+                        &times;
+                    </button>
                 </div>
             </div>
         </div>

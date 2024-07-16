@@ -99,7 +99,7 @@ body {
 }
 
 .product-meta__title {
-    margin-bottom: -.2rem;
+    margin-bottom: -0.9rem;
     font-size: 28px;
     line-height: normal;
     letter-spacing: -1.12px;
@@ -107,7 +107,7 @@ body {
 }
 
 .pdp-title-extra-info {
-    margin-top: 8px;
+    margin-top: 2px;
     font-size: 12px;
     font-weight: normal;
     font-stretch: normal;

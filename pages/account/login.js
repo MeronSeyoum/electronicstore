@@ -50,9 +50,7 @@ function Login() {
         <div className="container mb-24 lg:mb-32 ">
          <div className="mx-auto max-w-md">
            <div className="flex justify-between  ">
-            <h2 className=" mb-6 px-1 flex items-center justify-start
-           text-xl font-semibold leading-[115%] md:text-3xl
-            md:leading-[115%]">
+            <h2 className=" mb-6 px-1 flex items-center justify-start text-xl font-semibold leading-[115%] md:text-3xl md:leading-[115%]">
               Sign-in
             </h2>
             <span className="px-2 flex items-center">
@@ -125,7 +123,7 @@ function Login() {
                   </div>
                   <ButtonPrimary disabled={formState.isSubmitting} className="">
                     {formState.isSubmitting && (
-                      <span className="spinner-border spinner-border-sm me-1"></span>
+                      <span className="spinner-border spinner-border-sm z-50 me-1"></span>
                     )}
                     Sign In
                   </ButtonPrimary>

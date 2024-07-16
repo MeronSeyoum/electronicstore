@@ -12,8 +12,9 @@ export default async function handler(req, res) {
     const connectionParams = serverRuntimeConfig.dbConfig;
     const connection = await createConnection(connectionParams);
 
-    const queryString = `INSERT INTO shopping_session (user_id, total) VALUES(?, ?)`;
-    const [result] = await connection.execute(queryString, [userId, total]);
+    const queryString = `INSERT INTO shopping_session (user_id, total, session_status) VALUES(?, ?, ?)
+        ON DUPLICATE KEY UPDATE total = total + VALUES(total)`;
+    const [result] = await connection.execute(queryString, [userId, total, "Session Started"]);
 
     // Get the ID of the newly inserted record
     const newSessionId = result.insertId;
