@@ -31,7 +31,11 @@ const SectionProductHeader = ({
   const [selectedColor, setSelectedColor] = useState(productAttributes.color[0]);
   const [selectedRAM, setSelectedRAM] = useState(productAttributes.RAM[0]);
   const [selectedStorage, setSelectedStorage] = useState(productAttributes.internalStorage[0]);
-
+  const [quantity, setQuantity] = useState(1); // Manage quantity state
+  
+  const handleQuantityChange = (value) => {
+    setQuantity(value);
+  };
   return (
     <div className="flex flex-col lg:flex-row items-stretch justify-between ">
       <div className="lg:hidden">
@@ -62,7 +66,15 @@ const SectionProductHeader = ({
           />
         </div>
 
-        <div className="flex flex-col lg:flex-row justify-between ">
+
+        <div className="lg:mt-3  flex  items-end justify-between">
+          <p className="text-sm font-semibold">Available specs:</p>
+          <p className="flex items-center gap-1 text-sm text-neutral-500">
+            Specs guide <LuInfo />
+          </p>
+        </div>  
+        
+        <div className="flex flex-col gap-3 justify-between lg:pt-2 lg:mt-0 mt-4">
           <ColorOptions
             colors={productAttributes.color}
             selectedColor={selectedColor}
@@ -80,39 +92,39 @@ const SectionProductHeader = ({
             setSelectedStorage={setSelectedStorage}
           />
         </div>
-
         <div className="flex flex-col flex-nowrap lg:gap-0 gap-2 mt-4">
           <div className="flex flex-row gap-2 lg:mb-2">
             <span>
-              <InputNumber className="py-1.5 px-4" />
+            <InputNumber
+              className="py-1.5 px-4"
+              value={quantity}
+              onChange={handleQuantityChange}
+            />
             </span>
             <AddToCart
               productId={productId}
+              quantity={quantity}
+              price={currentPrice}
               className="px-7 py-2.5 border border-black rounded-md"
               title="Add To Cart"
             />
           </div>
-          <div className="flex flex-grow items-center w-full">
+          {/* <div className="flex flex-grow items-center w-full">
             <ButtonSecondary className="text-white bg-red-500 w-72">
               Buy Now
             </ButtonSecondary>
-          </div>
+          </div> */}
         </div>
 
-        <div className="my-4 flex items-end justify-between">
-          <p className="text-sm font-semibold">Available specs:</p>
-          <p className="flex items-center gap-1 text-sm text-neutral-500">
-            Specs guide <LuInfo />
-          </p>
-        </div>
+       
       </div>
     </div>
   );
 };
 
 const ProductHeading = ({ rating, reviews, productName, categoryName, currentPrice, prevPrice }) => (
-  <Heading isMain className="lg:pb-0 pb-5">
-    <div className="flex flex-row items-center gap-1 mb-1 text-neutral-500 font-normal text-xs">
+  <Heading isMain className="lg:pb-0 pb-2">
+    <div className="flex flex-row items-center gap-1 text-neutral-500 font-normal text-xs">
       <MdStar className="text-yellow-400 text-sm" />
       <div className="flex flex-row gap-3">
         <p className="border-r-2 pr-3">{rating}</p>
@@ -121,9 +133,11 @@ const ProductHeading = ({ rating, reviews, productName, categoryName, currentPri
       </div>
       <PiSealCheckFill className="text-green-600" />
     </div>
-    <h1 className="product-meta__title">{productName}</h1>
-    <span className="font-medium text-neutral-500 text-xs">{categoryName}</span>
-    <div className="flex gap-3  items-center font-medium py-4">
+    <div className="py-1">
+    <h1 className="product-title">{productName}</h1>
+    <p className="font-medium text-neutral-500 text-xs">{categoryName}</p>
+    </div>
+    <div className="flex gap-3  items-center font-medium mt-2">
       <h1 className="text-primary text-2xl">
         ${parseFloat(currentPrice).toFixed(2)}
       </h1>

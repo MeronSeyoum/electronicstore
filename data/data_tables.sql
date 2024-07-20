@@ -114,3 +114,18 @@ INSERT INTO electronic_shop.user (username, email, password, first_name, last_na
 ('user1', 'user1@example.com', 'password1', 'John', 'Doe', 1234567890, NOW(), NULL),
 ('user2', 'user2@example.com', 'password2', 'Jane', 'Smith', 9876543210, NOW(), NULL),
 ('user3', 'user3@example.com', 'password3', 'Alice', 'Johnson', 5551234567, NOW(), NULL);
+
+
+
+
+-- Inserting slides data
+INSERT INTO electronic_shop.slide_Banner (type, title, discount, price, link, banner_img, alt) VALUES
+('slide', 'Oculus Rift with Touch Virtual Reality', '50%', '$149.99', '#', '/main-banner-1.jpg', 'Slide 1'),
+('slide', 'Beat Rockers Pro Wireless Headphone', '30%', '$120.36', '#', '/main-banner-2.jpg', 'Slide 2'),
+('slide', 'Google Unveil Home Mini & Speaker', '40%', '$99.86', '#', '/main-banner-3.jpg', 'Slide 3');
+
+-- Inserting banners data
+INSERT INTO electronic_shop.slide_Banner (type, title, price, banner_img) VALUES
+('banner', 'Buy Huami Smart Watch', '$49.00', '/cms-banner-1.jpg'),
+('banner', 'Best Oled Display Phone', '$59.00', '/cms-banner-2.jpg'),
+('banner', 'Buy AirPods Max Bluetooth', '$51.00', '/cms-banner-3.jpg');

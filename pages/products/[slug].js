@@ -31,10 +31,10 @@ const SingleProductPage = () => {
         // Find the selected product
         const filteredProduct = fetchedData.find((item) => item.slug === slug);
         setSelectedProduct(filteredProduct);
-        
+
       } catch (error) {
         console.error("Error fetching product data:", error);
-      }finally{
+      } finally {
         setIsLoadingData(false); // Set loading state to false
 
       }
@@ -43,7 +43,7 @@ const SingleProductPage = () => {
     fetchData(); // Call fetchData function
   }, [slug, fetchedData]);
 
-  if (isLoadingData || loading ) {
+  if (isLoadingData || loading) {
     return <Loading />;
   }
 
@@ -52,43 +52,45 @@ const SingleProductPage = () => {
   }
 
   if (selectedProduct) {
-  return (
-    <div className="container my-10">
-      <SectionNavigation />
+    return (
+      <div className="container my-10">
+        <SectionNavigation />
 
-      <div className="mb-10">
-        <SectionProductHeader
-          productId={pathOr(0,["id"],selectedProduct)}
-          productImage={pathOr([], ["main_image"], selectedProduct || '/placeholder_image.jpg')}
-          productName={pathOr("", ["product_name"], selectedProduct)}
-          categoryName={pathOr("", ["category_name"], selectedProduct)}
-          productDesc={pathOr("", ["description"], selectedProduct)}
-          prevPrice={pathOr(0, ["price"], selectedProduct)}
-          currentPrice={pathOr(0, ["price"], selectedProduct)}
-          rating={pathOr(0, ["rating"], selectedProduct)}
-          // pieces_sold={pathOr(0, ["pieces_sold"], selectedProduct)}
-          reviews={pathOr(0, ["reviews"], selectedProduct)}
-        />
-      </div>
+        <div className="mb-10">
+          <SectionProductHeader
+            productId={pathOr(0, ["id"], selectedProduct)}
+            productImage={pathOr([], ["main_image"], selectedProduct || '/placeholder_image.jpg')}
+            productName={pathOr("", ["product_name"], selectedProduct)}
+            categoryName={pathOr("", ["category_name"], selectedProduct)}
+            productDesc={pathOr("", ["description"], selectedProduct)}
+            prevPrice={pathOr(0, ["price"], selectedProduct)}
+            currentPrice={pathOr(0, ["price"], selectedProduct)}
+            rating={pathOr(0, ["rating"], selectedProduct)}
+            // pieces_sold={pathOr(0, ["pieces_sold"], selectedProduct)}
+            reviews={pathOr(0, ["reviews"], selectedProduct)}
 
-      <div className="my-6">
-        <SectionProductInfo
-          productDesc={pathOr("", ["description"], selectedProduct)}
-          ratings={pathOr(0, ["rating"], selectedProduct)}
-          reviews={pathOr(0, ["reviews"], selectedProduct)}
-        />
-        
-      </div>
+          />
+        </div>
 
-      <div className="mb-6">
-        <SectionMoreProducts
-        // note for customer about product
-        overview={pathOr("", ["description"], selectedProduct)}
-           />
+        <div className="my-6">
+          <SectionProductInfo
+            productDesc={pathOr("", ["description"], selectedProduct)}
+            features={pathOr("", ["features"], selectedProduct)}
+            ratings={pathOr(0, ["rating"], selectedProduct)}
+            reviews={pathOr(0, ["reviews"], selectedProduct)}
+          />
+
+        </div>
+
+        <div className="mb-6">
+          <SectionMoreProducts
+            // note for customer about product
+            overview={pathOr("", ["description"], selectedProduct)}
+          />
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 };
 
 export default SingleProductPage;

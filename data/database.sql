@@ -134,6 +134,15 @@ CREATE TABLE electronic_shop.product (
         ON UPDATE SET NULL
 ) ENGINE=InnoDB;
 
+-- Product features table stores product features information about each product available in the shop.
+
+CREATE TABLE electronic_shop.ProductFeatures (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    feature TEXT,
+    FOREIGN KEY (product_id) REFERENCES electronic_shop.product(id)
+);
+
 -- Product variations table stores information about variations of products (e.g., different colors, sizes).
 CREATE TABLE electronic_shop.product_variations (
     id INT(10) NOT NULL AUTO_INCREMENT,
@@ -347,3 +356,15 @@ CREATE TABLE electronic_shop.shipment_details (
     FOREIGN KEY (order_id) REFERENCES electronic_shop.order_details(id),  -- Reference to the order details.
     FOREIGN KEY (carrier_id) REFERENCES electronic_shop.carrier(id)        -- Reference to the carrier.
 )ENGINE=InnoDB;
+
+
+CREATE TABLE electronic_shop.slide_Banner (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type ENUM('slide', 'banner') NOT NULL,
+    title VARCHAR(255),
+    discount VARCHAR(50),
+    price VARCHAR(50) NOT NULL,
+    link VARCHAR(255),
+    banner_img VARCHAR(255) NOT NULL,
+    alt VARCHAR(255)
+);

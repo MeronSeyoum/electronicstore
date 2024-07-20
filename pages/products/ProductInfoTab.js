@@ -8,10 +8,11 @@ import { PiPercentFill } from "react-icons/pi";
 import { MdStar } from "react-icons/md";
 import ProgressBar from 'shared/ProgressBar/ProgressBar';
 
-const ProductInfoTab = ({ overview, rating, reviews }) => {
-  const [activeTab, setActiveTab] = useState("Product Information");
+const ProductInfoTab = ({ productDesc, features, rating, reviews }) => {
+  const [activeTab, setActiveTab] = useState("Description");
 
-  const tabs = ["Product Information", "Shipment details", "Review"];
+
+  const tabs = ["Description", "Shipment details", "Review"];
   const ratingDetails = [
     { title: 5, value: 100 },
     { title: 4, value: 56 },
@@ -45,49 +46,59 @@ const ProductInfoTab = ({ overview, rating, reviews }) => {
   return (
     <div className="h-full ">
       <Heading>Product Info</Heading>
-      <div className="flex items-center gap-1">
+     
+      <div className="flex border-b border-neutral-300">
         {tabs.map((tab) => (
           <button
-            type="button"
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`p-3 rounded-t-md font-semibold text-sm ${
-              activeTab === tab ? "bg-black text-white" : "bg-neutral-light"
-            }`}
+            className={`p-4 border-b-2 font-semibold text-sm ${activeTab === tab
+                ? "border-primary text-primary"
+                : "border-transparent text-neutral-600"
+              }`}
           >
             {tab}
           </button>
         ))}
       </div>
+
       {tabs.map((tab) => (
         <div
           key={tab}
-          className={`p-6 rounded-b-md  bg-white ${
-            activeTab === tab ? "block" : "hidden"
-          }`}
+          className={`p-6 rounded-b-md  bg-white ${activeTab === tab ? "block" : "hidden"
+            }`}
         >
-          {activeTab === "Product Information" && (
-            <p className="product-desc">{overview}</p>
+          {activeTab === "Description" && (
+            <>
+              <p className="product-desc">{productDesc}</p>
+              {features && (
+              <ul className="list-disc pl-5 mt-4 space-y-2">
+                {features.split('; ').map((feature, index) => (
+                  <li key={index} className="text-sm text-gray-700">
+                    <span className="font-medium text-gray-900">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              )}
+            </>
           )}
+         
           {activeTab === "Shipment details" && (
-            <div className="grid lg:gap-10 gap-4 my-3 grid-cols-2">
+            <div className="p-6 bg-white rounded-b-md grid lg:grid-cols-2 gap-6">
               {shipmentDetails.map((detail) => (
-                <div key={detail.title} className="flex items-center">
-                  <ButtonCircle3 size="w-10 h-10 mr-3" className="bg-neutral-light">
+                <div key={detail.title} className="flex items-center space-x-4">
+                  <ButtonCircle3 size="w-12 h-12" className="bg-neutral-light">
                     {detail.icon}
                   </ButtonCircle3>
                   <div>
-                    <p className="text-sm font-medium text-gray-500">
-                      {detail.title}
-                    </p>
-                    <p className="text-xs font-semibold">
-                      {detail.description}
-                    </p>
+                    <p className="text-sm font-semibold text-gray-700">{detail.title}</p>
+                    <p className="text-xs text-gray-500">{detail.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           )}
+          
           {activeTab === "Review" && (
             <div className="flex items-center gap-5 bg-white p-7 rounded-md">
               <div className="space-y-1">

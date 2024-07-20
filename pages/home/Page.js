@@ -10,38 +10,9 @@ import SectionCategory from "./SectionCategory";
 import ServicesSection from "pages/home/ServicesSection";
 import useDataFetch from "hooks/useDataFetch";
 
-import mainBanner1 from "images/main-banner-1.jpg";
-import mainBanner2 from "images/main-banner-2.jpg";
-import mainBanner3 from "images/main-banner-3.jpg";
 import FooterBanner from "shared/Footer/FooterBanner";
 import SectionCmsBannerThree from "./SectionCmsBannerThree";
 
-const slides = [
-  {
-    text: "Oculus Rift with Touch Virtual Reality",
-    discount: "50%",
-    price: "$149.99",
-    link: "#",
-    image: mainBanner1,
-    alt: "Slide 1",
-  },
-  {
-    text: "Beat Rockers  Pro Wireless Headphone",
-    discount: "30%",
-    price: "$120.36",
-    link: "#",
-    image: mainBanner2,
-    alt: "Slide 2",
-  },
-  {
-    text: "Google Unveil Home Mini & Speaker",
-    discount: "40%",
-    price: "$99.86",
-    link: "#",
-    image: mainBanner3,
-    alt: "Slide 3",
-  },
-];
 
 // Client-Side Data Fetching: Fetch data once at the top-level component or container
 // component and pass it down to child components via props. This way, child components
@@ -55,7 +26,7 @@ const HomePage = () => {
         <div className="lg:py-3 py-2  ">
           <SectionCategory />
         </div>
-        <HeaderSlider slides={slides} autoPlayInterval={5000} />
+        <HeaderSlider/>
         <div className="mt-3">
           <ServicesSection />
         </div>

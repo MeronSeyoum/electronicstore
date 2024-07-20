@@ -98,8 +98,8 @@ body {
     grid-row: span 2;
 }
 
-.product-meta__title {
-    margin-bottom: -0.9rem;
+.product-title {
+    margin: 5px 0px;
     font-size: 28px;
     line-height: normal;
     letter-spacing: -1.12px;
@@ -280,7 +280,7 @@ html {
     --dim: 1.2rem;
     width: var(--dim);
     height: var(--dim);
-    background-color: var(--color);
+    background-color: #ef4444;
     border-radius: 50%;
     position: absolute;
 }
