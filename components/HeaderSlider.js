@@ -63,7 +63,9 @@ const HeaderSlider = () => {
               src={fetchedData[currentSlide].image}
               alt={fetchedData[currentSlide].alt}
               layout="fill"
-              className="relative bg-contain bg-center lg:w-full lg:h-full h-96"
+              objectFit="cover"
+              // className="relative object-cover lg:w-full lg:h-full h-96"
+                className="relative w-full h-auto object-cover aspect-w-16 aspect-h-9"
             />
           </motion.div>
         )}

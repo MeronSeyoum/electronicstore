@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState, useEffect} from "react";
 import ProductCard from "components/ProductCard";
 import useDataFetch from "hooks/useDataFetch";
 import Heading from "shared/Heading/Heading";
@@ -6,7 +6,19 @@ import Loading from "pages/Loading";
 
 const SectionMoreProducts = ({ overview }) => {
   const { fetchedData, error, loading } = useDataFetch("/api/product");
-  const data = fetchedData.slice(3, 12);
+  
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    handleResize(); // Set initial width
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
+  // Determine how many items to slice based on screen size
+  const itemsToShow = windowWidth < 768 ? 13 : 12; // Assuming mobile width is less than 768px
+  const data = fetchedData.slice(3, itemsToShow);
 
   if (loading) {
     <div>

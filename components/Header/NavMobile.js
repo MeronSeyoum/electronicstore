@@ -23,9 +23,7 @@ const NavMobile = ({ onClickClose }) => {
       <div className="px-5 py-2 flex flex-row gap-x-3 ">
         <Logo className=" " />
         {/* eslint-disable */}
-        <span className={`text-lg font-bold `}>
-        Electronic Store 
-         </span>
+       
         <span className="absolute right-2 top-4 p-1" onClick={onClickClose}>
           {/* eslint-disable */}
           <MdClose className="text-xl" />

@@ -11,7 +11,7 @@ const CategoryCard = ({ category }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center lg:w-[120px] w-[100px]">
+    <div className="flex flex-col justify-center items-center lg:w-[120px] w-[100px] -ml-3">
       <Link href={`/productsCollection?categoryId=${category.id}`}>
         <div className="flex flex-col justify-center items-center">
           <div className="relative lg:w-20 lg:h-20 w-16 h-16 rounded-full bg-neutral-light cursor-pointer">

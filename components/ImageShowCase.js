@@ -34,17 +34,18 @@ const ImageShowCase = ({ productImage }) => {
           </div>
         ))}
       </div>
-      <div className="flex h-[450px] w-[380px] lg:w-[500px] justify-center lg:rounded-r-lg   bg-neutral-light">
+      <div className="flex h-[450px] w-[326px] lg:w-[500px] justify-center lg:rounded-r-lg 
+        bg-neutral-light">
         <Image
           src={images[activeImageIndex]}
           alt={`product-image-${activeImageIndex}`}
           height={400}
           width={400}
           objectFit="contain"
-          className="p-2"
+          className="lg:p-2"
         />
         <LikeButton className="lg:relative absolute
-         lg:-right-5 right-8 lg:mt-3 mt-3  p-2 border" />
+         lg:-right-5 right-8 mt-3  p-2 border" />
       </div>
     </div>
   );

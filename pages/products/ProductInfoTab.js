@@ -52,7 +52,7 @@ const ProductInfoTab = ({ productDesc, features, rating, reviews }) => {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`p-4 border-b-2 font-semibold text-sm ${activeTab === tab
+            className={`p-3 lg:p-4 border-b-2 font-semibold text-sm ${activeTab === tab
                 ? "border-primary text-primary"
                 : "border-transparent text-neutral-600"
               }`}
@@ -65,7 +65,7 @@ const ProductInfoTab = ({ productDesc, features, rating, reviews }) => {
       {tabs.map((tab) => (
         <div
           key={tab}
-          className={`p-6 rounded-b-md  bg-white ${activeTab === tab ? "block" : "hidden"
+          className={`lg:p-6 py-4 rounded-b-md  bg-white ${activeTab === tab ? "block" : "hidden"
             }`}
         >
           {activeTab === "Description" && (
@@ -84,7 +84,7 @@ const ProductInfoTab = ({ productDesc, features, rating, reviews }) => {
           )}
          
           {activeTab === "Shipment details" && (
-            <div className="p-6 bg-white rounded-b-md grid lg:grid-cols-2 gap-6">
+            <div className="lg:p-4 py-4 bg-white rounded-b-md grid lg:grid-cols-2 gap-6">
               {shipmentDetails.map((detail) => (
                 <div key={detail.title} className="flex items-center space-x-4">
                   <ButtonCircle3 size="w-12 h-12" className="bg-neutral-light">
@@ -100,14 +100,8 @@ const ProductInfoTab = ({ productDesc, features, rating, reviews }) => {
           )}
           
           {activeTab === "Review" && (
-            <div className="flex items-center gap-5 bg-white p-7 rounded-md">
-              <div className="space-y-1">
-                <p className="lg:text-[101px] font-semibold text-[70px]">
-                  {rating}
-                  <span className="text-base text-secondary">/5</span>
-                </p>
-                <p className="text-neutral-500">{`(${reviews} Reviews)`}</p>
-              </div>
+            <div className="flex items-center gap-12 bg-white  rounded-md">
+            
               <div className="w-full space-y-2">
                 {ratingDetails.map((ratingItem) => (
                   <div key={ratingItem.title} className="flex items-center gap-2">
@@ -118,6 +112,13 @@ const ProductInfoTab = ({ productDesc, features, rating, reviews }) => {
                     <ProgressBar value={ratingItem.value} />
                   </div>
                 ))}
+              </div>
+              <div className="space-y-2">
+                <p className="lg:text-[100px] font-semibold text-[70px]">
+                  {rating}
+                  <span className="text-base text-secondary">/5</span>
+                </p>
+                <p className="text-neutral-500">{`(${reviews} Reviews)`}</p>
               </div>
             </div>
           )}

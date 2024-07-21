@@ -34,9 +34,9 @@ const ServicesSection = () => {
               <span className=" lg:text-4xl text-2xl mb-0  text-primary-light ">
                 {<service.icon />}
               </span>
-              <div className="lg:text-start flex  flex-col gap-1 text-xs ">
-                <h5 className="lg:text-sm  font-semibold ">{service.title}</h5>
-                <p className="text-neutral ">{service.description}</p>
+              <div className="lg:text-start flex  flex-col gap-1  ">
+                <h5 className="lg:text-sm  font-semibold text-xs">{service.title}</h5>
+                <p className="text-neutral text-[10px] ">{service.description}</p>
               </div>
             </div>
             </div>

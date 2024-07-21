@@ -28,7 +28,7 @@ const ProductSlider = ({ fetchedData, error, loading }) => {
             <ProductCard
               showPrevPrice
               product={item}
-              className=" justify-items-center"
+              className="justify-items-center"
             />
           );
         }}

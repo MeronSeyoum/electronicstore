@@ -17,7 +17,7 @@ const PromoTag = ({ backgroundUrl, headerTitle, heading, buttonLabel, buttonActi
       <h1 className="lg:text-2xl text-xl font-semibold text-white" style={{ lineHeight: "1.4em" }}>
         {heading}
       </h1>
-      <ButtonSecondary sizeClass="text-black bg-white w-[150px] lg:mb-0 mb-4" onClick={buttonAction}>
+      <ButtonSecondary sizeClass="text-black bg-white w-[120px] lg:w-[150px] lg:mb-0 mb-4" onClick={buttonAction}>
         {buttonLabel}
       </ButtonSecondary>
     </div>
