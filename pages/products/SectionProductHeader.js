@@ -67,7 +67,7 @@ const SectionProductHeader = ({
         </div>
 
 
-        <div className="lg:mt-3  flex  items-end justify-between">
+        <div className="lg:my-2 mt-4  flex  items-end justify-between">
           <p className="text-sm font-semibold">Available specs:</p>
           <p className="flex items-center gap-1 text-sm text-neutral-500">
             Specs guide <LuInfo />
@@ -105,7 +105,7 @@ const SectionProductHeader = ({
               productId={productId}
               quantity={quantity}
               price={currentPrice}
-              className="px-7 py-2.5 border border-black rounded-md"
+              className="lg:px-7  px-12 py-2.5 border border-black rounded-md"
               title="Add To Cart"
             />
           </div>

@@ -11,7 +11,7 @@ const Logo = ({ className = '' }) => {
         <Image
           src={logo}
           alt={<RiMicrosoftLoopFill className="text-2xl text-primary" />}
-          width={100}
+          width={150}
           height={10}
         />
       </span>

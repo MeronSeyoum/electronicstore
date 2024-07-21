@@ -45,14 +45,14 @@ const ProductInfoTab = ({ productDesc, features, rating, reviews }) => {
 
   return (
     <div className="h-full ">
-      <Heading>Product Info</Heading>
+      {/* <Heading>Product Info</Heading> */}
      
-      <div className="flex border-b border-neutral-300">
+      <div className="flex border-b border-neutral-300 gap-5 ">
         {tabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`p-3 lg:p-4 border-b-2 font-semibold text-sm ${activeTab === tab
+            className={`py-3 border-b-2 font-semibold text-sm ${activeTab === tab
                 ? "border-primary text-primary"
                 : "border-transparent text-neutral-600"
               }`}
