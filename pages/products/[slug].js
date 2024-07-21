@@ -53,7 +53,7 @@ const SingleProductPage = () => {
 
   if (selectedProduct) {
     return (
-      <div className="container my-5">
+      <div className="container my-2 lg:my-10">
         {/* <SectionNavigation /> */}
 
         <div className="mb-10">

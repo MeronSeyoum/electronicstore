@@ -39,6 +39,7 @@ const SectionProductHeader = ({
   return (
     <div className="flex flex-col lg:flex-row items-stretch justify-between ">
       <div className="lg:hidden">
+      {/* for mobile screen */}
         <ProductHeading
           productName={productName}
           categoryName={categoryName}
@@ -56,6 +57,7 @@ const SectionProductHeader = ({
 
       <div className="lg:basis-[50%] flex flex-col">
         <div className="hidden lg:block">
+        {/* for large screen */}
           <ProductHeading
             productName={productName}
             categoryName={categoryName}
@@ -133,15 +135,15 @@ const ProductHeading = ({ rating, reviews, productName, categoryName, currentPri
       </div>
       <PiSealCheckFill className="text-green-600" />
     </div>
-    <div className="py-1">
+    <div className="lg:py-1">
     <h1 className="product-title">{productName}</h1>
     <p className="font-medium text-neutral-500 text-xs">{categoryName}</p>
     </div>
-    <div className="flex gap-3  items-center font-medium mt-2">
-      <h1 className="text-primary text-2xl">
+    <div className="flex gap-3  items-center font-medium lg:mt-2">
+      <h1 className="text-primary lg:text-2xl text-xl">
         ${parseFloat(currentPrice).toFixed(2)}
       </h1>
-      <p className="text-neutral-500 line-through text-base">
+      <p className="text-neutral-500 line-through text-sm">
         ${parseFloat(prevPrice).toFixed(2)}
       </p>
       <p className="text-green-500 text-sm font-bold">55% Off</p>
