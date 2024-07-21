@@ -135,15 +135,15 @@ const ProductHeading = ({ rating, reviews, productName, categoryName, currentPri
       </div>
       <PiSealCheckFill className="text-green-600" />
     </div>
-    <div className="lg:py-1">
+    <div className="py-1">
     <h1 className="product-title">{productName}</h1>
     <p className="font-medium text-neutral-500 text-xs">{categoryName}</p>
     </div>
     <div className="flex gap-3  items-center font-medium lg:mt-2">
-      <h1 className="text-primary lg:text-2xl text-xl">
+      <h1 className="text-primary lg:text-2xl ">
         ${parseFloat(currentPrice).toFixed(2)}
       </h1>
-      <p className="text-neutral-500 line-through text-sm">
+      <p className="text-neutral-500 line-through text-base">
         ${parseFloat(prevPrice).toFixed(2)}
       </p>
       <p className="text-green-500 text-sm font-bold">55% Off</p>
