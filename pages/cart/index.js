@@ -49,9 +49,9 @@ const CartPage = () => {
               ))
             )}
           </div>
-          <div className="my-6 shrink-0 border-t border-neutral-300 lg:mx-10 lg:my-0 lg:border-l lg:border-t-0 xl:mx-16 2xl:mx-20" />
+          <div className="my-6 shrink-0 border-t border-neutral-300 lg:mx-10 lg:my-0 lg:border-l lg:border-t-0 xl:mx-16 2xl:mx-20 " />
           <div className="flex-1">
-            <div className="sticky top-28 bg-neutral-light p-4">
+            <div className="sticky top-28 bg-neutral-light p-4 rounded-md">
               <div className="flex items-end justify-between">
                 <h3 className="text-lg font-semibold">Order Summary</h3>
                 <span className="text-sm text-primary">

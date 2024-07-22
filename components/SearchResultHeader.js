@@ -13,9 +13,9 @@ const SearchResultHeader = ({ productLength , applyFilters, fetchedData}) => {
 
   return (
     <section className="mx-auto mb-3 lg:p-3 py-3 bg-neutral-light ">
-      <div className="flex justify-between items-center text-sm lg:flex-row flex-col">
-        <div className="">{productLength} results</div>
-        <div className="flex items-center lg:space-x-4  lg:space-y-0 space-y-2 ">
+      <div className="flex justify-between items-center text-sm lg:flex-row flex-col ">
+        <div className="hidden lg:block">{productLength} results</div>
+        <div className="flex items-center lg:space-x-4  lg:space-y-0 space-y-2 lg:gap-0 gap-4">
           <div className=" items-center lg:block hidden">
             <label className="flex items-center cursor-pointer ">
               <input
@@ -56,14 +56,14 @@ const SearchResultHeader = ({ productLength , applyFilters, fetchedData}) => {
               <span className="ml-2">In Store Only</span>
             </label>
           </div>
-          <div className="relative ">
-            <label htmlFor="Sort" className="mr-2">
+          <div className="relative flex items-center">
+            <label htmlFor="Sort" className="mr-2 hidden lg:block">
               Sort
             </label>
             <select
               id="Sort"
               name="Sort"
-              className="appearance-none bg-white border border-gray-300 py-2 px-4 
+              className="appearance-none bg-white border border-gray-300 py-2 px-4
             rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="bestMatch">Best Match</option>
@@ -78,7 +78,7 @@ const SearchResultHeader = ({ productLength , applyFilters, fetchedData}) => {
               <path d="M19.5,16.71l-5.59,5.59a1,1,0,0,1-1.71-.71V10.41a1,1,0,0,1,1.71-.71l5.59,5.59A1,1,0,0,1,19.5,16.71Z"></path>
             </svg>
           </div>
-          <ButtonSecondary className="space-y-1 gap-2 h-9 py-3 white-black bg-white ">
+          <ButtonSecondary className="space-y-1 gap-2 h-9 py-3 white-black bg-white px-1 lg:px-4 ">
             <SideBarFilter
               applyFilters={applyFilters}
               fetchedData={fetchedData}

@@ -7,6 +7,7 @@ import useDataFetch from "hooks/useDataFetch";
 import SearchResultHeader from "components/SearchResultHeader";
 import Filter from "components/Filter";
 import Heading from "shared/Heading/Heading";
+import Link from "next/link";
 
 const Page = () => {
   const router = useRouter();
@@ -84,8 +85,23 @@ const Page = () => {
 
   return (
     <div className="container relative mb-6" id="body">
-      <div className="flex">
-        <Heading className="my-2" isMain isCenter>
+      <div className="flex flex-col justify-start">
+      {categoryId && (
+        <div className="page-title py-t lg:pt-3">
+          <nav className="breadcrumb">
+            <span>
+              <Link href="/">Home</Link>
+            </span>
+            <svg aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5">
+              <path fill="currentColor" fill-rule="evenodd" d="M1.002.27L.29.982l3.712 3.712L7.714.982 7.002.27l-3 3z"></path>
+            </svg>
+            <span className="pl-1"> {categoryId
+              ? fetchedData[0]?.category_name || "Category"
+              : "Product Collection"}</span>
+          </nav>
+        </div>
+)}
+        <Heading className="my-2" isMain >
           {categoryId
             ? fetchedData[0]?.category_name || "Category"
             : "Product Collection"}
@@ -116,11 +132,10 @@ const Page = () => {
                 <button
                   key={i}
                   onClick={() => paginate(i + 1)}
-                  className={`mx-1 px-3 py-1 border rounded ${
-                    i + 1 === currentPage
+                  className={`mx-1 px-3 py-1 border rounded ${i + 1 === currentPage
                       ? "bg-primary text-white"
                       : "hover:bg-gray-200"
-                  }`}
+                    }`}
                 >
                   {i + 1}
                 </button>

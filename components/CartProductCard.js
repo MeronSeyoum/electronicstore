@@ -11,7 +11,8 @@ const CartProductCard = ({ product }) => {
   const { updateCartQuantity, removeFromCart } = useCart();
   const { cart_item_id, product_name, main_image, price, quantity, slug, category_name } = product;
 
-  const productPrice = price * quantity;
+  const productPrice = price *1;
+  //  quantity;
   const formattedPrice = typeof productPrice === 'number' ? `$${productPrice.toFixed(2)}` : '';
 
   const handleQuantityChange = (cart_item_id, newValue) => {
@@ -44,10 +45,12 @@ const CartProductCard = ({ product }) => {
                 </Link>
               </h3>
               <p className="text-xs text-gray-600">{category_name}</p>
-              {/* <div className="flex items-center space-x-1 mt-1">
+              <div className="flex items-center space-x-1 mt-1">
                 <MdStar className="text-yellow-400 text-xs md:text-sm" />
                 <span className="text-xs md:text-sm">4.5</span>
-              </div> */}
+               <LikeButton  />
+               </div>
+             
             </div>
             <AiOutlineDelete
               className="text-gray-500 cursor-pointer hover:text-red-500 transition-colors"
@@ -58,7 +61,7 @@ const CartProductCard = ({ product }) => {
         </div>
         <div className="flex items-center justify-between mt-2">
           <div className="flex items-center space-x-2">
-          <span className="font-semibold text-sm md:text-base text-gray-800 ">{formattedPrice}</span>
+          <span className=" font-semibold text-sm md:text-base text-primary ">{formattedPrice}</span>
           
 
             {/* <LikeButton /> */}

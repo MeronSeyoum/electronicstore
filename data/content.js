@@ -6,11 +6,9 @@ import { IoChatboxOutline } from "react-icons/io5";
 import { MdOutlineCameraAlt } from "react-icons/md";
 import { PiPercentFill } from "react-icons/pi";
 
-import { NavItemType } from "components/NavItem";
 import CablesPackages1 from "images/Cables-Packages.png";
 import power_charger from "images/power_charger.png";
 import microinfinitysilver from "images/micro-a_infinity_silver.webp";
-import brsb from "images/brsb.webp";
 import samsung_profile from "images/samsung_profile.png";
 import samsung1 from "images/samsung1.webp";
 import samsung2 from "images/samsung2.webp";
@@ -18,13 +16,11 @@ import samsung3 from "images/samsung3.webp";
 import samsung4 from "images/samsung4.webp";
 
 import metcon5 from "images/metcon5.webp";
-import metcon9 from "images/metcon9.webp";
 import apple from "images/apple.png";
 import apple1 from "images/apple1.webp";
 import apple2 from "images/apple2.webp";
 import apple3 from "images/apple3.webp";
 import apple4 from "images/apple4.webp";
-import nike_blazer from "images/nike_blazer.webp";
 import playstation_profile from "images/playstation_profile.jpg";
 import playstation1 from "images/playstation1.webp";
 import playstation2 from "images/playstation2.webp";
@@ -34,10 +30,6 @@ import shot1 from "images/shots/apple1.jpg";
 import shot2 from "images/shots/apple2.jpg";
 import shot3 from "images/shots/apple3.jpg";
 import shot4 from "images/shots/apple4.jpg";
-import shot5 from "images/shots/shot5.webp";
-import shot6 from "images/shots/shot6.jpeg";
-import shot7 from "images/shots/shot7.webp";
-import slides from "images/slides.webp";
 import subBanner1 from 'images/sub-banner-1.jpg';
 import subBanner2 from 'images/sub-banner-2.jpg';
 
@@ -71,7 +63,7 @@ export const NavLinks = [
   {
     id: "eexct",
     name: "Collection",
-    href: "/productsCollection",
+    href: "/productsCollection/",
   },
 
   {
@@ -649,7 +641,7 @@ export const footerData = {
         { href: "/about", name: "About Us" },
         { href: "/delivery", name: "Delivery Information" },
         { href: "/policy", name: "Policy for Buyers" },
-        { href: "/faq", name: "FAQS" },
+        { href: "/faqs", name: "FAQS" },
       ],
     },
     {
@@ -734,14 +726,14 @@ export const contactSection = {
   directContactInfoHeader: {
     heading: "Prefer to reach out directly?",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh magna sit diam pharetra.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh magna sit diam pharetra. ",
   },
   directContactInfo: [
     {
       icon: <FiBox className="text-5xl" />,
       title: "Sales",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit blandit velit semper aliquam.",
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit blandit velit semper aliquam. blandit velit semper aliquam.",
       contactLink: {
         href: "mailto:sales@hotkicks.com",
         title: "sales@hotkicks.com",
@@ -751,7 +743,7 @@ export const contactSection = {
       icon: <IoChatboxOutline className="text-5xl" />,
       title: "Support",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit blandit velit semper aliquam.",
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit blandit velit semper aliquam. blandit velit semper aliquam.",
       contactLink: {
         href: "mailto:support@gamil.com",
         title: "support@gamil.com",
@@ -761,7 +753,7 @@ export const contactSection = {
       icon: <MdOutlineCameraAlt className="text-5xl" />,
       title: "Influencers",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit blandit velit semper aliquam.",
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit blandit velit semper aliquam. blandit velit semper aliquam.",
       contactLink: {
         href: "mailto:influencers@gamil.com",
         title: "influencers@gamil.com",
@@ -775,7 +767,7 @@ export const contactSection = {
 export const faqsData = {
   heading: "Frequently Asked Questions",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget adipiscing nibh nunc. Velit rhoncus arcu velesaed.",
+    "Find answers to common questions about our electronics products, shipping, payments, and returns.",
   faqs: [
     {
       category: "Shipping",
@@ -811,29 +803,29 @@ export const faqsData = {
       category: "Products",
       data: [
         {
-          question: "How do I determine the right size for my sneakers?",
+          question: "Are your electronics products authentic?",
           answer:
-            "Refer to our size chart available on the product page. It provides measurements and guidelines to help you choose the correct size.",
+            "Yes, we guarantee the authenticity of all our electronics products. We source them directly from authorized retailers and reputable suppliers.",
         },
         {
-          question: "Are your sneakers authentic?",
+          question: "Do your products come with a warranty?",
           answer:
-            "Yes, we guarantee the authenticity of all our sneakers. We source them directly from authorized retailers and reputable suppliers.",
+            "Yes, all our electronics products come with a manufacturer’s warranty. The warranty period and terms vary by product.",
         },
         {
-          question: "Can I return or exchange my sneakers if they don't fit?",
+          question: "Can I return or exchange a product if it doesn't meet my expectations?",
           answer:
-            "Yes, we have a hassle-free return policy. You can return or exchange unworn sneakers within 30 days of receiving your order.",
+            "Yes, we have a hassle-free return policy. You can return or exchange products within 30 days of receiving your order, provided they are in their original condition.",
         },
         {
-          question: "Are the colors of the sneakers accurate in the photos?",
+          question: "Do you provide technical support for your products?",
           answer:
-            "We strive to provide accurate color representation, but slight variations may occur due to monitor settings. Refer to product descriptions for additional details.",
+            "Yes, we offer technical support for all our electronics products. You can reach our support team via email or phone for assistance.",
         },
         {
-          question: "Do you restock sold-out sneakers?",
+          question: "Are the product specifications accurate on your website?",
           answer:
-            "We restock popular styles based on demand. You can sign up for notifications to be informed when a specific product is back in stock.",
+            "We strive to provide accurate product specifications, but slight variations may occur. Refer to the product descriptions and manufacturer’s website for additional details.",
         },
       ],
     },
@@ -863,7 +855,7 @@ export const faqsData = {
         {
           question: "Do you offer gift cards?",
           answer:
-            "Yes, we offer gift cards of various denominations. They make great presents for sneaker enthusiasts!",
+            "Yes, we offer gift cards of various denominations. They make great presents for tech enthusiasts!",
         },
       ],
     },
@@ -891,14 +883,15 @@ export const faqsData = {
             "Refunds are typically processed within 5-7 business days after we receive the returned items and verify their condition.",
         },
         {
-          question: "Can I return sneakers if I've worn them?",
+          question: "Can I return electronics products if I've used them?",
           answer:
-            "We only accept returns for unworn sneakers. Please try them on in a clean, indoor environment to ensure they are the right fit before wearing them outside.",
+            "We only accept returns for unused electronics products in their original packaging. Please check the product thoroughly before using it to ensure it meets your expectations.",
         },
       ],
     },
   ],
 };
+
 
 const demoBlogData = {
   sectionOne: {

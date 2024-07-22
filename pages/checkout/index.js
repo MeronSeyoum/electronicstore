@@ -43,7 +43,7 @@ const CheckoutPage = () => {
             <button
               className={`${
                 activeTab === "ContactInfo" ? "bg-white font-semibold border-b-2 border-primary" : ""
-              }  py-2 px-6 lg:px-10  text-left`}
+              }  py-2 px-6 lg:px-8  text-left`}
               onClick={() => setActiveTab("ContactInfo")}
             >
               Contact 
@@ -51,7 +51,7 @@ const CheckoutPage = () => {
             <button
               className={`${
                 activeTab === "ShippingAddress" ? "bg-white font-semibold border-b-2 border-primary" : ""
-              } py-2 px-6 lg:px-10   text-left`}
+              } py-2 px-6 lg:px-8   text-left`}
               onClick={() => setActiveTab("ShippingAddress")}
             >
              Shipping 
@@ -59,7 +59,7 @@ const CheckoutPage = () => {
             <button
               className={`${
                 activeTab === "PaymentMethod" ? "bg-white font-semibold border-b-2 border-primary" : ""
-              } py-2 px-6 lg:px-10   text-left`}
+              } py-2 px-6 lg:px-8   text-left`}
               onClick={() => setActiveTab("PaymentMethod")}
             >
               Payment 

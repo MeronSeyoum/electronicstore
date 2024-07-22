@@ -12,7 +12,7 @@ const LikeButton = ({ className = '', liked = false }) => {
   return (
     <button
       type="button"
-      className={`flex h-9 w-9 items-center justify-center rounded-full bg-white ${className}`}
+      className={`flex h-8 w-8 items-center justify-center rounded-full bg-white ${className}`}
       onClick={() => setIsLiked(!isLiked)}
     >
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none">

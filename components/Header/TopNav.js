@@ -1,7 +1,5 @@
 import React from "react";
-
 import { NavLinks } from "data/content";
-
 import Language from "../Language";
 import NavigationItem from "../NavItem";
 
@@ -14,7 +12,7 @@ const TopNav = () => {
             <NavigationItem menuItem={item} key={item.id} />
           ))}
         </div>
-        <p>Save upto 20% in all accessories and products on sale</p>
+        <p>Save up to 20% on all accessories and products on sale</p>
         <Language />
       </div>
     </div>

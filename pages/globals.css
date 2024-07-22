@@ -178,16 +178,26 @@ body {
     width: 100%;
 }
 
-.breadcrumb span,
-.breadcrumbs a,
-.breadcrumbs span {
+.breadcrumb {
+    display: flex;
+    align-items: center;
     font-size: 13px;
     line-height: 1.25;
-    text-align: right;
-    margin: 6px 0;
     color: #000;
+}
+
+.breadcrumb span,
+.breadcrumbs a {
+    margin-right: 5px;
+    /* Adjust spacing between items */
     font-weight: normal;
-    padding: 0 5px;
+}
+
+.breadcrumb svg {
+    display: block;
+    margin-top: 0.125rem;
+    transform: rotate(-90deg);
+    fill: currentColor;
 }
 
 .product-info {
@@ -228,6 +238,10 @@ body {
     }
     body {
         background-color: #ffffff;
+    }
+    .page-title .entry-title-main {
+        font-size: 14px;
+        margin: 16px 0px 0px 0px;
     }
 }
 

@@ -83,7 +83,7 @@ const ContactInfo = () => {
         {/* ============ */}
         <div className="flex flex-col py-0 sm:flex-row">
           <ButtonPrimary
-            className=" shadow-none sm:!px-7"
+            className="bg-gray-900 shadow-none sm:!px-7"
             onClick={() => onCloseActive()}
           >
             Save and go to Shipping

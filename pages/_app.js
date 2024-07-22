@@ -78,6 +78,8 @@ function App({ Component, pageProps }) {
      '/forgot-pass',
      '/productsCollection',
      '/cart',
+     '/contact',
+     '/faqs',
     '/products/*',
     '/Search*',
     ];

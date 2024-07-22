@@ -166,7 +166,7 @@ const PaymentMethod = () => {
 
         <div className="flex pt-6">
           <ButtonPrimary
-            className="w-full max-w-[240px]"
+            className="w-full max-w-[240px] bg-gray-900"
             // onClick={onCloseActive}
           >
             Confirm order

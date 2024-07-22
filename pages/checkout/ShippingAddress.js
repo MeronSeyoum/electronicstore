@@ -201,7 +201,7 @@ const ShippingAddress = () => {
         </FormItem>
       </div>
       <div className="flex flex-col py-6 sm:flex-row">
-        <ButtonPrimary className="shadow-none sm:!px-7 my-0">
+        <ButtonPrimary className="shadow-none sm:!px-7 my-0 bg-gray-900">
           Save and go to Payment
         </ButtonPrimary>
         <ButtonSecondary className="my-4 sm:ml-3 sm:mt-0 bg-neutral-light">

@@ -52,7 +52,7 @@ const CheckoutButton = ({ sessionId, total }) => {
 
   return (
     <ButtonPrimary className="mt-8 w-full" onClick={handleCheckout} disabled={loading}>
-      {loading ? 'Processing...' : 'Checkout'}
+      {loading ? 'Processing...' : 'Confirm Payment'}
     </ButtonPrimary>
   );
 };
