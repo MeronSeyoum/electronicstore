@@ -20,7 +20,7 @@ const CartProductCard = ({ product }) => {
   };
 
   return (
-    <div className="flex lg:py-4 py-3  border-b border-gray-200">
+    <div className="flex py-2  border-b border-gray-200">
       <div className="relative h-24 w-24 lg:h-28 lg:w-28 overflow-hidden rounded-lg mr-3  border">
         <Link href={`/products/${slug}`}>
           <Image
@@ -45,15 +45,15 @@ const CartProductCard = ({ product }) => {
                 </Link>
               </h3>
               <p className="text-xs text-gray-600">{category_name}</p>
-              <div className="flex items-center space-x-1 mt-1">
+              {/* <div className=" items-center space-x-1 mt-1 hidden lg:flex">
                 <MdStar className="text-yellow-400 text-xs md:text-sm" />
                 <span className="text-xs md:text-sm">4.5</span>
                <LikeButton  />
-               </div>
+               </div> */}
              
             </div>
             <AiOutlineDelete
-              className="text-gray-500 cursor-pointer hover:text-red-500 transition-colors"
+              className=" cursor-pointer text-red-500 hover:text-red-500 transition-colors"
               onClick={() => removeFromCart(cart_item_id)}
             />
             {/* <span className="font-semibold text-sm md:text-base text-gray-800 ">{formattedPrice}</span> */}

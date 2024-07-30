@@ -18,7 +18,7 @@ const OrderSummary = ({ cart, totalPrice, totalQuantity }) => {
   }, [totalPrice, estimatedTaxes, estimatedDeliveryHandling]);
 
   return (
-    <div className="lg:border border-neutral-300 lg:px-4 py-1 mt-10 w-full bg-gray-100 rounded-md">
+    <div className="lg:border border-neutral-300 lg:px-4 px-4 py-1 mt-10 w-full bg-gray-100 rounded-md">
       <div className="flex items-end justify-between">
         <h3 className="text-lg font-semibold">Order Summary</h3>
         <span className="text-sm text-primary">({totalQuantity} Items)</span>

@@ -78,6 +78,10 @@ function userModel(sequelize) {
             defaultValue: "active",
             allowNull: false
         },
+        avatar: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,

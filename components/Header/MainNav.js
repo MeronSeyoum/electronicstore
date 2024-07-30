@@ -8,6 +8,7 @@ import MenuBar from "./MenuBar";
 import ProductSearch from "components/ProductSearch";
 import Link from "next/link";
 import { userService } from "services";
+import UserAvatar from "components/UserAvatar";
 const MainNav = ({ onSearchIconClick }) => {
   const [user, setUser] = useState(null);
   const userId = userService.id;
@@ -17,14 +18,14 @@ const MainNav = ({ onSearchIconClick }) => {
   }, []);
 
   return (
-    <div className="container flex items-center justify-between lg:py-2.5 border-b-2  ">
+    <div className="container flex items-center justify-between lg:py-2 ">
       <div className="flex-1 lg:hidden">
         <MenuBar />
       </div>
       <div className="flex items-center basis-[60%]">
         <Logo />
       </div>
-      <div className="hidden lg:flex items-center justify-center flex-grow basis-[61%] me-10">
+      <div className="hidden lg:flex items-center justify-center flex-grow basis-[40%] me-10">
           <ProductSearch />
         </div>
       <div className="flex flex-1 items-center justify-end lg:gap-5 gap-2 me-3">  
@@ -38,7 +39,9 @@ const MainNav = ({ onSearchIconClick }) => {
       </div>
           {user ? (
             <>
-              <button
+            <UserAvatar userService={userService} />
+
+              {/* <button
                 type="button"
                 className="inline-flex flex-grow items-center justify-center w-full
                  px-2 lg:px-4  z-50
@@ -86,11 +89,13 @@ const MainNav = ({ onSearchIconClick }) => {
                   </Link>
                 </div>
               </div>
-            </>
+             */}
+
+             </>
           ) : (
             <>
               <Link href="/account/login" className=" flex flex-row">
-                <FaRegUser className="  border mx-2 text-lg rounded-full border-black " />
+                <FaRegUser className="  border mx-3 text-lg rounded-full border-black " />
                 <span className="hidden font-normal lg:block  lg:text-sm pe-2 account-icon">Account</span>
               </Link>
             </>

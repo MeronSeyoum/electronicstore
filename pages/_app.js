@@ -70,58 +70,58 @@ function App({ Component, pageProps }) {
     // redirect to login page if accessing a private page and not logged in
     setUser(userService.userValue);
     const publicPaths = [
-     '/',
-     '/account/login',
-     '/account/register',
-     '/account/reset-password',
-     '/account/confirm-account',
-     '/forgot-pass',
-     '/productsCollection',
-     '/cart',
-     '/contact',
-     '/faqs',
-    '/products/*',
-    '/Search*',
+      '/',
+      '/account/login',
+      '/account/register',
+      '/account/reset-password',
+      '/account/confirm-account',
+      '/forgot-pass',
+      '/productsCollection',
+      '/cart',
+      '/contact',
+      '/faqs',
+      '/products/*',
+      '/Search*',
     ];
-    
-    
+
+
     const path = url.split("?")[0];
 
     const isPublicPath = publicPaths.some(publicPath => {
-        if (publicPath.endsWith('*')) {
-            const basePath = publicPath.slice(0, -1); // Remove the wildcard character
-            return path.startsWith(basePath); // Check if the path starts with the base path
-        } else {
-            return path === publicPath;
-        }
+      if (publicPath.endsWith('*')) {
+        const basePath = publicPath.slice(0, -1); // Remove the wildcard character
+        return path.startsWith(basePath); // Check if the path starts with the base path
+      } else {
+        return path === publicPath;
+      }
     })
 
     if (!userService.userValue && !isPublicPath) {
-        setAuthorized(false);
-        router.push({
-            pathname: '/account/login',
-            query: { returnUrl: router.asPath }
-        });
+      setAuthorized(false);
+      router.push({
+        pathname: '/account/login',
+        query: { returnUrl: router.asPath }
+      });
     } else {
-        setAuthorized(true);
+      setAuthorized(true);
     }
   }
 
   return (
     <>
-   <Head>
+      <Head>
         <title>{meta_Data.title}</title>
         {meta_Data.icons.map((icon, index) => (
           <link key={index} rel={icon.rel} href={icon.url} type={icon.type} sizes={icon.sizes} />
         ))}
       </Head>
       <CartProvider>
-      <Header />
-      <Suspense fallback={<Loading />}>
-        <Alert />
-        {authorized && <Component {...pageProps} />}
-      </Suspense>
-      <Footer />
+        <Header />
+        <Suspense fallback={<Loading />}>
+          <Alert />
+          {authorized && <Component {...pageProps} />}
+        </Suspense>
+        <Footer />
       </CartProvider>
     </>
   );

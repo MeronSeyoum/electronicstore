@@ -49,7 +49,8 @@ const CartSideBar = () => {
       quantity,
     } = item;
 
-    const productPrice = price * quantity;
+    const productPrice = price * 1;
+    // quantity;
 
     const handleRemoveCart = () => {
       removeFromCart(cart_item_id);
@@ -78,23 +79,25 @@ const CartSideBar = () => {
                 <span className=" text-xs text-neutral-500">
                   {category_name}
                 </span>
-                <div className="flex items-center gap-1">
+                {/* <div className="flex items-center gap-1">
                   <MdStar className="text-yellow-400 text-sm" />
                   <span className="text-xs">{rating}</span>
-                </div>
-              </div>
-              <span className=" font-medium  text-sm text-primary ml-3">
-                ${productPrice.toFixed(2)}
-              </span>
-            </div>
-          </div>
-          <div className="flex w-full items-end justify-between text-sm">
-            <div className="flex items-center gap-3">
               <LikeButton />
+
+                </div> */}
+              </div>
               <AiOutlineDelete
                 className="text-xl cursor-pointer deleteColor"
                 onClick={() => handleRemoveCart(cart_item_id)}
               />
+             
+            </div>
+          </div>
+          <div className="flex w-full items-end justify-between text-sm">
+            <div className="flex items-center gap-3">
+              <span className=" font-medium  text-sm text-primary ">
+                ${productPrice.toFixed(2)}
+              </span>
             </div>
             <div>
               <InputNumber
@@ -117,10 +120,10 @@ const CartSideBar = () => {
       <Transition appear show={isVisible} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-50 overflow-y-auto"
+          className="fixed inset-0 z-50 overflow-y-auto "
           onClose={handleCloseMenu}
         >
-          <div className="z-max fixed inset-y-0 right-0 w-full h-full max-w-md outline-none focus:outline-none lg:max-w-md">
+          <div className="z-max fixed inset-y-0 right-0 w-full h-full  max-w-md outline-none focus:outline-none lg:max-w-md">
             <Transition.Child
               as={Fragment}
               enter="transition duration-100 transform"
@@ -132,15 +135,15 @@ const CartSideBar = () => {
             >
               <div className="relative z-20">
                 <div className="overflow-hidden shadow-lg ring-1 ring-black/5">
-                  <div className="relative h-screen bg-white">
-                    <div className="hiddenScrollbar h-full overflow-y-0 p-5">
+                  <div className="relative h-screen bg-[#f5f5f5]">
+                    <div className="hiddenScrollbar h-full overflow-y-0 p-4">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-semibold">Shopping cart</h3>
+                        <h3 className="text-base font-semibold">Shopping Cart</h3>
                         <ButtonCircle3 onClick={handleCloseMenu}>
                           <MdClose className="text-2xl" />
                         </ButtonCircle3>
                       </div>
-                      <div className="divide-y divide-neutral-300 ">
+                      <div className="divide-y divide-neutral-300 pt-3">
                         {cart.length === 0 ? (
                           <p className=" py-10 ">
                             {" "}
@@ -155,7 +158,7 @@ const CartSideBar = () => {
                         )}
                       </div>
                     </div>
-                    <div className="absolute bottom-0 left-0 w-full bg-neutral-light p-4">
+                    <div className="absolute  lg:bottom-0 bottom-10 left-0 w-full bg-neutral-light p-4">
                       <p className="flex justify-between">
                         <span>
                           <span className="font-medium">Subtotal</span>

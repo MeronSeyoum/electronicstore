@@ -94,7 +94,7 @@ export default function Slider({
           <div className="flow-root rounded-xl">
             <motion.ul
               initial={false}
-              className="relative  flex whitespace-nowrap  "
+              className="relative -mx-2 flex whitespace-nowrap xl:-mx-4"
             >
               <AnimatePresence initial={false} custom={direction}>
                 {data.map((item, indx) => (
@@ -123,13 +123,13 @@ export default function Slider({
           {currentIndex > 0 && !hideNextPrev && !category && (
             <PrevBtn
               onClick={() => changeItemId(currentIndex - 1)}
-              className={`absolute -left-3 z-[1] h-9 w-9 xl:-left-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}
+              className={`absolute -left-3 z-[1] h-10 w-10 text-lg xl:-left-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}
             />
           )}
           {data.length > currentIndex + numberOfItems && !hideNextPrev && !category &&(
             <NextBtn
               onClick={() => changeItemId(currentIndex + 1)}
-              className={`absolute -right-3 z-[1] h-9 w-9 xl:h-12 lg:w-12 ${arrowBtnClass}`}
+              className={`absolute -right-3 z-[1] h-10 w-10 text-lg xl:-right-6 xl:h-12 xl:w-12 ${arrowBtnClass}`}
             />
           )}
         </div>

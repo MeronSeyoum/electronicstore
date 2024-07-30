@@ -7,7 +7,7 @@ import logo from 'images/logo.png'
 const Logo = ({ className = '' }) => {
   return (
     <Link href="/" className="flex cursor-pointer items-center lg:gap-2 gap-1 ">
-      <span className={`${className} ml-1 w-56`}>
+      <span className={`${className} ml-1 lg:w-56`}>
         <Image
           src={logo}
           alt={<RiMicrosoftLoopFill className="text-2xl text-primary" />}

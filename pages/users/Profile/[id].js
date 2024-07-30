@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Layout, UserProfile } from "components/users";
 import { Spinner } from "components";
 import { userService, alertService } from "services";
+import Loading from "pages/Loading";
 
 export default Edit;
 
@@ -24,7 +25,7 @@ function Edit() {
 
   return (
     <Layout>
-       {user ? <UserProfile user={user} /> : <Spinner />}{" "}
+       {user ? <UserProfile user={user} /> : <Loading />}{" "}
     </Layout>
   );
 }

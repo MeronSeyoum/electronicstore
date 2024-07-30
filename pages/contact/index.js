@@ -43,7 +43,7 @@ const page = () => {
               </ButtonCircle3>
 
               <h2 className="text-xl font-medium">{info.title}</h2>
-              <p className="text-neutral-500 text-sm w-80">{info.description}</p>
+              <p className="text-neutral-500 text-sm lg:w-80">{info.description}</p>
               <Link
                 className="border-b border-black py-2 text-xl font-medium hover:border-primary hover:text-primary"
                 href={info.contactLink.href}

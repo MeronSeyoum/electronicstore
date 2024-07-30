@@ -9,6 +9,7 @@ import { userService, alertService } from "services";
 import Image from "next/image";
 import Input from "shared/Input/Input";
 import ShippingAddress from "pages/checkout/ShippingAddress";
+import Orders from "pages/users/Profile/orders";
 
 // import ShippingAddress from "./ShippingAddress";
 export { UserProfile };
@@ -103,34 +104,43 @@ const UserProfile = (props) => {
     }
   };
   return (
-    <div className="container mx-auto mt-5 mb-5 p-5 bg-white rounded">
+    <div className=" mx-auto mt-5 mb-5 lg:p-1 bg-white rounded">
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/5 border-r flex flex-col items-center p-5">
-          <img
-            className="rounded-full mt-5"
-            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-            alt="Profile"
-            width={144}
-            height={144}
-          />
-          <span className="font-bold mt-3">{userService.userValue?.username}</span>
-          <span className="text-gray-500">{userService.userValue?.email}</span>
-          </div>
-        <div className="md:w-3/4 px-12">
-          <div className="flex border-b mb-4">
-            <button
-              className={`px-4 py-2 ${activeTab === "user" ? "border-b-2 border-primary" : ""}`}
-              onClick={() => setActiveTab("user")}
-            >
-              User
-            </button>
-            <button
-              className={`px-4 py-2 ${activeTab === "address" ? "border-b-2 border-primary" : ""}`}
-              onClick={() => setActiveTab("address")}
-            >
-              Address
-            </button>
-          </div>
+      <div className="lg:w-1/5 border-r flex flex-col p-5 bg-gray-100">
+      <div className="flex flex-col justify-center items-center border-b-2 pb-2">
+      <img
+        className="rounded-full mt-5"
+        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+        alt="Profile"
+        width={60}
+        height={60}
+      />
+      <span className="font-bold mt-3 text-xl text-gray-800">{userService.userValue?.username}</span>
+      <span className="text-gray-500">{userService.userValue?.email}</span>
+</div>
+      <div className="flex flex-col  mt-3 w-full">
+        <button
+          className={`py-2 font-semibold text-left w-full ${activeTab === 'user' ? 'border-b-2 border-primary text-gray-800' : 'text-gray-600'}`}
+          onClick={() => setActiveTab('user')}
+        >
+          Account
+        </button>
+        <button
+          className={`py-2 font-semibold text-left w-full ${activeTab === 'address' ? 'border-b-2 border-primary text-gray-800' : 'text-gray-600'}`}
+          onClick={() => setActiveTab('address')}
+        >
+          Address
+        </button>
+        <button
+          className={`py-2 font-semibold text-left w-full ${activeTab === 'order' ? 'border-b-2 border-primary text-gray-800' : 'text-gray-600'}`}
+          onClick={() => setActiveTab('order')}
+        >
+          Order
+        </button>
+      </div>
+    </div>
+        <div className="lg:w-3/4 lg:px-12 py-5">
+          
           <form onSubmit={handleSubmit(onSubmit)}>
             {activeTab === "user" && (
               <div>
@@ -230,14 +240,7 @@ const UserProfile = (props) => {
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
-            {activeTab === "address" && (
-            <ShippingAddress isActive={true} onCloseActive={() => setActiveTab(null)} onOpenActive={() => setActiveTab("address")} />
-          )}
-
-
-            <div className="flex items-center">
+                <div className="flex items-center">
               <button
                 type="submit"
                 disabled={formState.isSubmitting}
@@ -263,6 +266,16 @@ const UserProfile = (props) => {
                 </button>
               </Link>
             </div>
+              </div>
+              
+            )}
+            {activeTab === "address" && (
+            <ShippingAddress isActive={true} onCloseActive={() => setActiveTab(null)} onOpenActive={() => setActiveTab("address")} />
+          )}
+          {activeTab === "order" && (
+          <Orders />
+          )}
+            
           </form>
         </div>
       </div>

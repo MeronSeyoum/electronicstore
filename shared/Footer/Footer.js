@@ -27,7 +27,7 @@ const Footer = () => {
                 height="250"
                 allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
             <div className="grid gap-8 grid-cols-2 lg:grid-cols-5 w-full lg:w-2/6">
