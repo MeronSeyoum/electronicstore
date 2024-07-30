@@ -80,6 +80,7 @@ function userModel(sequelize) {
         },
         avatar: {
             type: DataTypes.STRING,
+            defaultValue: "/default-avatar.png",
             allowNull: false
         },
         createdAt: {
