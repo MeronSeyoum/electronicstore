@@ -77,14 +77,14 @@ export const NavLinks = [
     href: "/faqs",
   },
   {
-    id: "h6i78g",
-    name: "Checkout",
-    href: "/checkout",
-  },
-  {
     id: "f678ty",
     name: "Cart",
     href: "/cart",
+  },
+  {
+    id: "h6i78g",
+    name: "Checkout",
+    href: "/checkout",
   },
 ];
 

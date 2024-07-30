@@ -19,6 +19,12 @@ body {
     color: black;
 }
 
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 
 /* Custom Classes */
 
@@ -59,14 +65,6 @@ body {
 
 .deleteColor {
     color: red !important;
-}
-
-.container {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
 }
 
 .ms-menu-container {
@@ -232,9 +230,11 @@ body {
 
 /* Media Queries */
 
-@media screen and (max-width: 480px) {
+@media (min-width: 300px) and (max-width: 767px) {
     .container {
         max-width: 640px;
+        padding-right: 1rem;
+        padding-left: 1rem;
     }
     body {
         background-color: #ffffff;
@@ -256,6 +256,8 @@ body {
 @media (min-width: 1024px) and (max-width: 1279px) {
     .container {
         max-width: 1024px;
+        padding-right: 30px;
+        padding-left: 30px;
     }
 }
 
@@ -269,9 +271,9 @@ body {
 
 @media (min-width: 1536px) {
     .container {
-        max-width: 1536px;
-        padding-right: 70px;
-        padding-left: 70px;
+        max-width: 1537px;
+        padding-right: 100px;
+        padding-left: 100px;
     }
 }
 

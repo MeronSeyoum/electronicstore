@@ -6,6 +6,7 @@ import Link from "next/link";
 import Loading from "pages/Loading";
 import SearchResultHeader from "components/SearchResultHeader";
 import useDataFetch from "hooks/useDataFetch";
+import SectionMoreProducts from "pages/products/SectionMoreProducts";
 
 export default function ProductSearchResult() {
   const { fetchedData, error, loading } = useDataFetch("/api/category");
@@ -15,6 +16,8 @@ export default function ProductSearchResult() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
+  const [sortOption, setSortOption] = useState("bestMatch");
+
   const router = useRouter();
   const { q } = router.query;
 
@@ -64,6 +67,25 @@ export default function ProductSearchResult() {
     },
     [searchProduct]
   );
+  useEffect(() => {
+    if (fetchedData) {
+      let sortedData = [...fetchedData];
+      switch (sortOption) {
+        case "priceLowToHigh":
+          sortedData.sort((a, b) => a.price - b.price);
+          break;
+        case "priceHighToLow":
+          sortedData.sort((a, b) => b.price - a.price);
+          break;
+        case "highestRated":
+          sortedData.sort((a, b) => b.rating - a.rating);
+          break;
+        default:
+          break;
+      }
+      setFilteredData(sortedData);
+    }
+  }, [ sortOption]);
 
   const currentItems = useMemo(() => {
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -81,7 +103,7 @@ export default function ProductSearchResult() {
   }
 
   return (
-    <div className="container relative " id="body">
+    <div className="container relative mb-10 " id="body">
       <div className="flex">
         <div className="page-title py-3 ">
           <nav className="breadcrumb">
@@ -124,7 +146,10 @@ export default function ProductSearchResult() {
               </div>
             </>
           ) : (
-            <p className="product-info">No products were found matching your selection.</p>
+            <>
+            <p className="product-info mb">No products were found matching your selection.</p>
+            <SectionMoreProducts />
+            </>
           )}
         </div>
       </div>

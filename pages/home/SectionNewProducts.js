@@ -7,6 +7,7 @@ import Link from "next/link";
 
 const SectionNewProducts = ({ fetchedData, error, loading }) => {
   const [windowWidth, setWindowWidth] = useState(0);
+  const [itemsToShow, setItemsToShow] = useState(6);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -14,6 +15,16 @@ const SectionNewProducts = ({ fetchedData, error, loading }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (windowWidth < 1024) {
+      setItemsToShow(6); // If window width is less than 1024px, show 3 items
+    } else if (windowWidth < 1280) {
+      setItemsToShow(8); // If window width is less than 1280px, show 4 items
+    } else {
+      setItemsToShow(5); // If window width is greater than or equal to 1280px, show 5 items
+    }
+  }, [windowWidth]);
 
   if (loading) {
     return <Loading />;
@@ -29,8 +40,6 @@ const SectionNewProducts = ({ fetchedData, error, loading }) => {
   // Sort the filtered data in descending order (assuming we use 'created_at' for sorting)
   const sortedData = filteredData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-  // Determine how many items to slice based on screen size
-  const itemsToShow = windowWidth < 768 ? 6 : 5; // Assuming mobile width is less than 768px
   const data = sortedData.slice(0, itemsToShow);
 
   return (
@@ -39,7 +48,7 @@ const SectionNewProducts = ({ fetchedData, error, loading }) => {
         <h3 className="text-xl font-bold">New Products</h3>
         <hr className="bg-primary w-52 h-[4px] justify-start -mt-1" />
       </div>
-      <div className="grid gap-x-6 gap-y-8 grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {data.map((product) => (
           <ProductCard
             key={product.id}

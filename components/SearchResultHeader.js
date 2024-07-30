@@ -1,10 +1,9 @@
-// components/SearchResultHeader.js
 import { useState } from "react";
 import SideBarFilter from "./SideBarFilter";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 import { LuFilter } from "react-icons/lu";
 
-const SearchResultHeader = ({ productLength , applyFilters, fetchedData}) => {
+const SearchResultHeader = ({ productLength, applyFilters, fetchedData, onSortChange }) => {
   const [inStock, setInStock] = useState(false);
   const [storeOnly, setStoreOnly] = useState(false);
 
@@ -65,6 +64,7 @@ const SearchResultHeader = ({ productLength , applyFilters, fetchedData}) => {
               name="Sort"
               className="appearance-none bg-white border border-gray-300 py-2 px-4
             rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => onSortChange(e.target.value)}
             >
               <option value="bestMatch">Best Match</option>
               <option value="priceLowToHigh">Price Low-High</option>

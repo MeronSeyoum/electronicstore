@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React,{useState, useEffect} from "react";
 
 import Filter from "components/Filter";
 import ProductCard from "components/ProductCard";
@@ -13,6 +13,31 @@ import ButtonSecondary from "shared/Button/ButtonSecondary";
 import Link from "next/link";
 const SectionBestProducts = ({ fetchedData, error, loading }) => {
   const data = fetchedData ? fetchedData.slice(0, 10) : [];
+
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [itemsToShow, setItemsToShow] = useState(10);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    handleResize(); // Set initial width
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+   if (windowWidth < 768) {
+      setItemsToShow(6); // If window width is less than 500px, show 2 items
+    } else if (windowWidth < 1024) {
+      setItemsToShow(8); // If window width is less than 1024px, show 3 items
+    } else if (windowWidth < 1280) {
+      setItemsToShow(10); // If window width is less than 1280px, show 4 items
+    } else {
+      setItemsToShow(10); // If window width is greater than or equal to 1280px, show 5 items
+    }
+  }, [windowWidth]);
+
+  const best_product = data.slice(0, itemsToShow);
+
 
   if (loading) {
     return <Loading />;
@@ -33,16 +58,17 @@ const SectionBestProducts = ({ fetchedData, error, loading }) => {
         {/* <hr className="bg-gray-400  h-[0.5px] justify-start" /> */}
         <hr className="bg-primary  w-52 h-[4px] justify-start -mt-1" />
       </div>
-      <div className="grid gap-x-6 gap-y-8  grid-cols-2 lg:grid-cols-5 ">
-        {data.map((product) => (
-          <ProductCard
-            key={product.id}
+      <div  className=" grid gap-x-6 gap-y-8  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+       
+        {best_product.map((product) => (
+        
+        <ProductCard  
+        key={product.id}
             product={product}
-            className=""
-            // border-neutral-300 border
-          />
-        ))}
-      </div>
+             />
+      ))}
+      </div>  
+      
 
       <div className="mt-10 flex items-center justify-center">
       <Link href={`/productsCollection`}>

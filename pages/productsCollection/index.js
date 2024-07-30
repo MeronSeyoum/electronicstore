@@ -21,6 +21,7 @@ const Page = () => {
 
   const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortOption, setSortOption] = useState("bestMatch");
 
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -30,14 +31,28 @@ const Page = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   const itemsPerPage = windowWidth < 768 ? 14 : 15;
-  // const itemsPerPage = 15; // Change this value as per your requirement
 
   useEffect(() => {
     if (fetchedData) {
-      setFilteredData(fetchedData);
+      let sortedData = [...fetchedData];
+      switch (sortOption) {
+        case "priceLowToHigh":
+          sortedData.sort((a, b) => a.price - b.price);
+          break;
+        case "priceHighToLow":
+          sortedData.sort((a, b) => b.price - a.price);
+          break;
+        case "highestRated":
+          sortedData.sort((a, b) => b.rating - a.rating);
+          break;
+        default:
+          break;
+      }
+      setFilteredData(sortedData);
     }
-  }, [fetchedData]);
+  }, [fetchedData, sortOption]);
 
   const applyFilters = (filters) => {
     const {
@@ -86,22 +101,37 @@ const Page = () => {
   return (
     <div className="container relative mb-6" id="body">
       <div className="flex flex-col justify-start">
-      {categoryId && (
-        <div className="page-title py-t lg:pt-3">
-          <nav className="breadcrumb">
-            <span>
-              <Link href="/">Home</Link>
-            </span>
-            <svg aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5">
-              <path fill="currentColor" fill-rule="evenodd" d="M1.002.27L.29.982l3.712 3.712L7.714.982 7.002.27l-3 3z"></path>
-            </svg>
-            <span className="pl-1"> {categoryId
-              ? fetchedData[0]?.category_name || "Category"
-              : "Product Collection"}</span>
-          </nav>
-        </div>
-)}
-        <Heading className="my-2" isMain >
+        {categoryId && (
+          <div className="page-title py-t lg:pt-3">
+            <nav className="breadcrumb">
+              <span>
+                <Link href="/">Home</Link>
+              </span>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                role="presentation"
+                xmlns="http://www.w3.org/2000/svg"
+                width="8"
+                height="5"
+                viewBox="0 0 8 5"
+              >
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M1.002.27L.29.982l3.712 3.712L7.714.982 7.002.27l-3 3z"
+                ></path>
+              </svg>
+              <span className="pl-1">
+                {" "}
+                {categoryId
+                  ? fetchedData[0]?.category_name || "Category"
+                  : "Product Collection"}
+              </span>
+            </nav>
+          </div>
+        )}
+        <Heading className="my-2" isMain>
           {categoryId
             ? fetchedData[0]?.category_name || "Category"
             : "Product Collection"}
@@ -109,17 +139,14 @@ const Page = () => {
       </div>
       <div className="flex flex-col lg:flex-row lg:bg-white lg:p-6">
         <div className="relative flex-1 ">
-          {/* :(<Filter applyFilters={applyFilters} fetchedData={fetchedData} />) */}
+          <SearchResultHeader
+            productLength={currentItems.length}
+            applyFilters={applyFilters}
+            fetchedData={fetchedData}
+            onSortChange={setSortOption}
+          />
 
-          {
-            <SearchResultHeader
-              productLength={currentItems.length}
-              applyFilters={applyFilters}
-              fetchedData={fetchedData}
-            />
-          }
-
-          <div className="grid flex-1 gap-x-3 gap-y-8 grid-cols-2 lg:grid-cols-5">
+          <div className="grid flex-1 gap-x-3 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
             {currentItems.map((item) => (
               <ProductCard showPrevPrice product={item} key={item.id} />
             ))}
@@ -132,10 +159,11 @@ const Page = () => {
                 <button
                   key={i}
                   onClick={() => paginate(i + 1)}
-                  className={`mx-1 px-3 py-1 border rounded ${i + 1 === currentPage
+                  className={`mx-1 px-3 py-1 border rounded ${
+                    i + 1 === currentPage
                       ? "bg-primary text-white"
                       : "hover:bg-gray-200"
-                    }`}
+                  }`}
                 >
                   {i + 1}
                 </button>
