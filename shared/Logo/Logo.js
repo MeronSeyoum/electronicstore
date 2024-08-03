@@ -10,9 +10,9 @@ const Logo = ({ className = '' }) => {
       <span className={`${className} ml-1 lg:w-56`}>
         <Image
           src={logo}
-          alt={<RiMicrosoftLoopFill className="text-2xl text-primary" />}
-          width={150}
-          height={10}
+          alt={<RiMicrosoftLoopFill className="text-2xl text-primary w-10" />}
+          width={100}
+          height={16}
         />
       </span>
 

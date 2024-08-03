@@ -35,11 +35,11 @@ const CheckoutPage = () => {
     <div className="container mb-10">
        <h2 className="text-xl font-semibold py-6">Checkout</h2>
 
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row ">
         <div className="flex flex-col  lg:w-3/5 ">
       
           {/* Tabs */}
-          <div className=" text-sm mb-0 border-b-2">
+          <div className=" text-sm mb-0 border-b-2 ">
             <button
               className={`${
                 activeTab === "ContactInfo" ? "bg-white font-semibold border-b-2 border-primary" : ""
@@ -66,7 +66,7 @@ const CheckoutPage = () => {
             </button>
           </div>
           {/* Render active tab content */}
-          <div className=" bg-white lg:p-4 mt-6 lg:mt-0">{renderTabContent()}</div>
+          <div className=" bg-white  shadow-md  lg:p-4 mt-6 lg:mt-0">{renderTabContent()}</div>
         </div>
         {/* Order summary */}
         <div className="lg:w-2/5 lg:ml-6 ">

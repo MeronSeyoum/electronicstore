@@ -95,7 +95,7 @@ export default function ProductSearchResult() {
 
   const paginate = useCallback((pageNumber) => setCurrentPage(pageNumber), []);
 
-  if (loading) {
+  if (loading|| isLoading ) {
     return <Loading />;
   }
   if (error) {

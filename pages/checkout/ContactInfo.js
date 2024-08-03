@@ -18,7 +18,7 @@ const ContactInfo = () => {
     onCloseActive();
   };
   return (
-    <div className="overflow-hidden ">
+    <div className="overflow-hidden   ">
       <div className="flex flex-col items-center justify-center pb-4 sm:flex-row ">
         <span className="hidden sm:block ">
           <FaRegCircleUser className="text-2xl text-primary " />
