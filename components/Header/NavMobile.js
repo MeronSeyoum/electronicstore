@@ -15,7 +15,7 @@ const menuLink = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "Blog", href: "/blogs/news" },
-  { label: "FAQ", href: "/faq" },
+  { label: "FAQ", href: "/faqs" },
 ];
 const NavMobile = ({ onClickClose }) => {
   return (
