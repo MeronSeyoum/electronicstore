@@ -26,12 +26,12 @@ const SingleProductPage = () => {
       setIsLoadingData(true)
       try {
         // Wait for product data to be loaded
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate loading delay
+        await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate loading delay
 
         // Find the selected product
         const filteredProduct = fetchedData.find((item) => item.slug === slug);
         setSelectedProduct(filteredProduct);
-
+console.log(filteredProduct)
       } catch (error) {
         console.error("Error fetching product data:", error);
       } finally {
@@ -59,7 +59,8 @@ const SingleProductPage = () => {
         <div className="mb-10">
           <SectionProductHeader
             productId={pathOr(0, ["id"], selectedProduct)}
-            productImage={pathOr([], ["main_image"], selectedProduct || '/placeholder_image.jpg')}
+            main_image={pathOr([], ["main_image"], selectedProduct || '/placeholder_image.jpg')}
+            productImages={pathOr([], ["images"], selectedProduct || '/placeholder_image.jpg')}
             productName={pathOr("", ["product_name"], selectedProduct)}
             categoryName={pathOr("", ["category_name"], selectedProduct)}
             productDesc={pathOr("", ["description"], selectedProduct)}
@@ -68,6 +69,7 @@ const SingleProductPage = () => {
             rating={pathOr(0, ["rating"], selectedProduct)}
             // pieces_sold={pathOr(0, ["pieces_sold"], selectedProduct)}
             reviews={pathOr(0, ["reviews"], selectedProduct)}
+            color={pathOr([], ["color"], selectedProduct)}
 
           />
         </div>

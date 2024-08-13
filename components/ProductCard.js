@@ -6,9 +6,8 @@ import AddToCart from "./AddToCart";
 import ViewProduct from "./ViewProduct";
 
 const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
-  const images = product.main_image.split(','); 
   const [isHovered, setIsHovered] = useState(false);
-  const [mainImage, setMainImage] = useState(images[0] || '/placeholder_image.jpg'); // State to manage the main image
+  const [mainImage, setMainImage] = useState(product.main_image || '/placeholder_image.jpg'); // State to manage the main image
 
   return (
     <div
@@ -54,7 +53,7 @@ const ProductCard = ({ product, className = "", showPrevPrice = false }) => {
           <p className="font-semibold text-primary-light">
             ${parseFloat(product.price).toFixed(2)}
           </p>
-          <AddToCart productId={product.id} quantity={1}  price={product.price} className="px-3 py-1.5" title='Add' />
+          <AddToCart productId={product.id} quantity={1} price={product.price} className="px-3 py-1.5" title='Add' />
         </div>
       </div>
     </div>

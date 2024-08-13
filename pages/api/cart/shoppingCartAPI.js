@@ -29,7 +29,8 @@ export default async function handler(req, res) {
           p.justIn,
           pi.image_path AS main_image,
           r.rating,
-          r.reviews
+          r.reviews,
+          ss.total
         FROM 
           electronic_shop.cart_item AS ci
         JOIN

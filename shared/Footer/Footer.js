@@ -25,7 +25,7 @@ const Footer = () => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.826247640557!2d-114.09160241264364!3d51.037829771966386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53716e3d1d5aa4a9%3A0x93313f6fffbb1188!2s17%20Ave%20SW%2C%20Alberta%2C%20Canada!5e0!3m2!1sen!2sau!4v1721595546732!5m2!1sen!2sau"
                 width="100%"
                 height="250"
-                allowfullscreen=""
+                allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>

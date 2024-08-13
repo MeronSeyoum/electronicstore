@@ -15,6 +15,7 @@ function jwtMiddleware(req, res) {
             '/api/product',
             'api/cart/add',
             '/api/ShoppingSession',
+            '/api/updateShoppingSession',
             'api/address/*',
             '/productsCollection?*',
 

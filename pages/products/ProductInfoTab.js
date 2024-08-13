@@ -73,7 +73,7 @@ const ProductInfoTab = ({ productDesc, features, rating, reviews }) => {
               <p className="product-desc">{productDesc}</p>
               {features && (
               <ul className="list-disc pl-5 mt-4 space-y-2">
-                {features.split('; ').map((feature, index) => (
+                {features.split('; ').reverse().map((feature, index) => (
                   <li key={index} className="text-sm text-gray-700">
                     <span className="font-medium text-gray-900">{feature}</span>
                   </li>

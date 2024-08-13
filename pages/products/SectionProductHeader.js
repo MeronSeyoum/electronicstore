@@ -12,14 +12,15 @@ import Heading from "shared/Heading/Heading";
 import InputNumber from "shared/InputNumber/InputNumber";
 
 const productAttributes = {
-  color: ["Navy", "Black", "Gray"],
+  // color: ["Navy", "Black", "Gray"],
   RAM: ["4GB", "8GB", "16GB"],
   internalStorage: ["128GB", "256GB", "512GB"],
 };
 
 const SectionProductHeader = ({
   productId,
-  productImage,
+  main_image,
+  productImages,
   productName,
   categoryName,
   productDesc,
@@ -27,8 +28,12 @@ const SectionProductHeader = ({
   currentPrice,
   rating,
   reviews,
+  color,
 }) => {
-  const [selectedColor, setSelectedColor] = useState(productAttributes.color[0]);
+  // Convert color string to an array
+  const colorArray = color ? color.split(',').map(c => c.trim()) : [];
+ 
+  const [selectedColor, setSelectedColor] = useState(colorArray[0]);
   const [selectedRAM, setSelectedRAM] = useState(productAttributes.RAM[0]);
   const [selectedStorage, setSelectedStorage] = useState(productAttributes.internalStorage[0]);
   const [quantity, setQuantity] = useState(1); // Manage quantity state
@@ -51,7 +56,7 @@ const SectionProductHeader = ({
       </div>
 
       <div className="lg:basis-[45%] lg:bg-white lg:p-3 rounded-lg border shadow-md">
-        <ImageShowCase productImage={productImage} />
+        <ImageShowCase productImages={productImages} main_image={main_image} />
       </div>
 
 
@@ -78,7 +83,7 @@ const SectionProductHeader = ({
         
         <div className="flex flex-col gap-3 justify-between lg:pt-2 lg:mt-0 mt-4">
           <ColorOptions
-            colors={productAttributes.color}
+           colors={colorArray}
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
           />

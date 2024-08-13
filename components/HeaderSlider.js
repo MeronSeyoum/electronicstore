@@ -4,9 +4,15 @@ import Image from 'next/image';
 import ButtonPrimary from 'shared/Button/ButtonPrimary';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import useDataFetch from 'hooks/useDataFetch';
+import { useRouter } from 'next/router';
 
 const HeaderSlider = () => {
   const { fetchedData, error, loading } = useDataFetch("/api/product/Slides_banners?type=slide");
+  const router = useRouter();
+
+  const handleShopNow = (link) => {
+    router.push(link);
+  };
 
   const autoPlayInterval = 6000;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -88,7 +94,7 @@ const HeaderSlider = () => {
                 <h3 className="text-lg md:text-xl lg:text-2xl text-primary font-medium">
                   <span className="text-black text-lg">From </span> {fetchedData[currentSlide].price}
                 </h3>
-                <ButtonPrimary onClick={nextSlide} className="w-32  lg:w-36">
+                <ButtonPrimary onClick={() => handleShopNow(fetchedData[currentSlide].link)} className="w-32  lg:w-36">
                   Shop Now
                 </ButtonPrimary>
               </motion.div>

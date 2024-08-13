@@ -1,11 +1,17 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import ButtonSecondary from 'shared/Button/ButtonSecondary';
 import useDataFetch from 'hooks/useDataFetch';
+import Link from 'next/link';
 
 const SectionCmsBannerThree = () => {
   const { fetchedData, error, loading } = useDataFetch("/api/product/Slides_banners?type=banner3");
+  const router = useRouter();
 
+  const handleButtonClick = (link) => {
+    router.push(link);
+  };
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
 
@@ -29,9 +35,11 @@ const SectionCmsBannerThree = () => {
                   <span className="font-semibold text-2xl text-primary-light">{banner.price}</span>
                 </span>
                 <div className="mt-4">
-                  <ButtonSecondary className="bg-black text-white h-9">
+                <Link href={banner.link}>
+                  <ButtonSecondary className="bg-black text-white h-9"  onClick={() => handleButtonClick(banner.link)}  >
                     Shop Now
                   </ButtonSecondary>
+                  </Link>
                 </div>
               </div>
             </div>

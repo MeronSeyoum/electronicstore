@@ -7,8 +7,8 @@ const SectionHomeBanner = () => {
   const { fetchedData, error, loading } = useDataFetch("/api/product/Slides_banners?type=banner");
   const router = useRouter();
 
-  const handleButtonClick = () => {
-    router.push('/products/playstation-2');
+  const handleButtonClick = (link) => {
+    router.push(link);
   };
 
   if (loading) return <div>Loading...</div>;
@@ -28,7 +28,7 @@ const SectionHomeBanner = () => {
                 headerTitle="New Arrival"
                 heading={banner.title }
                 buttonLabel="View Product"
-                buttonAction={handleButtonClick}
+                buttonAction={() => handleButtonClick(banner.link)} 
               />
             </div>
           ))}

@@ -112,7 +112,7 @@ CREATE TABLE electronic_shop.product (
     product_name VARCHAR(100) NOT NULL,
     `desc` TEXT NOT NULL,
     category_id INT(10) NOT NULL,
-    price DECIMAL(6) NOT NULL,
+    price DECIMAL(6,2) NOT NULL,
     quantity INT(10) NOT NULL,
     color VARCHAR(50),            -- New column for product color.
     size VARCHAR(20),             -- New column for product size.
@@ -148,7 +148,7 @@ CREATE TABLE electronic_shop.product_variations (
     id INT(10) NOT NULL AUTO_INCREMENT,
     product_id INT(10) NOT NULL,
     SKU VARCHAR(50) NOT NULL,   -- SKU for the product variation.
-    price DECIMAL(6) NOT NULL,  -- Price for the product variation.
+    price DECIMAL(6,2) NOT NULL,  -- Price for the product variation.
     quantity INT(10) NOT NULL,  -- Quantity available for the product variation.
     color VARCHAR(50),          -- Color of the product variation.
     size VARCHAR(20),           -- Size of the product variation.
@@ -228,7 +228,7 @@ CREATE TABLE electronic_shop.user_address (
 CREATE TABLE electronic_shop.shopping_session (
     id INT(30) NOT NULL AUTO_INCREMENT,
     user_id INT(10) DEFAULT NULL,
-    total DECIMAL(10) NOT NULL DEFAULT '0.00',
+    total DECIMAL(10,2) NOT NULL DEFAULT '0.00',
     session_status VARCHAR(20) NOT NULL,
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -280,7 +280,8 @@ CREATE TABLE electronic_shop.cart_item (
 CREATE TABLE electronic_shop.order_details (
     id INT(20) NOT NULL AUTO_INCREMENT,
     user_id INT(10),
-    total DECIMAL(10) NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    order_status VARCHAR(20) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     modified_at TIMESTAMP,
     UNIQUE KEY order_index (id) USING BTREE,
