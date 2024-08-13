@@ -12,10 +12,10 @@ const menuLink = [
   { label: "Shop", href: "/collections/all" },
   { label: "Gears", href: "/gears" },
   { label: "Accessories", href: "/accessories" },
-  { label: "About", href: "/pages/about" },
-  { label: "Contact", href: "/pages/contact" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
   { label: "Blog", href: "/blogs/news" },
-  { label: "FAQ", href: "/pages/faq" },
+  { label: "FAQ", href: "/faqs" },
 ];
 const NavMobile = ({ onClickClose }) => {
   return (
