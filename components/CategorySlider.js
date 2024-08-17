@@ -39,7 +39,7 @@ const itemPerRow = 12;
   
 //  const data = fetchedData ? fetchedData.slice(10, 34) : [];
   return (
-    <div className="  lg:py-4">
+    <div className="  lg:p-4">
       <Slider
         itemPerRow={numberOfItems}
         data={fetchedData}

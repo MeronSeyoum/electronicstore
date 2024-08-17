@@ -29,12 +29,12 @@ const CategoryCard = ({ category }) => {
             className="rounded-full transition-transform duration-500 ease-in-out scale-110 group-hover:scale-125"
           />
         </div>
-        <span className="flex mt-2 text-center text-xs font-semibold items-center">
+        <span className="flex mt-2 text-center lg:text-xs text-[10px] lg:font-semibold items-center">
           <span className="transition-all duration-300 ease-in-out">
-            {truncateText(category.category_name, 16)}
+            {truncateText(category.category_name, 15)}
           </span>
           <svg
-            className="w-3.5 h-3.5 ml-2 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+            className="w-3.5 h-3.5 ml-2 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 hidden lg:block"
             viewBox="0 0 24 24"
             role="img"
             aria-label={`Arrow icon indicating link to ${category.category_name}`}
