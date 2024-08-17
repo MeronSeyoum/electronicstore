@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className='bg-[#f2f2f2] '>
+      <body className='bg-[#f4f5f7] '>
         <Header />
         <Suspense fallback={<Loading />}>
           {children}

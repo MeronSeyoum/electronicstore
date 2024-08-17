@@ -11,7 +11,7 @@ const CategorySlider = () => {
  
   const { fetchedData, error, loading } = useDataFetch("/api/category");
   
-  const [numberOfItems, setNumberOfItem] = useState(12);
+  const [numberOfItems, setNumberOfItem] = useState(8);
  useEffect(() => {
 const itemPerRow = 12;
 
@@ -39,7 +39,7 @@ const itemPerRow = 12;
   
 //  const data = fetchedData ? fetchedData.slice(10, 34) : [];
   return (
-    <div className="">
+    <div className="  lg:py-4">
       <Slider
         itemPerRow={numberOfItems}
         data={fetchedData}

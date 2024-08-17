@@ -104,15 +104,15 @@ export default function Slider({
         }}
       >
         <div className="relative flow-root" {...handlers}>
-          <div className="flow-root rounded-xl">
+          <div className="flow-root ">
             <motion.ul
               initial={false}
-              className="relative -mx-2 flex whitespace-nowrap xl:-mx-4"
+              className="relative flex whitespace-nowrap"
             >
               <AnimatePresence initial={false} custom={direction}>
                 {data.map((item, indx) => (
                   <motion.li
-                    className="relative inline-block shrink-0 whitespace-normal pr-3"
+                    className="flex  relative shrink-0 whitespace-normal justify-center "
                     custom={direction}
                     initial={{
                       x: `${currentIndex * -100}%`,
