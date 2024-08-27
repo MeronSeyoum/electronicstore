@@ -2,67 +2,50 @@ import React from 'react';
 import Image from 'next/image';
 import { MdStar } from 'react-icons/md';
 import { PiSealCheckFill } from 'react-icons/pi';
-import apple from "images/apple.png";
-
 import ButtonSecondary from 'shared/Button/ButtonSecondary';
+import apple from 'images/apple.png';
 
 const BrandCard = ({
   brandName,
-  rating,
-  reviews,
-  followers,
+  rating = 4.5,
+  reviews = 10,
+  followers = '2 M',
   visitLink,
-  logo,
+  logo = apple,
   products,
 }) => {
   return (
-    <div className="rounded-2xl  border-neutral-300 p-3 bg-neutral-light">
+    <div className="rounded-2xl border border-neutral-300 p-6 ">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="h-20 w-20 overflow-hidden rounded-lg">
-            <Image
-              src={apple}
-              alt="logo"
-              className="h-full w-full object-contain object-center p-2"
-              
-            />
+        <div className="flex items-center gap-3">
+          <div className="w-16 h-16 overflow-hidden rounded-lg bg-white flex items-center justify-center">
+            <Image src={logo} alt={`${brandName} logo`} className="object-contain" />
           </div>
           <div>
-            <h3 className="flex items-center gap-1 text-lg font-medium">
+            <h3 className="flex items-center gap-1 text-base font-medium">
               {brandName} <PiSealCheckFill className="text-blue-600" />
             </h3>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 text-sm text-neutral-500">
               <MdStar className="text-yellow-400" />
-              <p className="text-sm">
-                4.5
-                <span className="text-neutral-500">{`(10 Reviews)`}</span>
-              </p>
+              <span>{rating}</span>
+              <span>{`(${reviews} Reviews)`}</span>
             </div>
-            <p className="text-sm text-neutral-500">2 M Followers</p>
+            <p className="text-sm text-neutral-500">{`${followers} Followers`}</p>
           </div>
         </div>
 
-        <ButtonSecondary
-          className="border border-black "
-          to={visitLink}
-        onClick={''}
-        >
+        <ButtonSecondary to={visitLink} className="border border-black px-4 py-2">
           Visit
         </ButtonSecondary>
-        {/* <button className="rounded-full bg-white text-black hover:bg-primary/80 disabled:bg-opacity-70 px-5 py-3"> Event details</button> */}
-
       </div>
 
-      <div className="mt-3 grid grid-cols-2 gap-3">
+      <div className="mt-6 grid grid-cols-2 gap-4">
         {products.map((product, index) => (
-          <div
-            key={index}
-            className="h-[150px] overflow-hidden rounded-lg border p-2 bg-white"
-          >
+          <div key={index} className="h-[120px] overflow-hidden rounded-lg border p-2 bg-neutral-light">
             <Image
               src={product.main_image}
-              alt="product Image"
-              className="h-full w-full object-fit p-4 object-bottom rounded-md"
+              alt={`${product.name} image`}
+              className="h-full w-full object-contain object-center rounded-md"
               width={80}
               height={80}
             />

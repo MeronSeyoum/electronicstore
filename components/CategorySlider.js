@@ -11,7 +11,7 @@ const CategorySlider = () => {
  
   const { fetchedData, error, loading } = useDataFetch("/api/category");
   
-  const [numberOfItems, setNumberOfItem] = useState(8);
+  const [numberOfItems, setNumberOfItem] = useState(10);
  useEffect(() => {
 const itemPerRow = 12;
 

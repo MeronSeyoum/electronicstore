@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     // Base query to fetch data
     let query = `
-      SELECT id, type, title, discount, price, link, banner_img AS image, alt
+      SELECT id, type, title, discount, price, link, banner_img AS image, alt, banner_desc
       FROM electronic_shop.slide_Banner
     `;
 

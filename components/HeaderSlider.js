@@ -5,6 +5,7 @@ import ButtonPrimary from 'shared/Button/ButtonPrimary';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import useDataFetch from 'hooks/useDataFetch';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const HeaderSlider = () => {
   const { fetchedData, error, loading } = useDataFetch("/api/product/Slides_banners?type=slide");
@@ -51,6 +52,7 @@ const HeaderSlider = () => {
   if (error) return <div>Error loading data</div>;
 
   return (
+    // <Link href={fetchedData[currentSlide].link}>
     <div
       className="relative w-full  bg-[#f2eeeb] h-[380px] lg:border-2 rounded-lg"
       onMouseEnter={handleMouseEnter}
@@ -68,8 +70,9 @@ const HeaderSlider = () => {
             <Image
               src={fetchedData[currentSlide].image}
               alt={fetchedData[currentSlide].alt}
-              layout="fill"
-              objectFit="cover"
+              width={1200}
+      height={400}
+      priority
               // className="relative object-cover lg:w-full lg:h-full h-96"
                 className="relative w-full h-auto object-cover aspect-w-16 aspect-h-9"
             />
@@ -127,6 +130,7 @@ const HeaderSlider = () => {
         </div>
       )}
     </div>
+    // </Link>
   );
 };
 

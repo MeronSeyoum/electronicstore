@@ -3,32 +3,23 @@ import Heading from 'shared/Heading/Heading';
 import BrandCard from 'components/BrandCard';
 import Loading from 'pages/Loading';
 import useDataFetch from 'hooks/useDataFetch';
-// Replace with actual path
 
 const SectionBrands = () => {
   const { fetchedData, error, loading } = useDataFetch("/api/product");
 
-  if (loading) {
-    return <Loading />; // Render loading indicator while fetching data
-  }
+  if (loading) return <Loading />;
+  if (error) return <div>Error: {error}</div>;
 
-  if (error) {
-    return <div>Error: {error}</div>; // Render error message if fetch fails
-  }
+  const filterProductsByCategory = (category) => 
+    fetchedData.filter(product => product.category_name === category).slice(0, 4);
 
-  // Filter products by brand categories
-  const appleProducts = fetchedData.filter(product => product.category_name === 'Apple');
-  const samsungProducts = fetchedData.filter(product => product.category_name === 'Samsung');
-  const gameConsoleProducts = fetchedData.filter(product => product.category_name === 'Game Console');
-
-  // Brands section data
   const brandsSection = {
     heading: 'Shop by Brand',
     description: 'Discover our top brands and their latest products.',
     brands: [
-      { brandName: 'Apple', products: appleProducts },
-      { brandName: 'Samsung', products: samsungProducts },
-      { brandName: 'Game Console', products: gameConsoleProducts },
+      { brandName: 'Phone & Watch', products: filterProductsByCategory('Phone & Watch') },
+      { brandName: 'Headphones & Speaker', products: filterProductsByCategory('Headphones & Speaker') },
+      { brandName: 'Video Game & VR', products: filterProductsByCategory('Video Game & VR') },
     ],
   };
 
@@ -46,7 +37,6 @@ const SectionBrands = () => {
           <BrandCard key={brand.brandName} {...brand} />
         ))}
       </div>
-     
     </section>
   );
 };

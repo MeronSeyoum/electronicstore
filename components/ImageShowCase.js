@@ -44,7 +44,9 @@ const ImageShowCase = ({ productImages, main_image }) => {
                 alt={`image-${index}`}
                 width={80}
                 height={100}
-                objectFit="cover"
+                style={{
+        objectFit: 'cover',
+      }}
                 className=""
               />
             </button>
@@ -58,7 +60,7 @@ const ImageShowCase = ({ productImages, main_image }) => {
           alt={`product-image-${activeImageIndex}`}
           height={400}
           width={400}
-          objectFit="contain"
+          style={{  objectFit: "contain"}}
           className="p-2 rounded-xl"
         />
         <LikeButton className="lg:relative absolute
