@@ -24,6 +24,7 @@ export default async function handler(req, res) {
              p.color, 
              p.size, 
              p.justIn, 
+             p.created_at,
              r.rating,
              r.reviews
       FROM electronic_shop.product AS p
