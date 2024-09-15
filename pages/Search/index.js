@@ -21,28 +21,58 @@ export default function ProductSearchResult() {
   const router = useRouter();
   const { q } = router.query;
 
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await fetch(`/api/product?q=${q}`);
+  //       const data = await res.json();
+  //       setSearchProduct(data);
+  //       setFilteredData(data);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //       setSearchProduct([]);
+  //       setFilteredData([]);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   if (q) {
+  //     fetchProducts();
+  //   }
+  // }, [q]);
+
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
         const res = await fetch(`/api/product?q=${q}`);
         const data = await res.json();
-        setSearchProduct(data);
-        setFilteredData(data);
+  
+        if (res.ok) {
+          // Only handle the products from the API response
+          const { products } = data;
+          setSearchProduct(products);
+          setFilteredData(products); // Assuming you're filtering products
+        } else {
+          // Handle errors when the response is not OK
+          console.error("Error fetching products:", data.error);
+          setSearchProduct([]);
+          setFilteredData([]);
+        }
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching products:", error);
         setSearchProduct([]);
         setFilteredData([]);
       } finally {
         setIsLoading(false);
       }
     };
-
-    if (q) {
-      fetchProducts();
-    }
-  }, [q]);
-
+  
+    fetchProducts();
+  }, [q]); // Add `q` as a dependency if it changes
+  
   const applyFilters = useCallback(
     (filters) => {
       const {
