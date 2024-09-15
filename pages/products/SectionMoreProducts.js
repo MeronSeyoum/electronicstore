@@ -16,15 +16,18 @@ const SectionMoreProducts = ({ overview }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   // Determine how many items to slice based on screen size
   const itemsToShow = windowWidth < 768 ? 13 : 12; // Assuming mobile width is less than 768px
-  const data = fetchedData.slice(3, itemsToShow);
+  const data = fetchedData.products.slice(3, itemsToShow);
 
-  if (loading) {
-    <div>
-      <Loading />
-    </div>;
-  }
+
 
   return (
     <div>

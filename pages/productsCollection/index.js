@@ -18,6 +18,7 @@ const Page = () => {
     : "/api/product";
 
   const { fetchedData, error, loading } = useDataFetch(dataSource);
+  const collectionData = categoryId ? fetchedData : fetchedData?.products || [];
 
   const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,8 +36,8 @@ const Page = () => {
   const itemsPerPage = windowWidth < 768 ? 14 : 15;
 
   useEffect(() => {
-    if (fetchedData) {
-      let sortedData = [...fetchedData];
+    if (collectionData) {
+      let sortedData = [...collectionData];
       switch (sortOption) {
         case "priceLowToHigh":
           sortedData.sort((a, b) => a.price - b.price);
@@ -52,7 +53,7 @@ const Page = () => {
       }
       setFilteredData(sortedData);
     }
-  }, [fetchedData, sortOption]);
+  }, [collectionData, sortOption]);
 
   const applyFilters = (filters) => {
     const {
@@ -63,7 +64,7 @@ const Page = () => {
       priceRange,
     } = filters;
 
-    const data = fetchedData.filter((item) => {
+    const data = collectionData.filter((item) => {
       if (selectedBrands.length > 0 && !selectedBrands.includes(item.brand))
         return false;
       if (selectedCategory !== "All" && selectedCategory === item.category_id)
@@ -125,7 +126,7 @@ const Page = () => {
               <span className="pl-1">
                 {" "}
                 {categoryId
-                  ? fetchedData[0]?.category_name || "Category"
+                  ? collectionData[0]?.category_name || "Category"
                   : "Product Collection"}
               </span>
             </nav>
@@ -133,7 +134,7 @@ const Page = () => {
         )}
         <Heading className="my-2" isMain>
           {categoryId
-            ? fetchedData[0]?.category_name || "Category"
+            ? collectionData[0]?.category_name || "Category"
             : "Product Collection"}
         </Heading>
       </div>
@@ -142,7 +143,7 @@ const Page = () => {
           <SearchResultHeader
             productLength={currentItems.length}
             applyFilters={applyFilters}
-            fetchedData={fetchedData}
+            fetchedData={collectionData}
             onSortChange={setSortOption}
           />
 
@@ -154,7 +155,7 @@ const Page = () => {
           {/* Pagination */}
           <div className="flex justify-end mt-4">
             {Array.from(
-              { length: Math.ceil(filteredData.length / itemsPerPage) },
+              { length: Math.ceil(collectionData.length / itemsPerPage) },
               (_, i) => (
                 <button
                   key={i}

@@ -3,16 +3,9 @@ import React from "react";
 import Slider from "shared/Slider/Slider";
 import ProductCard from "./ProductCard";
 
-const ProductSlider = ({ fetchedData, error, loading }) => {
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+const ProductSlider = ({ products }) => {
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  const data = fetchedData ? fetchedData.slice(1, 24) : [];
+  const data = products ? products.slice(1, 24) : [];
 
   return (
     <div className="">

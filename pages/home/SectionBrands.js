@@ -4,14 +4,14 @@ import BrandCard from 'components/BrandCard';
 import Loading from 'pages/Loading';
 import useDataFetch from 'hooks/useDataFetch';
 
-const SectionBrands = () => {
-  const { fetchedData, error, loading } = useDataFetch("/api/product");
+const SectionBrands = ({products}) => {
+  // const { fetchedData, error, loading } = useDataFetch("/api/product");
 
-  if (loading) return <Loading />;
-  if (error) return <div>Error: {error}</div>;
+  // if (loading) return <Loading />;
+  // if (error) return <div>Error: {error}</div>;
 
   const filterProductsByCategory = (category) => 
-    fetchedData.filter(product => product.category_name === category).slice(0, 4);
+    products.filter(product => product.category_name === category).slice(0, 4);
 
   const brandsSection = {
     heading: 'Shop by Brand',

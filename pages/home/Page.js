@@ -2,7 +2,7 @@ import SectionBestDeals from "./SectionBestDeal";
 import SectionBrands from "./SectionBrands";
 import SectionHomeBanner from "./SectionHomeBanner";
 import SectionBestProducts from "./SectionBestProducts";
-import SectionNewProducts from "./SectionNewProducts.js";
+import SectionNewProducts from "./SectionNewProducts";
 import HeaderSlider from "components/HeaderSlider";
 import SectionCategory from "./SectionCategory";
 import ServicesSection from "pages/home/ServicesSection";
@@ -12,43 +12,49 @@ import SectionCmsBannerThree from "./SectionCmsBannerThree";
 import Loading from "pages/Loading";
 
 const HomePage = () => {
-  const { fetchedData, error, loading } = useDataFetch("/api/product");
-  const fetchDataProps = { fetchedData, error, loading };
-
-  if (loading) return <p><Loading /></p>;
+  // Fetch both products and slides/banners from a single API
+  const { fetchedData, error, loading } =  useDataFetch("/api/product");
+  if (loading) return <Loading />;
   if (error) return <p>Error loading data.</p>;
+
+  const { products, slidesAndBanners } = fetchedData;
+
+  // Filter slides and banners
+  const slidesData = slidesAndBanners?.filter(item => item.type === 'slide');
+  const homeBannerData = slidesAndBanners?.filter(item => item.type === 'banner');
+  const homeBannerCMSData = slidesAndBanners?.filter(item => item.type === 'banner3');
 
   return (
     <div className="container">
       <section className="lg:py-3 pt-2">
         <SectionCategory />
       </section>
-      <section className="">
-        <HeaderSlider />
+      <section>
+        <HeaderSlider slides={slidesData} />
       </section>
       <section className="mt-3">
         <ServicesSection />
       </section>
       <section className="my-10">
-        <SectionBestDeals {...fetchDataProps} />
+        <SectionBestDeals products={products} />
       </section>
       <section className="mb-10">
-        <SectionHomeBanner />
+        <SectionHomeBanner banners={homeBannerData} />
       </section>
       <section>
-        <SectionNewProducts {...fetchDataProps} />
+        <SectionNewProducts products={products} />
       </section>
       <section className="my-10">
-        <SectionBrands />
+        <SectionBrands products={products} />
       </section>
       <section>
-        <SectionCmsBannerThree />
+        <SectionCmsBannerThree banners={homeBannerCMSData} />
       </section>
       <section className="mb-10">
-        <SectionBestProducts {...fetchDataProps} />
+        <SectionBestProducts products={products} />
       </section>
       <section className="mb-10">
-        <FooterBanner />
+        <FooterBanner  />
       </section>
     </div>
   );

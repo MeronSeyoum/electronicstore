@@ -11,8 +11,8 @@ import Heading from "shared/Heading/Heading";
 import Loading from "../Loading";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 import Link from "next/link";
-const SectionBestProducts = ({ fetchedData, error, loading }) => {
-  const data = fetchedData ? fetchedData.slice(0, 10) : [];
+const SectionBestProducts = ({ products, error, loading }) => {
+  const data = products? products.slice(0, 10) : [];
 
   const [windowWidth, setWindowWidth] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(10);

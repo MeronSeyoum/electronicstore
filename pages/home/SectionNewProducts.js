@@ -5,7 +5,7 @@ import Loading from "../Loading";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 import Link from "next/link";
 
-const SectionNewProducts = ({ fetchedData, error, loading }) => {
+const SectionNewProducts = ({ products, error, loading }) => {
   const [windowWidth, setWindowWidth] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(6);
 
@@ -35,7 +35,7 @@ const SectionNewProducts = ({ fetchedData, error, loading }) => {
   }
 
   // Filter the products where justIn is equal to 1
-  const filteredData = fetchedData ? fetchedData.filter(product => product.justIn === 1) : [];
+  const filteredData = products ? products.filter(product => product.justIn === 1) : [];
 
   // Sort the filtered data in descending order (assuming we use 'created_at' for sorting)
   const sortedData = filteredData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));

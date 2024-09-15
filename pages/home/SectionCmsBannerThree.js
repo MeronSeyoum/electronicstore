@@ -5,19 +5,17 @@ import ButtonSecondary from 'shared/Button/ButtonSecondary';
 import useDataFetch from 'hooks/useDataFetch';
 import Link from 'next/link';
 
-const SectionCmsBannerThree = () => {
-  const { fetchedData, error, loading } = useDataFetch("/api/product/Slides_banners?type=banner3");
+const SectionCmsBannerThree = ({banners}) => {
+  
   const router = useRouter();
 
   const handleButtonClick = (link) => {
     router.push(link);
   };
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error loading data</div>;
-
+ 
   return (
     <section className="flex flex-wrap lg:flex-row flex-col mb-10 gap-5">
-      {fetchedData && fetchedData.map((banner) => (
+      {banners && banners.map((banner) => (
         <div key={banner.id} className="w-full sm:w-[48%] md:w-[32.1%] ">
           <div className="relative rounded-md overflow-hidden">
             <Image 

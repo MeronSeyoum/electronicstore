@@ -1,11 +1,7 @@
-"use client";
-import { pathOr } from "ramda";
-import React, { useEffect, useState } from "react";
+"use client"; 
+import React from "react";
 import { useRouter } from 'next/router';
-
-
 import SectionMoreProducts from "./SectionMoreProducts";
-import SectionNavigation from "./SectionNavigation";
 import SectionProductHeader from "./SectionProductHeader";
 import SectionProductInfo from "./SectionProductInfo";
 import useDataFetch from 'hooks/useDataFetch';
@@ -15,42 +11,19 @@ const SingleProductPage = () => {
   const router = useRouter();
   const { slug } = router.query;
 
-
-  const { fetchedData, error, loading } = useDataFetch('/api/product');
-
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isLoadingData, setIsLoadingData] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoadingData(true)
-      try {
-        // Wait for product data to be loaded
-        await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate loading delay
-
-        // Find the selected product
-        const filteredProduct = fetchedData.find((item) => item.slug === slug);
-        setSelectedProduct(filteredProduct);
-console.log(filteredProduct)
-      } catch (error) {
-        console.error("Error fetching product data:", error);
-      } finally {
-        setIsLoadingData(false); // Set loading state to false
-
-      }
-    };
-
-    fetchData(); // Call fetchData function
-  }, [slug, fetchedData]);
-
-  if (isLoadingData || loading) {
+  // Fetch product details by slug
+  const { fetchedData, error, loading } = useDataFetch(`/api/product/productDetail?slug=${slug}`);
+  
+  if (loading) {
     return <Loading />;
   }
 
   if (error) {
     return <div>Error: {error}</div>;
   }
-
+console.log(fetchedData)
+  const selectedProduct = fetchedData?.products?.[0]; // Assuming the API returns an array of products and we need the first one
+console.log(selectedProduct)
   if (selectedProduct) {
     return (
       <div className="container my-2 lg:my-10">
@@ -58,41 +31,40 @@ console.log(filteredProduct)
 
         <div className="mb-10">
           <SectionProductHeader
-            productId={pathOr(0, ["id"], selectedProduct)}
-            main_image={pathOr([], ["main_image"], selectedProduct || '/placeholder_image.jpg')}
-            productImages={pathOr([], ["images"], selectedProduct || '/placeholder_image.jpg')}
-            productName={pathOr("", ["product_name"], selectedProduct)}
-            categoryName={pathOr("", ["category_name"], selectedProduct)}
-            productDesc={pathOr("", ["description"], selectedProduct)}
-            prevPrice={pathOr(0, ["price"], selectedProduct)}
-            currentPrice={pathOr(0, ["price"], selectedProduct)}
-            rating={pathOr(0, ["rating"], selectedProduct)}
-            // pieces_sold={pathOr(0, ["pieces_sold"], selectedProduct)}
-            reviews={pathOr(0, ["reviews"], selectedProduct)}
-            color={pathOr([], ["color"], selectedProduct)}
-
+            productId={selectedProduct.id}
+            main_image={selectedProduct.main_image || '/placeholder_image.jpg'}
+            productImages={selectedProduct.images || ['/placeholder_image.jpg']}
+            productName={selectedProduct.product_name}
+            categoryName={selectedProduct.category_name}
+            productDesc={selectedProduct.description}
+            prevPrice={selectedProduct.price}
+            currentPrice={selectedProduct.price}
+            rating={selectedProduct.rating}
+            reviews={selectedProduct.reviews}
+            color={selectedProduct.color || []}
           />
         </div>
 
         <div className="my-6">
           <SectionProductInfo
-            productDesc={pathOr("", ["description"], selectedProduct)}
-            features={pathOr("", ["features"], selectedProduct)}
-            ratings={pathOr(0, ["rating"], selectedProduct)}
-            reviews={pathOr(0, ["reviews"], selectedProduct)}
+            productDesc={selectedProduct.description}
+            features={selectedProduct.features}
+            ratings={selectedProduct.rating}
+            reviews={selectedProduct.reviews}
           />
-
         </div>
 
         <div className="mb-6">
           <SectionMoreProducts
-            // note for customer about product
-            overview={pathOr("", ["description"], selectedProduct)}
+            overview={selectedProduct.description}
+            // fetchedData={fetchedData.products}
           />
         </div>
       </div>
     );
   }
+
+  return null; // Return null if no product is found
 };
 
 export default SingleProductPage;
