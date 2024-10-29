@@ -227,6 +227,10 @@ body {
     padding-top: .9em;
 }
 
+.banner-title {
+    font-size: 24px;
+}
+
 
 /* Media Queries */
 
@@ -248,8 +252,8 @@ body {
 @media (min-width: 768px) and (max-width: 1023px) {
     .container {
         max-width: 768px;
-        padding-right: 20px;
-        padding-left: 20px;
+        padding-right: 30px;
+        padding-left: 30px;
     }
 }
 
@@ -258,6 +262,10 @@ body {
         max-width: 1024px;
         padding-right: 5px;
         padding-left: 5px;
+    }
+    .banner-title {
+        font-size: 15px;
+        width: 70%;
     }
 }
 
@@ -272,8 +280,8 @@ body {
 @media (min-width: 1536px) {
     .container {
         max-width: 1537px;
-        padding-right: 10px;
-        padding-left: 10px;
+        padding-right: 40px;
+        padding-left: 40px;
     }
 }
 
